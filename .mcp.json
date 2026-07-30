@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "hubspot": {
+      "type": "http",
+      "url": "https://mcp.hubspot.com"
+    },
+    "pipedrive": {
+      "type": "http",
+      "url": "https://mcp.pipedrive.com/mcp"
+    }
+  }
+}

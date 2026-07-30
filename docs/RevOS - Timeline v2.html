@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RevOS — Timeline cronológico v2</title>
+<style>
+:root{--fondo:#F6F4F0;--tinta:#1C1B1A;--suave:#6B6862;--acento:#C129A1;--ok:#3E7C4F;--alerta:#B3822D;--linea:#DDD8CF;--panel:#FFF;
+--ess:#3E7C4F;--com:#5B4B8A;--opc:#B3822D}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--fondo);color:var(--tinta);font:15px/1.55 system-ui,sans-serif;padding:40px 24px 80px}
+.wrap{max-width:960px;margin:0 auto}
+h1{font-family:Georgia,serif;font-size:30px;margin-bottom:6px}
+.sub{color:var(--suave);margin-bottom:10px}
+.leyenda{display:flex;gap:14px;flex-wrap:wrap;margin:18px 0 34px;font-size:13px}
+.leyenda span{display:inline-flex;align-items:center;gap:6px}
+.dot{width:11px;height:11px;border-radius:3px;display:inline-block}
+.fase{margin-bottom:34px;background:var(--panel);border:1px solid var(--linea);border-radius:10px;padding:22px 26px}
+.fase .kicker{color:var(--acento);font-size:13px;letter-spacing:.05em;margin-bottom:4px}
+.fase h2{font-family:Georgia,serif;font-size:21px;margin-bottom:4px}
+.fase .n{color:var(--suave);font-size:13px;margin-bottom:14px}
+.pista{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px}
+.chip{border-radius:6px;padding:7px 12px;font-size:13.5px;color:#fff;cursor:default}
+.chip small{display:block;font-size:11px;opacity:.85}
+.ess{background:var(--ess)}.com{background:var(--com)}.opc{background:var(--opc)}
+.neutro{background:var(--tinta)}
+.flecha{color:var(--suave)}
+.check{border-left:4px solid var(--ok);background:#F2F6F3;border-radius:0 8px 8px 0;padding:8px 14px;font-size:13.5px;margin-top:10px}
+.trans{border-left:4px solid var(--acento);background:#FAF0F7;border-radius:0 8px 8px 0;padding:8px 14px;font-size:13.5px;margin-top:8px}
+footer{color:var(--suave);font-size:12.5px;margin-top:30px}
+</style>
+</head>
+<body><div class="wrap">
+<h1>RevOS — Mapa cronológico del sistema</h1>
+<div class="sub">27 nodos en secuencia · Essentials, Complete y Activaciones opcionales · v2 · Julio 2026 · generado desde el Blueprint v4</div>
+<div class="leyenda">
+<span><span class="dot" style="background:var(--tinta)"></span>Fase 0 / transversal</span>
+<span><span class="dot ess"></span>Essentials</span>
+<span><span class="dot com"></span>Complete</span>
+<span><span class="dot opc"></span>Opcional</span>
+<span><span class="dot" style="background:var(--ok)"></span>Checkpoint cliente</span>
+</div>
+
+<div class="fase">
+<div class="kicker">— Fase 0</div><h2>Arranque</h2><div class="n">1 comando · obligatorio antes de producir nada</div>
+<div class="pista"><span class="chip neutro">/revos:fase-0<small>carpetas · State Log · output · conectores</small></span></div>
+</div>
+
+<div class="fase">
+<div class="kicker">— Fase 1</div><h2>Diagnostic</h2><div class="n">6 skills · entrada del sistema · comando /revos:diagnostic</div>
+<div class="pista">
+<span class="chip ess">client-intake-form<small>Sonnet · CRM opcional</small></span><span class="flecha">→</span>
+<span class="chip ess">brief-intake<small>Sonnet · CRM opcional</small></span><span class="flecha">→</span>
+<span class="chip ess">knowledge-base-builder<small>Opus</small></span><span class="flecha">→</span>
+<span class="chip ess">competitive-research<small>Sonnet · agente researcher</small></span><span class="flecha">→</span>
+<span class="chip ess">revenue-diagnostic<small>Opus · cuellos de botella</small></span>
+</div>
+<div class="check">✓ diagnostic-checkpoint — validación con cliente · asunciones vigentes · sin cambios pendientes en backlog</div>
+<div class="trans">⇅ system-qa al cierre de fase · /revos:status y /revos:cambio operan en todo el sistema</div>
+</div>
+
+<div class="fase">
+<div class="kicker">— Fase 2</div><h2>Design</h2><div class="n">9 skills · arquitectura del sistema · comando /revos:design</div>
+<div class="pista">
+<span class="chip ess">positioning-messaging<small>Opus</small></span><span class="flecha">→</span>
+<span class="chip ess">growth-system-design<small>Opus</small></span><span class="flecha">→</span>
+<span class="chip ess">sales-conversion-design<small>Sonnet</small></span>
+</div>
+<div class="pista">
+<span class="chip com">channel-strategy-design<small>Sonnet · web search</small></span><span class="flecha">+</span>
+<span class="chip com">content-discoverability-design<small>Sonnet · SEO/GEO</small></span><span class="flecha">+</span>
+<span class="chip com">sales-process-design<small>Sonnet</small></span><span class="flecha">+</span>
+<span class="chip com">measurement-framework<small>Sonnet · XLSX</small></span>
+</div>
+<div class="pista">
+<span class="chip ess">execution-roadmap-builder<small>Opus · 90/180/365</small></span>
+<span class="chip opc">brand-copy-system<small>Sonnet · opcional</small></span>
+</div>
+<div class="check">✓ design-checkpoint — validación con cliente (materializado por diagnostic-checkpoint, parametrizado por fase)</div>
+<div class="trans">⇅ system-qa al cierre de fase</div>
+</div>
+
+<div class="fase">
+<div class="kicker">— Fase 3</div><h2>Activation</h2><div class="n">10 skills · implantación y entregables · comando /revos:activation</div>
+<div class="pista">
+<span class="chip com">martech-stack-audit<small>Sonnet · CRM opcional</small></span><span class="flecha">→</span>
+<span class="chip com">crm-blueprint-builder<small>Sonnet</small></span><span class="flecha">→</span>
+<span class="chip com">martech-measurement<small>Sonnet</small></span><span class="flecha">→</span>
+<span class="chip com">exec-deliverables<small>Opus · agente designer</small></span>
+</div>
+<div class="pista">
+<span class="chip opc">crm-selection</span><span class="chip opc">media-plan-builder</span><span class="chip opc">content-calendar-builder</span><span class="chip opc">conversion-playbook-builder</span><span class="chip opc">reporting-operating-system</span>
+</div>
+<div class="check">✓ checkpoint final — entrega ejecutiva · asunciones cerradas o transferidas al handover</div>
+<div class="trans">⇅ system-qa final antes de exec-deliverables · /revos:entrega maqueta cada entregable según la preferencia de fase 0 (HTML u Office)</div>
+</div>
+
+<footer>RevOS - Timeline v2 · documento derivado del Blueprint v4 — no editar a mano: regenerar desde la fuente única de datos · RevOps Studio</footer>
+</div></body>
+</html>

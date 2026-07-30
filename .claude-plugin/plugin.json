@@ -1,0 +1,16 @@
+{
+  "name": "revos",
+  "version": "4.0.0-alpha.6",
+  "description": "Sistema RevOS de RevOps Studio: diagnóstico, diseño y activación de sistemas de revenue para empresas B2B. Plugin interno de organización. Bloques 1-5: sistema completo de skills, agentes y entrega maquetada con sistema visual propio.",
+  "author": {
+    "name": "RevOps Studio"
+  },
+  "keywords": [
+    "revenue",
+    "b2b",
+    "diagnostic",
+    "design",
+    "activation",
+    "revops"
+  ]
+}
