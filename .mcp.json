@@ -1,12 +1,24 @@
 {
   "mcpServers": {
-    "hubspot": {
+    "ahrefs": {
       "type": "http",
-      "url": "https://mcp.hubspot.com"
+      "url": "https://api.ahrefs.com/mcp/mcp"
     },
-    "pipedrive": {
+    "similarweb": {
       "type": "http",
-      "url": "https://mcp.pipedrive.com/mcp"
+      "url": "https://mcp.similarweb.com"
+    },
+    "google-drive": {
+      "type": "http",
+      "url": "https://drivemcp.googleapis.com/mcp/v1"
+    },
+    "notion": {
+      "type": "http",
+      "url": "https://mcp.notion.com/mcp"
+    },
+    "dropbox": {
+      "type": "http",
+      "url": "https://mcp.dropbox.com/claude_app_mcp"
     }
   }
 }

@@ -2,7 +2,7 @@
 
 Sistema RevOS v4: diagnóstico, diseño y activación de sistemas de revenue para empresas B2B, operado íntegramente en Claude/Cowork.
 
-## Estado: bloques 1-6 de 7 (v4.0.0-alpha.6)
+## Estado: bloques 1-6 de 7 (v4.0.0-alpha.7)
 
 Incluido en este bloque:
 - **fase-0** — arranque de proyecto: estructura de carpetas estándar, configuración (tier, output, idioma, conectores) e inicialización de State Log y Backlog de cambios.
@@ -10,7 +10,7 @@ Incluido en este bloque:
 - **revos-orchestrator** — reglas del sistema: grafo de dependencias (27 nodos), propagación de cambios, régimen de revisiones/asunciones y convenciones transversales.
 - **cambio** — puerta de entrada única de correcciones: clasificación Cosmético/Dato/Concepto, backlog, archivado en 04 Archivo y propagación aprobada por el consultor.
 
-Incluido además (bloque 3): las 6 skills de la fase Diagnostic (client-intake-form, brief-intake, knowledge-base-builder, competitive-research, revenue-diagnostic, diagnostic-checkpoint) reescritas a convenciones v4, los agentes competitive-researcher y crm-analyst, y conectores CRM opcionales (HubSpot, Pipedrive) en .mcp.json.
+Incluido además (bloque 3): las 6 skills de la fase Diagnostic (client-intake-form, brief-intake, knowledge-base-builder, competitive-research, revenue-diagnostic, diagnostic-checkpoint) reescritas a convenciones v4, los agentes competitive-researcher y crm-analyst, y el modelo de conectores en dos niveles: investigación y archivos (Ahrefs, Similarweb, Drive, Notion, Dropbox) en .mcp.json; CRM, transcripciones y ads activables por proyecto según el mapa del orquestador.
 
 Incluido además (bloque 4): las 19 skills de Design, Activation y opcionales reescritas a convenciones v4, y el agente system-qa (verificación transversal en solo lectura).
 

@@ -29,7 +29,7 @@ Pregunta al consultor, en una sola interacción:
 1. **Tier contratado**: Essentials · Complete · Complete + opcionales (cuáles).
 2. **Preferencia de output**: HTML u Office (DOCX/XLSX/PPTX). Una elección por proyecto; override puntual permitido por entregable.
 3. **Idioma de los entregables** (por defecto castellano).
-4. **Conectores CRM disponibles** (HubSpot, Salesforce, Pipedrive u otro; puede ser ninguno). Si hay CRM, recuerda: acceso de solo lectura y cláusula de confidencialidad en la propuesta.
+4. **Conectores del proyecto** — consulta el mapa `skills/revos-orchestrator/references/conectores.md`. Los de nivel 1 (Ahrefs, Similarweb, Drive, Notion, Dropbox) vienen con el plugin. Pregunta cuáles del nivel 2 aplican: CRM del cliente (HubSpot, Pipedrive, Zoho, Attio u otro), transcripciones (Fireflies/Gong/Granola), datos de ads (Supermetrics). Registra los activos en el State Log. Si hay CRM: acceso de solo lectura y cláusula de confidencialidad en la propuesta.
 
 ### 4. Inicialización
 Crea en `00 Sistema/`, usando las plantillas de `references/plantillas.md`:

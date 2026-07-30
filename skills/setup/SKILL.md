@@ -20,7 +20,7 @@ Explica la regla de oro del sistema en tres frases:
 ### 2. Chequeo del entorno
 Verifica y reporta:
 - Carpeta de trabajo conectada en Cowork (si no, pídela).
-- Conectores CRM autorizados (HubSpot/Pipedrive) — opcionales; explica qué aportan (datos reales del funnel con [DATO CRM]) y qué exigen (solo lectura + cláusula de confidencialidad con el cliente).
+- Conectores de nivel 1 autorizados (Ahrefs, Similarweb, Drive, Notion, Dropbox — vienen con el plugin) y comprensión del nivel 2: el CRM del cliente y demás se activan por proyecto según el mapa `skills/revos-orchestrator/references/conectores.md`. Si hay CRM: solo lectura + cláusula de confidencialidad.
 - Skills de formato disponibles (docx/xlsx/pptx) para la vía Office de `/revos:entrega`.
 
 ### 3. El ciclo de vida de un proyecto (con el Timeline delante)
