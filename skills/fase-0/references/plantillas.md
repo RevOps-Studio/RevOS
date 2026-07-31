@@ -1,12 +1,13 @@
-# Plantillas de fase 0
+# Plantillas de fase 0 (v4.1)
 
-## State Log — `[Cliente] - State Log v1.md`
+## Registro — `[Cliente] - Registro v1.md`
+Inmutable y acumulativo: crece por adición, nunca se reescribe. Lo mantiene el orquestador.
 
 ```markdown
-# [Cliente] — State Log
-Actualizado: [fecha] · Mantenido por el orquestador RevOS. No editar a mano salvo excepción justificada.
+# [Cliente] — Registro
+Creado: [fecha] · Solo adición. Las vistas de trabajo viven en [Cliente] - Estado.
 
-## Proyecto
+## Configuración
 | Campo | Valor |
 |---|---|
 | Cliente | |
@@ -14,32 +15,58 @@ Actualizado: [fecha] · Mantenido por el orquestador RevOS. No editar a mano sal
 | Fecha de inicio | |
 | Preferencia de output | HTML / Office |
 | Idioma | Castellano |
-| Conectores activos | Ninguno / HubSpot / Salesforce / Pipedrive (solo lectura) |
+| Conectores nivel 2 activos | Ninguno / CRM: […] / Transcripciones: […] / Ads: […] |
+| Dominios de cuentas del cliente | [lista — se piden en intake] |
 
-## Ejecutado
-| Skill | Entregable | Versión | Fecha | Ciclos de revisión consumidos (máx. 2) | Estado |
+## Ejecución
+| Skill | Entregable | Versión | Fecha | Ciclos de calidad (máx. 2) | Incorporaciones de información | Estado |
+|---|---|---|---|---|---|---|
+
+## Censo de asunciones
+| # | Asunción | Criterio falsable | Origen | Historial de estado (fecha → vigente/validada/corregida/refutada) |
+|---|---|---|---|---|
+
+## Veredictos de system-qa
+| Fase | Fecha | Veredicto (APTO / APTO CON RESERVAS / NO APTO) | Críticos | Mayores | Informe |
 |---|---|---|---|---|---|
 
-## Asunciones vigentes
-| # | Asunción | Origen ([FALTA DATO] convertido) | Estado (vigente / validada / corregida) |
-|---|---|---|---|
-
-## Checkpoints
+## Checkpoints celebrados
 | Checkpoint | Fecha | Resultado | Ajustes acordados |
 |---|---|---|---|
+```
 
-## Próximo paso
+## Estado — `[Cliente] - Estado v1.md`
+Vistas de trabajo. **Se regenera completo en cada cierre de skill** (lo regenera el orquestador); nunca se edita por adición.
+
+```markdown
+# [Cliente] — Estado
+Regenerado: [fecha, tras cierre de skill X]. Este fichero se reescribe entero; el histórico vive en el Registro.
+
+## Huecos vivos
+| # | [FALTA DATO] | Bloqueante | Skill destinataria (no ejecutada) | Disposición del último cierre |
+|---|---|---|---|---|
+
+## Hallazgos vigentes (techo: 12 — al superarlo, consolidar antes de añadir)
+| # | Hallazgo | Fuente | Afecta a |
+|---|---|---|---|
+
+## Agenda del próximo checkpoint
+- Asunciones a validar: [del censo del Registro, las vigentes]
+- Bloqueantes a resolver con el cliente: [de huecos vivos]
+- Precondición: backlog sin cambios abiertos + system-qa de fase APTO → [estado actual]
+
+## Siguiente paso
 - Skill: 
 - Inputs requeridos: 
-- Huecos conocidos que arrastrará: 
+- Huecos que arrastrará: 
 ```
 
 ## Backlog de cambios — `[Cliente] - Backlog de cambios v1.md`
 
 ```markdown
 # [Cliente] — Backlog de cambios
-Un cambio por fila. Tipos: Cosmético / Dato / Concepto (ver convenciones del orquestador).
+Un cambio por fila. Tipos: Cosmético / Dato / Concepto. Origen: juicio (consume ciclo) / información nueva (no consume).
 
-| Fecha | Entregable origen | Tipo | Descripción del cambio | Ficheros afectados (con estado: sin impacto / pendiente editar / pendiente reescribir / resuelto) | Estado global (abierto / propagado / cerrado) |
-|---|---|---|---|---|---|
+| Fecha | Entregable origen | Tipo | Origen | Descripción | Ficheros afectados (con estado) | Estado global |
+|---|---|---|---|---|---|---|
 ```

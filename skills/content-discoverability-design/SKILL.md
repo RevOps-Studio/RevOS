@@ -37,7 +37,7 @@ No es un calendario editorial (eso es content-calendar-builder). Es el mapa estr
 
 **Evidencia con fuente.** Todo dato, benchmark, keyword o SERP referenciado viene con fuente accesible. Si no hay fuente, [FALTA EVIDENCIA].
 
-**Convenciones v4:** cada [FALTA DATO] se clasifica al detectarse como bloqueante (impide una decisión de este entregable) o no bloqueante. Presupuesto máximo: 2 ciclos de revisión por entregable. Agotado el presupuesto, los [FALTA DATO] no bloqueantes se convierten en [ASUNCIÓN: valor asumido + criterio] y el sistema avanza; solo los bloqueantes detienen y se escalan al cliente de inmediato. Los datos extraídos de CRM conectado se marcan [DATO CRM: fuente, fecha]. Referencia completa: skills/revos-orchestrator/references/convenciones.md del plugin revos.
+**Convenciones v4.1 — **Precondición**: antes de producir, lee `00 Sistema/[Cliente] - Registro` y detente si falta fase 0, si el presupuesto de revisión de este entregable está agotado sin cambio tramitado por /revos:cambio, o si el cierre de fase anterior exigía un system-qa aún no APTO. **Etiquetado**: cada [FALTA DATO] se clasifica al detectarse como bloqueante (impide una decisión de este entregable) o no bloqueante. **Presupuesto**: 2 ciclos de revisión de calidad por entregable — solo consumen ciclo los cambios nacidos del juicio sobre lo escrito; las incorporaciones de información nueva (aportada por cliente o consultor, o medida por el sistema) no consumen ciclo y generan versión y entrada en el Backlog si el entregable ya está registrado. Agotado el presupuesto, los [FALTA DATO] no bloqueantes se convierten en [ASUNCIÓN: valor asumido + criterio falsable] y el sistema avanza; solo los bloqueantes detienen y se escalan de inmediato. **Resumen para el consultor**: enumera los bloqueantes y lo relevante — nunca recuentos totales (el recuento es chequeo mecánico de system-qa sobre el documento terminado). **Cierre**: todo [FALTA DATO] heredado sale con disposición explícita — resuelto, reasignado a la primera skill no ejecutada que lo necesite, o declinado con motivo. Datos de CRM conectado: [DATO CRM: fuente, fecha]. Referencia completa: skills/revos-orchestrator/references/convenciones.md del plugin revos.
 
 **Lenguaje.** Castellano. Registro ejecutivo directo. Vocabulario: keyword, intención, SERP, pilar, cluster, topical authority, snippet, GEO, LLM citation. Evitar: "content is king", "ecosistema de contenidos", "storytelling mágico".
 
@@ -223,12 +223,12 @@ Cuando el diseño de contenidos y descubribilidad esté completo:
 
 1. Presenta el output completo en Markdown.
 2. Añade al final una sección **"Resumen para el consultor"** con:
-   - Número de pilares temáticos
+   - Los pilares temáticos, listados por nombre — sin recuento
    - Total de contenidos propuestos en el plan completo y en los primeros 90 días
    - Mix TOFU/MOFU/BOFU estimado
    - Brechas de capacidad de producción detectadas
    - Nivel de confianza en la arquitectura (1-5)
-3. El contenido validado se guarda como `[Cliente] - Content Discoverability v1.md` en `01 Entregables`. El orquestador lo registra en el State Log. Siguiente skill: `sales-process-design`.
+3. El contenido validado se guarda como `[Cliente] - Content Discoverability v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: `sales-process-design`.
 
 ## Lo que NO debes hacer
 

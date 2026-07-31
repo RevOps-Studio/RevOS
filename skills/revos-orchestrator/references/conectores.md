@@ -1,6 +1,6 @@
 # Mapa de conectores RevOS v4
 
-Dos niveles. **Nivel 1** — declarados en el `.mcp.json` del plugin (disponibles siempre): investigación y acceso a archivos. **Nivel 2** — activables por proyecto desde el registro de conectores cuando fase-0 lo detecte; se registran en el State Log.
+Dos niveles. **Nivel 1** — declarados en el `.mcp.json` del plugin (disponibles siempre): investigación y acceso a archivos. **Nivel 2** — activables por proyecto desde el registro de conectores cuando fase-0 lo detecte; se registran en el Registro.
 
 ## Nivel 1 — en el plugin
 
@@ -23,7 +23,7 @@ Dos niveles. **Nivel 1** — declarados en el `.mcp.json` del plugin (disponible
 
 ## Reglas
 
-1. fase-0 pregunta qué conectores del nivel 2 aplican al proyecto y los registra en el State Log. La activación la hace el consultor desde el registro de conectores de Cowork.
-2. El agente crm-analyst es agnóstico del CRM: opera contra el CRM que el State Log declare conectado, sea cual sea.
+1. fase-0 pregunta qué conectores del nivel 2 aplican al proyecto y los registra en el Registro. La activación la hace el consultor desde el registro de conectores de Cowork.
+2. El agente crm-analyst es agnóstico del CRM: opera contra el CRM que el Registro declare conectado, sea cual sea.
 3. Todo dato externo lleva su etiqueta de procedencia: [DATO CRM: fuente, fecha] para CRM; citación de fuente para research.
 4. No añadir conectores al `.mcp.json` del plugin sin criterio de uso intrínseco y transversal — cada conector declarado pide autorización en cada sesión.

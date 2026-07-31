@@ -8,7 +8,7 @@ description: Capturar la información inicial del cliente mediante formulario es
 Punto de entrada de información del sistema. Convierte la primera conversación con el cliente (o el formulario pre-discovery) en un registro estructurado y completo que brief-intake pueda procesar sin ambigüedad.
 
 ## Posición en el pipeline
-- **Requiere:** fase 0 completada (State Log existente). Conversación con el cliente, formulario pre-discovery si existe, web del cliente y documentos aportados.
+- **Requiere:** fase 0 completada (Registro existente). Conversación con el cliente, formulario pre-discovery si existe, web del cliente y documentos aportados.
 - **Produce:** formulario de discovery completado.
 - **Siguiente skill:** brief-intake.
 
@@ -18,18 +18,18 @@ Punto de entrada de información del sistema. Convierte la primera conversación
 
 **Distinguir declarado de verificado.** Todo lo que venga del cliente es declarado. Lo verificable (web, materiales) se contrasta y se anota la fuente.
 
-Convenciones v4: cada [FALTA DATO] se clasifica al detectarse como bloqueante (impide una decisión de este entregable) o no bloqueante. Presupuesto máximo: 2 ciclos de revisión por entregable. Agotado el presupuesto, los [FALTA DATO] no bloqueantes se convierten en [ASUNCIÓN: valor asumido + criterio] y el sistema avanza; solo los bloqueantes detienen y se escalan al cliente de inmediato. Los datos extraídos de CRM conectado se marcan [DATO CRM: fuente, fecha]. Referencia completa: skills/revos-orchestrator/references/convenciones.md del plugin revos.
+Convenciones v4.1 — **Precondición**: antes de producir, lee `00 Sistema/[Cliente] - Registro` y detente si falta fase 0, si el presupuesto de revisión de este entregable está agotado sin cambio tramitado por /revos:cambio, o si el cierre de fase anterior exigía un system-qa aún no APTO. **Etiquetado**: cada [FALTA DATO] se clasifica al detectarse como bloqueante (impide una decisión de este entregable) o no bloqueante. **Presupuesto**: 2 ciclos de revisión de calidad por entregable — solo consumen ciclo los cambios nacidos del juicio sobre lo escrito; las incorporaciones de información nueva (aportada por cliente o consultor, o medida por el sistema) no consumen ciclo y generan versión y entrada en el Backlog si el entregable ya está registrado. Agotado el presupuesto, los [FALTA DATO] no bloqueantes se convierten en [ASUNCIÓN: valor asumido + criterio falsable] y el sistema avanza; solo los bloqueantes detienen y se escalan de inmediato. **Resumen para el consultor**: enumera los bloqueantes y lo relevante — nunca recuentos totales (el recuento es chequeo mecánico de system-qa sobre el documento terminado). **Cierre**: todo [FALTA DATO] heredado sale con disposición explícita — resuelto, reasignado a la primera skill no ejecutada que lo necesite, o declinado con motivo. Datos de CRM conectado: [DATO CRM: fuente, fecha]. Referencia completa: skills/revos-orchestrator/references/convenciones.md del plugin revos.
 
 ## Proceso
 
 ### 1. Revisar lo disponible
-Lee el State Log y el material ya presente en `02 Anexos` (formulario pre-discovery, notas, decks). Lista qué campos del formulario ya tienen respuesta para no preguntar dos veces.
+Lee el Registro y el material ya presente en `02 Anexos` (formulario pre-discovery, notas, decks). Lista qué campos del formulario ya tienen respuesta para no preguntar dos veces.
 
 ### 2. Web del cliente
 Lee la web del cliente (web fetch). Extrae: oferta visible, segmentos aparentes, claims actuales, señales de posicionamiento. Anótalo como fuente "web" — servirá para contrastar lo declarado.
 
 ### 3. Extracción de CRM (condicional)
-Si el State Log registra un CRM conectado, lanza el agente crm-analyst del plugin: volúmenes por etapa, tasas de conversión, ciclo medio, ticket medio, win rate. Cada dato con etiqueta [DATO CRM: fuente, fecha]. Dato inconsistente → [DATO NO FIABLE], tratar como [FALTA DATO].
+Si el Registro registra un CRM conectado, lanza el agente crm-analyst del plugin: volúmenes por etapa, tasas de conversión, ciclo medio, ticket medio, win rate. Cada dato con etiqueta [DATO CRM: fuente, fecha]. Dato inconsistente → [DATO NO FIABLE], tratar como [FALTA DATO].
 
 ### 4. Entrevista guiada / formulario
 Completa los campos pendientes con el cliente (o prepara el guion para que el consultor lo haga). Campos obligatorios:
@@ -41,6 +41,7 @@ Completa los campos pendientes con el cliente (o prepara el guion para que el co
 | Objetivos | Objetivo comercial declarado, horizonte, crecimiento esperado |
 | Retos declarados | Problemas percibidos, en palabras del cliente |
 | Funnel actual | Cómo llegan los leads hoy, canales activos, proceso de venta descrito |
+| Dominios de cuentas | Los dominios web de clientes actuales representativos y de competidores directos (input de la medición de activos) |
 | Stack | CRM, herramientas de marketing, analítica, reporting |
 | Restricciones | Presupuesto estimado, recursos, líneas rojas |
 
@@ -48,8 +49,8 @@ Completa los campos pendientes con el cliente (o prepara el guion para que el co
 Señala discrepancias evidentes entre lo declarado y lo observado (web, CRM) con [CONTRADICCIÓN DETECTADA: descripción]. No las resuelvas — se resuelven con el cliente en brief-intake o en el checkpoint.
 
 ### 6. Entrega
-El contenido validado se guarda como `[Cliente] - Client Intake v1.md` en `01 Entregables`. El orquestador lo registra en el State Log. Siguiente skill: brief-intake.
-Cierra con el resumen para el consultor: campos completados, [FALTA DATO] (bloqueantes y no bloqueantes), contradicciones detectadas.
+El contenido validado se guarda como `[Cliente] - Client Intake v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: brief-intake.
+Cierra con el resumen para el consultor: campos completados; los [FALTA DATO] bloqueantes y las contradicciones, listados — sin recuentos.
 
 ## Lo que NO hacer
 - No interpretar ni diagnosticar — eso empieza en brief-intake.

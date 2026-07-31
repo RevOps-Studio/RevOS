@@ -25,7 +25,9 @@ superficial. Un brief con criterio produce un sistema con criterio.
 
 **Requiere:** formulario de intake completado (mínimo), notas de reunión,
 web del cliente si está disponible, materiales existentes (decks, propuestas,
-informes) si los hay.
+informes) si los hay. Dominios de las cuentas del cliente (sus clientes) y
+de competidores directos — se piden como dato de intake, al mismo nivel que
+la web propia.
 
 **Produce:** Client Master Brief v1 en Markdown estructurado.
 
@@ -48,15 +50,7 @@ inferencias con [HIPÓTESIS] para que el consultor pueda validarlas.
 que no tienen datos reales. Usa [FALTA DATO: descripción de lo que necesitas]
 y continúa con las secciones que sí puedes completar.
 
-**Convenciones v4:** cada [FALTA DATO] se clasifica al detectarse como
-bloqueante (impide una decisión de este entregable) o no bloqueante.
-Presupuesto máximo: 2 ciclos de revisión por entregable. Agotado el
-presupuesto, los [FALTA DATO] no bloqueantes se convierten en
-[ASUNCIÓN: valor asumido + criterio] y el sistema avanza; solo los
-bloqueantes detienen y se escalan al cliente de inmediato. Los datos
-extraídos de CRM conectado se marcan [DATO CRM: fuente, fecha]. Referencia
-completa: skills/revos-orchestrator/references/convenciones.md del plugin
-revos.
+Convenciones v4.1 — **Precondición**: antes de producir, lee `00 Sistema/[Cliente] - Registro` y detente si falta fase 0, si el presupuesto de revisión de este entregable está agotado sin cambio tramitado por /revos:cambio, o si el cierre de fase anterior exigía un system-qa aún no APTO. **Etiquetado**: cada [FALTA DATO] se clasifica al detectarse como bloqueante (impide una decisión de este entregable) o no bloqueante. **Presupuesto**: 2 ciclos de revisión de calidad por entregable — solo consumen ciclo los cambios nacidos del juicio sobre lo escrito; las incorporaciones de información nueva (aportada por cliente o consultor, o medida por el sistema) no consumen ciclo y generan versión y entrada en el Backlog si el entregable ya está registrado. Agotado el presupuesto, los [FALTA DATO] no bloqueantes se convierten en [ASUNCIÓN: valor asumido + criterio falsable] y el sistema avanza; solo los bloqueantes detienen y se escalan de inmediato. **Resumen para el consultor**: enumera los bloqueantes y lo relevante — nunca recuentos totales (el recuento es chequeo mecánico de system-qa sobre el documento terminado). **Cierre**: todo [FALTA DATO] heredado sale con disposición explícita — resuelto, reasignado a la primera skill no ejecutada que lo necesite, o declinado con motivo. Datos de CRM conectado: [DATO CRM: fuente, fecha]. Referencia completa: skills/revos-orchestrator/references/convenciones.md del plugin revos.
 
 **Lenguaje.** Castellano. Registro ejecutivo directo — el nivel de un informe
 interno de dirección. Sin jerga de agencia ("estrategia 360", "activación de
@@ -78,13 +72,20 @@ Enumera mentalmente todos los materiales disponibles del proyecto:
 formulario de intake, notas, web, decks, propuestas, informes. Si no hay
 formulario de intake, detente y avisa al consultor antes de continuar.
 
+**Calibración de la capa económica (antes de escribir).** Pregunta al
+consultor: ¿la gestión financiera de este cliente es lo bastante formal
+para producir cifras fiables si se piden? Si la respuesta es no, la capa
+económica se escribe directamente con [ASUNCIÓN: valor + criterio falsable]
+en lugar de [FALTA DATO], y el criterio se declara en el propio brief.
+Esto evita producir un documento que haya que convertir acto seguido.
+
 **Paso 2 — Primera lectura transversal.**
 Lee todos los materiales sin escribir todavía. Identifica: qué está claro,
 qué está en conflicto entre fuentes, qué falta. Esto evita empezar a escribir
 con una imagen parcial del cliente.
 
 **Paso 3 — Extracción de CRM (condicional).**
-Si el State Log del proyecto registra un CRM conectado, lanza el agente
+Si el Registro del proyecto registra un CRM conectado, lanza el agente
 crm-analyst del plugin: extrae en solo lectura volúmenes por etapa, tasas de
 conversión, ciclo medio, ticket medio y win rate. Incorpora cada dato con
 etiqueta [DATO CRM: fuente, fecha]. Si un dato del CRM es inconsistente
@@ -219,13 +220,14 @@ Cuando el brief esté completo:
 
 1. Presenta el output completo en Markdown.
 2. Añade al final una sección **"Resumen para el consultor"** con:
-   - Número de [FALTA DATO] encontrados (bloqueantes y no bloqueantes) y los
-     más críticos para resolver
-   - Número de [HIPÓTESIS] que requieren validación del cliente
+   - Los [FALTA DATO] bloqueantes, listados uno a uno. Los no bloqueantes,
+     sin recuento total.
+   - Las [HIPÓTESIS] que requieren validación del cliente, listadas. Nunca
+     declares totales: enumera lo que importa.
    - Tu evaluación de la calidad del intake (1-5) con una frase explicativa
    - Recomendación sobre si proceder al siguiente skill o recoger más información primero
 3. El contenido validado se guarda como `[Cliente] - Brief Intake v1.md` en
-   `01 Entregables`. El orquestador lo registra en el State Log.
+   `01 Entregables`. El orquestador lo registra en el Registro.
    Siguiente skill: knowledge-base-builder.
 
 ## Lo que NO debes hacer

@@ -34,7 +34,7 @@ La diferencia con el brief es de profundidad y enriquecimiento: el brief captura
 
 **Vacíos y hipótesis.** Usa [FALTA DATO: descripción] cuando necesites información que no está en ningún material. Usa [HIPÓTESIS] para inferencias estratégicas que requieren validación. No inventes.
 
-**Convenciones v4:** cada [FALTA DATO] se clasifica al detectarse como bloqueante (impide una decisión de este entregable) o no bloqueante. Presupuesto máximo: 2 ciclos de revisión por entregable. Agotado el presupuesto, los [FALTA DATO] no bloqueantes se convierten en [ASUNCIÓN: valor asumido + criterio] y el sistema avanza; solo los bloqueantes detienen y se escalan al cliente de inmediato. Los datos extraídos de CRM conectado se marcan [DATO CRM: fuente, fecha]. Referencia completa: skills/revos-orchestrator/references/convenciones.md del plugin revos.
+**Convenciones v4.1 — **Precondición**: antes de producir, lee `00 Sistema/[Cliente] - Registro` y detente si falta fase 0, si el presupuesto de revisión de este entregable está agotado sin cambio tramitado por /revos:cambio, o si el cierre de fase anterior exigía un system-qa aún no APTO. **Etiquetado**: cada [FALTA DATO] se clasifica al detectarse como bloqueante (impide una decisión de este entregable) o no bloqueante. **Presupuesto**: 2 ciclos de revisión de calidad por entregable — solo consumen ciclo los cambios nacidos del juicio sobre lo escrito; las incorporaciones de información nueva (aportada por cliente o consultor, o medida por el sistema) no consumen ciclo y generan versión y entrada en el Backlog si el entregable ya está registrado. Agotado el presupuesto, los [FALTA DATO] no bloqueantes se convierten en [ASUNCIÓN: valor asumido + criterio falsable] y el sistema avanza; solo los bloqueantes detienen y se escalan de inmediato. **Resumen para el consultor**: enumera los bloqueantes y lo relevante — nunca recuentos totales (el recuento es chequeo mecánico de system-qa sobre el documento terminado). **Cierre**: todo [FALTA DATO] heredado sale con disposición explícita — resuelto, reasignado a la primera skill no ejecutada que lo necesite, o declinado con motivo. Datos de CRM conectado: [DATO CRM: fuente, fecha]. Referencia completa: skills/revos-orchestrator/references/convenciones.md del plugin revos.
 
 **Lenguaje.** Castellano. Registro ejecutivo directo. El vocabulario correcto: revenue, pipeline, posicionamiento, ciclo de venta, cualificación, GTM, categoría, segmentos, ticket medio, ACV, CAC, LTV, pipeline velocity.
 
@@ -51,13 +51,16 @@ Lee todos los materiales buscando específicamente: (a) afirmaciones contradicto
 **Paso 3 — Mapa de fuentes por sección.**
 Antes de redactar, mapea qué fuente alimenta cada sección del template. Esto asegura que no se pierde información y que cada sección tiene sustento real.
 
-**Paso 4 — Redacción integrada.**
+**Paso 4 — Medición de activos (F5).**
+Con los conectores activos del proyecto (Ahrefs, Similarweb y los de nivel 2 que declare el Registro), mide el dominio del cliente y, si están disponibles, los dominios de sus clientes y de sus competidores directos. Como mínimo: autoridad de dominio, keywords orgánicas, tráfico orgánico, histórico de 12-18 meses, perfil de enlaces y citaciones en motores generativos (Brand Radar). Marca cada cifra como [DATO MEDIDO: herramienta, fecha]. Contrasta lo medido con lo que el cliente declara: toda divergencia es material de la sección de observaciones. Un diagnóstico construido sobre lo medible por terceros vale más que uno construido sobre lo que el cliente cuenta.
+
+**Paso 5 — Redacción integrada.**
 Sigue el template al pie de la letra. En cada sección, integra fuentes — no las yuxtapongas. Si una sección solo tiene una fuente, indícalo con [FUENTE ÚNICA] al final de la sección.
 
-**Paso 5 — Sección de observaciones estratégicas.**
+**Paso 6 — Sección de observaciones estratégicas.**
 Después de completar el template, dedica tiempo a la sección "Observaciones y señales" — es la más valiosa del documento. Aquí es donde el valor se crea: patrones, tensiones, creencias implícitas, brechas entre discurso y práctica.
 
-**Paso 6 — Revisión de coherencia.**
+**Paso 7 — Revisión de coherencia.**
 Antes de entregar, verifica:
 - ¿El ICP declarado es coherente con los casos reales descritos?
 - ¿La propuesta de valor articulada coincide con cómo se presenta la empresa en su web?
@@ -241,13 +244,13 @@ Cuando la knowledge base esté completa:
 
 1. Presenta el output completo en Markdown.
 2. Añade al final una sección **"Resumen para el consultor"** con:
-   - Número y tipo de fuentes utilizadas
+   - Las fuentes utilizadas, listadas por tipo — sin recuento
    - Densidad de contenido (alta/media/baja) y por qué
-   - Número de [FALTA DATO] (bloqueantes y no bloqueantes), [HIPÓTESIS] y [CONTRADICCIÓN DETECTADA]
+   - Los [FALTA DATO] bloqueantes, las [HIPÓTESIS] pendientes de validación y las [CONTRADICCIÓN DETECTADA], listados uno a uno — sin recuentos totales.
    - Las 3 observaciones más valiosas de la sección 9
    - Tu evaluación de la profundidad alcanzada (1-5) con frase explicativa
    - Recomendación: proceder a competitive-research o volver a recoger información
-3. El contenido validado se guarda como `[Cliente] - Knowledge Base v1.md` en `01 Entregables`. El orquestador lo registra en el State Log. Siguiente skill: competitive-research.
+3. El contenido validado se guarda como `[Cliente] - Knowledge Base v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: competitive-research.
 
 ## Lo que NO debes hacer
 

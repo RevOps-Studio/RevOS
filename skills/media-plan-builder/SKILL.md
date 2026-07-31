@@ -39,7 +39,7 @@ No redacta copy ni diseña creatividades (eso es `brand-copy-system` + trabajo c
 
 **Benchmarks con fuente.** Cualquier CPM, CPC, CTR o CVR usado como referencia va con fuente. Si no hay fuente verificable, [FALTA BENCHMARK].
 
-**Convenciones v4:** cada [FALTA DATO] se clasifica al detectarse como bloqueante (impide una decisión de este entregable) o no bloqueante. Presupuesto máximo: 2 ciclos de revisión por entregable. Agotado el presupuesto, los [FALTA DATO] no bloqueantes se convierten en [ASUNCIÓN: valor asumido + criterio] y el sistema avanza; solo los bloqueantes detienen y se escalan al cliente de inmediato. Los datos extraídos de CRM conectado se marcan [DATO CRM: fuente, fecha]. Referencia completa: skills/revos-orchestrator/references/convenciones.md del plugin revos.
+**Convenciones v4.1 — **Precondición**: antes de producir, lee `00 Sistema/[Cliente] - Registro` y detente si falta fase 0, si el presupuesto de revisión de este entregable está agotado sin cambio tramitado por /revos:cambio, o si el cierre de fase anterior exigía un system-qa aún no APTO. **Etiquetado**: cada [FALTA DATO] se clasifica al detectarse como bloqueante (impide una decisión de este entregable) o no bloqueante. **Presupuesto**: 2 ciclos de revisión de calidad por entregable — solo consumen ciclo los cambios nacidos del juicio sobre lo escrito; las incorporaciones de información nueva (aportada por cliente o consultor, o medida por el sistema) no consumen ciclo y generan versión y entrada en el Backlog si el entregable ya está registrado. Agotado el presupuesto, los [FALTA DATO] no bloqueantes se convierten en [ASUNCIÓN: valor asumido + criterio falsable] y el sistema avanza; solo los bloqueantes detienen y se escalan de inmediato. **Resumen para el consultor**: enumera los bloqueantes y lo relevante — nunca recuentos totales (el recuento es chequeo mecánico de system-qa sobre el documento terminado). **Cierre**: todo [FALTA DATO] heredado sale con disposición explícita — resuelto, reasignado a la primera skill no ejecutada que lo necesite, o declinado con motivo. Datos de CRM conectado: [DATO CRM: fuente, fecha]. Referencia completa: skills/revos-orchestrator/references/convenciones.md del plugin revos.
 
 **Lenguaje.** Castellano. Registro ejecutivo operativo. Vocabulario: CPM, CPC, CTR, CVR, frecuencia, audiencia, lookalike, retargeting, fatiga creativa, ROAS, CAC. Evitar: "campañas virales", "performance puro" sin brand.
 
@@ -270,7 +270,7 @@ Cuando el media plan esté completo:
    - KPI principal y CPL esperado en banda
    - Escenarios contemplados
    - Nivel de confianza en el plan (1-5)
-3. El contenido validado se guarda como `[Cliente] - Media Plan v1.md` en `01 Entregables`. El orquestador lo registra en el State Log.
+3. El contenido validado se guarda como `[Cliente] - Media Plan v1.md` en `01 Entregables`. El orquestador lo registra en el Registro.
 4. El fichero final maquetado (XLSX operativo) lo genera `/revos:entrega` según la preferencia de output registrada en fase 0, siguiendo la especificación de estructura de la sección 11.
 
 ## Lo que NO debes hacer

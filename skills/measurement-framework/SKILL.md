@@ -39,7 +39,7 @@ Es lo que convierte "queremos medir el impacto de marketing" en "medimos pipelin
 
 **Fuente única de verdad.** Cada métrica tiene una y solo una fuente oficial. Si dos sistemas dan valores distintos, se resuelve cuál manda — no se mira el promedio.
 
-**Convenciones v4:** cada [FALTA DATO] se clasifica al detectarse como bloqueante (impide una decisión de este entregable) o no bloqueante. Presupuesto máximo: 2 ciclos de revisión por entregable. Agotado el presupuesto, los [FALTA DATO] no bloqueantes se convierten en [ASUNCIÓN: valor asumido + criterio] y el sistema avanza; solo los bloqueantes detienen y se escalan al cliente de inmediato. Los datos extraídos de CRM conectado se marcan [DATO CRM: fuente, fecha]. Referencia completa: skills/revos-orchestrator/references/convenciones.md del plugin revos.
+**Convenciones v4.1 — **Precondición**: antes de producir, lee `00 Sistema/[Cliente] - Registro` y detente si falta fase 0, si el presupuesto de revisión de este entregable está agotado sin cambio tramitado por /revos:cambio, o si el cierre de fase anterior exigía un system-qa aún no APTO. **Etiquetado**: cada [FALTA DATO] se clasifica al detectarse como bloqueante (impide una decisión de este entregable) o no bloqueante. **Presupuesto**: 2 ciclos de revisión de calidad por entregable — solo consumen ciclo los cambios nacidos del juicio sobre lo escrito; las incorporaciones de información nueva (aportada por cliente o consultor, o medida por el sistema) no consumen ciclo y generan versión y entrada en el Backlog si el entregable ya está registrado. Agotado el presupuesto, los [FALTA DATO] no bloqueantes se convierten en [ASUNCIÓN: valor asumido + criterio falsable] y el sistema avanza; solo los bloqueantes detienen y se escalan de inmediato. **Resumen para el consultor**: enumera los bloqueantes y lo relevante — nunca recuentos totales (el recuento es chequeo mecánico de system-qa sobre el documento terminado). **Cierre**: todo [FALTA DATO] heredado sale con disposición explícita — resuelto, reasignado a la primera skill no ejecutada que lo necesite, o declinado con motivo. Datos de CRM conectado: [DATO CRM: fuente, fecha]. Referencia completa: skills/revos-orchestrator/references/convenciones.md del plugin revos.
 
 **Lenguaje.** Castellano. Registro ejecutivo directo. Vocabulario: métrica, KPI, North Star, leading, lagging, fuente, definición operativa, cadencia, umbral, decisión. Evitar: "datos accionables" vacío, "data-driven" sin concreción, "dashboard 360".
 
@@ -235,10 +235,10 @@ Cuando el framework de medición esté completo:
 1. Presenta el output en Markdown, incluyendo la especificación de estructura para `/revos:entrega`.
 2. Añade al final una sección **"Resumen para el consultor"** con:
    - North Star elegida
-   - Número total de métricas del framework
+   - Las métricas del framework, listadas por bloque — sin recuento total
    - Brechas de instrumentación más críticas
    - Nivel de confianza en el framework (1-5)
-3. El contenido validado se guarda como `[Cliente] - Measurement Framework v1.md` en `01 Entregables`. El orquestador lo registra en el State Log. El XLSX final lo genera `/revos:entrega`. Siguiente skill: `martech-stack-audit` (inicio de la fase de Activation).
+3. El contenido validado se guarda como `[Cliente] - Measurement Framework v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. El XLSX final lo genera `/revos:entrega`. Siguiente skill: `martech-stack-audit` (inicio de la fase de Activation).
 
 ## Lo que NO debes hacer
 

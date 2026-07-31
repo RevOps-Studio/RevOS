@@ -20,4 +20,4 @@ Cambio: ticket medio 8.000€ → 15.000€ en `Kokolski - Client Master Brief v
 | Kokolski - Competitive Landscape v1 | No | Sin impacto |
 | Kokolski - Positioning & Messaging v1 | No (el argumento no usa el ticket) | Sin impacto |
 
-¿Apruebas este plan? Tras tu OK edito los dos ficheros, actualizo backlog y State Log.
+¿Apruebas este plan? Tras tu OK edito los dos ficheros, actualizo backlog y Registro.

@@ -38,7 +38,7 @@ No es una comparativa de vendors ni una lista genérica de "herramientas recomen
 
 **Stack mínimo funcional.** La recomendación final apunta a un stack tan simple como sea posible para soportar el sistema — no más. Añadir herramientas sin necesidad es deuda operativa.
 
-Convenciones v4: cada [FALTA DATO] se clasifica al detectarse como bloqueante (impide una decisión de este entregable) o no bloqueante. Presupuesto máximo: 2 ciclos de revisión por entregable. Agotado el presupuesto, los [FALTA DATO] no bloqueantes se convierten en [ASUNCIÓN: valor asumido + criterio] y el sistema avanza; solo los bloqueantes detienen y se escalan al cliente de inmediato. Los datos extraídos de CRM conectado se marcan [DATO CRM: fuente, fecha]. Referencia completa: skills/revos-orchestrator/references/convenciones.md del plugin revos.
+Convenciones v4.1 — **Precondición**: antes de producir, lee `00 Sistema/[Cliente] - Registro` y detente si falta fase 0, si el presupuesto de revisión de este entregable está agotado sin cambio tramitado por /revos:cambio, o si el cierre de fase anterior exigía un system-qa aún no APTO. **Etiquetado**: cada [FALTA DATO] se clasifica al detectarse como bloqueante (impide una decisión de este entregable) o no bloqueante. **Presupuesto**: 2 ciclos de revisión de calidad por entregable — solo consumen ciclo los cambios nacidos del juicio sobre lo escrito; las incorporaciones de información nueva (aportada por cliente o consultor, o medida por el sistema) no consumen ciclo y generan versión y entrada en el Backlog si el entregable ya está registrado. Agotado el presupuesto, los [FALTA DATO] no bloqueantes se convierten en [ASUNCIÓN: valor asumido + criterio falsable] y el sistema avanza; solo los bloqueantes detienen y se escalan de inmediato. **Resumen para el consultor**: enumera los bloqueantes y lo relevante — nunca recuentos totales (el recuento es chequeo mecánico de system-qa sobre el documento terminado). **Cierre**: todo [FALTA DATO] heredado sale con disposición explícita — resuelto, reasignado a la primera skill no ejecutada que lo necesite, o declinado con motivo. Datos de CRM conectado: [DATO CRM: fuente, fecha]. Referencia completa: skills/revos-orchestrator/references/convenciones.md del plugin revos.
 
 **Lenguaje.** Castellano. Registro ejecutivo directo. Vocabulario: stack, integración, flujo de datos, saturación de uso, licenciamiento, TCO (total cost of ownership), brecha. Evitar: "ecosistema martech", "transformación digital", "stack de clase mundial".
 
@@ -47,7 +47,7 @@ Convenciones v4: cada [FALTA DATO] se clasifica al detectarse como bloqueante (i
 **Paso 1 — Inventario completo del stack actual.**
 A partir del intake, brief y documentación aportada: lista todas las herramientas. Para cada una: categoría (CRM, MAP, analítica, SEO, ABM, telefonía, reuniones, contenido, diseño, gestión, ops, finanzas), plan contratado, número de licencias, coste mensual, fecha de renovación si se conoce, responsable interno. Si falta información, [FALTA DATO].
 
-**Paso 2 — Datos reales de CRM (condicional).** Si el State Log del proyecto registra un CRM conectado, lanza el agente crm-analyst del plugin: además del funnel, sus hallazgos de higiene (deals sin actividad, fechas vencidas, campos vacíos, duplicados) son evidencia directa para este audit. Incorpóralos con etiqueta [DATO CRM: fuente, fecha].
+**Paso 2 — Datos reales de CRM (condicional).** Si el Registro del proyecto registra un CRM conectado, lanza el agente crm-analyst del plugin: además del funnel, sus hallazgos de higiene (deals sin actividad, fechas vencidas, campos vacíos, duplicados) son evidencia directa para este audit. Incorpóralos con etiqueta [DATO CRM: fuente, fecha].
 
 **Paso 3 — Mapeo de uso real.**
 Para cada herramienta: qué se hace con ella realmente, quién la usa, con qué frecuencia, nivel de saturación (% de funcionalidades usadas), integraciones activas. Muchas veces el dato es estimativo — señálalo con [HIPÓTESIS].
@@ -257,7 +257,7 @@ Cuando el audit esté completo:
    - Nº de herramientas a sustituir
    - Ahorro/coste neto orientativo del stack objetivo
    - Nivel de confianza en el diagnóstico (1-5)
-3. El contenido validado se guarda como `[Cliente] - Martech Audit v1.md` en `01 Entregables`. El orquestador lo registra en el State Log. Siguiente skill: `crm-blueprint-builder`.
+3. El contenido validado se guarda como `[Cliente] - Martech Audit v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: `crm-blueprint-builder`.
 
 ## Lo que NO debes hacer
 

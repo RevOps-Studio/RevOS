@@ -5,15 +5,16 @@ description: Puerta de entrada única de correcciones y cambios en un proyecto R
 
 # Cambio — gestión de cambios y versiones
 
-Regla de oro: **ningún entregable ya producido se modifica fuera de este flujo.** Si el consultor pide editar directamente un fichero de `01 Entregables` que ya está en el State Log, ejecuta este skill primero. Es la pieza que evita las incoherencias y alucinaciones que generaban las idas y vueltas de Diagnostic y Design.
+Regla de oro: **ningún entregable ya producido se modifica fuera de este flujo.** Si el consultor pide editar directamente un fichero de `01 Entregables` que ya está en el Registro, ejecuta este skill primero. Es la pieza que evita las incoherencias y alucinaciones que generaban las idas y vueltas de Diagnostic y Design.
 
 ## Proceso
 
 ### 1. Capturar el cambio
 Pregunta (o extrae de la petición) en una sola interacción:
-- ¿Qué entregable cambia y qué versión está vigente? (verifícalo en el State Log)
+- ¿Qué entregable cambia y qué versión está vigente? (verifícalo en el Registro)
 - ¿Qué cambia exactamente? (el texto/valor/argumento concreto)
-- ¿Origen del cambio? (corrección del cliente · corrección del consultor · asunción corregida en checkpoint · hallazgo de system-qa)
+- ¿Origen del cambio? (corrección del cliente · corrección del consultor · asunción corregida en checkpoint · hallazgo de system-qa · dato nuevo aportado o medido)
+- **Clasifica el origen para el contador (F3)**: ¿el cambio nace de *información nueva* (dato aportado por cliente/consultor o medido por el sistema) o de *juicio sobre lo escrito* (reescribir, reordenar, afinar, corregir criterio)? Información nueva → no consume ciclo de revisión. Juicio → consume. Si mezcla ambos, domina el juicio.
 
 ### 2. Clasificar
 Aplica la tabla de versionado de `skills/revos-orchestrator/references/convenciones.md`:
@@ -46,14 +47,15 @@ Invoca el procedimiento de propagación del orquestador (`skills/revos-orchestra
 - Ejecuta las propagaciones aprobadas en orden de dependencia (upstream antes que downstream). Cada descendiente reescrito por cascada sigue la misma regla de archivado.
 
 ### 6. Cerrar
-- Actualiza el State Log: versiones nuevas, ciclos de revisión consumidos (+1 al entregable origen si el cambio nació de una revisión), asunciones afectadas.
+- Añade al Registro: versiones nuevas, ciclo consumido en el contador que corresponda según el origen clasificado, asunciones afectadas. El orquestador regenera el Estado.
 - Marca los ficheros del backlog como "resuelto" y el estado global como "cerrado" (o "propagado" si quedan descendientes pendientes para otra sesión).
 - Si hubo cascada de Concepto sobre 2+ entregables, recomienda `system-qa` parcial antes de continuar la fase.
 - Recuerda si aplica: ningún checkpoint se celebra con cambios en estado "pendiente".
 
-## Interacción con el régimen de revisiones
-- Un cambio originado en revisión de cliente o consultor consume 1 de los 2 ciclos del entregable origen. Regístralo.
-- Si el entregable ya consumió sus 2 ciclos, el cambio solo procede si es bloqueante o viene de un checkpoint; si no, anótalo en el backlog como "diferido a próximo checkpoint" y no lo ejecutes.
+## Interacción con el régimen de revisiones (dos contadores)
+- Un cambio de origen *juicio* consume 1 de los 2 ciclos de calidad del entregable origen. Regístralo en el contador de calidad del Registro.
+- Un cambio de origen *información nueva* no consume ciclo: se registra en el contador de incorporaciones, genera versión si toca y entra al Backlog. Ilimitadas — aportar datos nunca se penaliza.
+- Si el entregable ya consumió sus 2 ciclos de calidad, un cambio de juicio solo procede si es bloqueante o viene de un checkpoint; si no, anótalo en el backlog como "diferido a próximo checkpoint" y no lo ejecutes. Las incorporaciones de información proceden siempre.
 - Una [ASUNCIÓN] corregida por el cliente entra siempre por este flujo (como Dato o Concepto según afecte) y no consume ciclo de revisión.
 
 ## Lo que NO hacer

@@ -14,7 +14,7 @@ Recorre estos pasos en conversación, sin volcar todo de golpe:
 ### 1. El modelo mental (30 segundos)
 Explica la regla de oro del sistema en tres frases:
 - **Hablas con comandos, no con skills.** `/revos:fase-0` para arrancar, `/revos:status` en cada sesión, `/revos:cambio` para toda corrección, `/revos:entrega` para maquetar. Las skills trabajan por debajo.
-- **El State Log es la memoria.** Si algo no está registrado, para el sistema no existe.
+- **El Registro es la memoria.** Si algo no está registrado, para el sistema no existe.
 - **Nada se edita a mano.** Entregables producidos → siempre por `/revos:cambio`; versiones antiguas → siempre a `04 Archivo` (lo hace el flujo, no tú).
 
 ### 2. Chequeo del entorno
@@ -25,12 +25,12 @@ Verifica y reporta:
 
 ### 3. El ciclo de vida de un proyecto (con el Timeline delante)
 Resume: fase 0 → Diagnostic → checkpoint → Design → checkpoint → Activation → entrega ejecutiva. Recalca los tres momentos que más errores evitan:
-- **Fase 0 es innegociable** — sin State Log no hay orquestador.
+- **Fase 0 es innegociable** — sin Registro no hay orquestador.
 - **Checkpoints**: nunca se celebran con cambios pendientes en el backlog; siempre incluyen las asunciones vigentes.
 - **2 ciclos de revisión por entregable** — después, [FALTA DATO] no bloqueante pasa a [ASUNCIÓN] y se avanza. La búsqueda del dato perfecto es el freno número uno del sistema anterior.
 
 ### 4. Ofrecer ensayo en seco
-Propón un dry-run con cliente ficticio: fase 0 + client-intake-form + brief-intake con datos inventados, en una carpeta "Ensayo". 20 minutos, sin riesgo, y el consultor ve el sistema entero funcionando (State Log, naming, etiquetas). Al terminar, la carpeta de ensayo se borra — no es un proyecto.
+Propón un dry-run con cliente ficticio: fase 0 + client-intake-form + brief-intake con datos inventados, en una carpeta "Ensayo". 20 minutos, sin riesgo, y el consultor ve el sistema entero funcionando (Registro, naming, etiquetas). Al terminar, la carpeta de ensayo se borra — no es un proyecto.
 
 ### 5. Cierre
 Deja al consultor con la chuleta:
@@ -51,11 +51,11 @@ Si detectas cualquiera de estos patrones durante un proyecto, interviene con sua
 
 | Patrón detectado | Riesgo | Redirección |
 |---|---|---|
-| Invocar una skill de producción directamente sin fase 0 / State Log | Entregables huérfanos, sin trazabilidad | `/revos:fase-0` primero |
+| Invocar una skill de producción directamente sin fase 0 / Registro | Entregables huérfanos, sin trazabilidad | `/revos:fase-0` primero |
 | Editar a mano un entregable registrado | Incoherencia descendente silenciosa — la causa nº1 de errores | `/revos:cambio` |
 | Pedir "una revisión más" con los 2 ciclos consumidos | Parálisis por dato perfecto | Convertir a [ASUNCIÓN] o clasificar como bloqueante y escalar |
 | Querer celebrar checkpoint con backlog pendiente | Validar sobre contenido inestable | Resolver el backlog primero |
-| Guardar ficheros con guiones bajos o fuera de carpeta | Rompe convención y State Log | Naming `[Cliente] - X v[N]` en su carpeta |
+| Guardar ficheros con guiones bajos o fuera de carpeta | Rompe convención y Registro | Naming `[Cliente] - X v[N]` en su carpeta |
 | Maquetar contenido sin validar | El cliente recibe borradores | Validar → registrar → `/revos:entrega` |
 
 ## Lo que NO hacer

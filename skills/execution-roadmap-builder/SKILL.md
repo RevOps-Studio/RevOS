@@ -43,7 +43,7 @@ El entregable final es doble: un XLSX operativo (que puede vivir, actualizarse y
 
 **Lenguaje.** Castellano. Registro ejecutivo directo. Los nombres de iniciativas son frases de resultado, no de actividad. "Activar motor inbound SEO" es actividad; "Generar primeras 20 reuniones desde inbound SEO" es resultado.
 
-**Convenciones v4:** cada [FALTA DATO] se clasifica al detectarse como bloqueante (impide una decisión de este entregable) o no bloqueante. Presupuesto máximo: 2 ciclos de revisión por entregable. Agotado el presupuesto, los [FALTA DATO] no bloqueantes se convierten en [ASUNCIÓN: valor asumido + criterio] y el sistema avanza; solo los bloqueantes detienen y se escalan al cliente de inmediato. Los datos extraídos de CRM conectado se marcan [DATO CRM: fuente, fecha]. Referencia completa: skills/revos-orchestrator/references/convenciones.md del plugin revos.
+**Convenciones v4.1 — **Precondición**: antes de producir, lee `00 Sistema/[Cliente] - Registro` y detente si falta fase 0, si el presupuesto de revisión de este entregable está agotado sin cambio tramitado por /revos:cambio, o si el cierre de fase anterior exigía un system-qa aún no APTO. **Etiquetado**: cada [FALTA DATO] se clasifica al detectarse como bloqueante (impide una decisión de este entregable) o no bloqueante. **Presupuesto**: 2 ciclos de revisión de calidad por entregable — solo consumen ciclo los cambios nacidos del juicio sobre lo escrito; las incorporaciones de información nueva (aportada por cliente o consultor, o medida por el sistema) no consumen ciclo y generan versión y entrada en el Backlog si el entregable ya está registrado. Agotado el presupuesto, los [FALTA DATO] no bloqueantes se convierten en [ASUNCIÓN: valor asumido + criterio falsable] y el sistema avanza; solo los bloqueantes detienen y se escalan de inmediato. **Resumen para el consultor**: enumera los bloqueantes y lo relevante — nunca recuentos totales (el recuento es chequeo mecánico de system-qa sobre el documento terminado). **Cierre**: todo [FALTA DATO] heredado sale con disposición explícita — resuelto, reasignado a la primera skill no ejecutada que lo necesite, o declinado con motivo. Datos de CRM conectado: [DATO CRM: fuente, fecha]. Referencia completa: skills/revos-orchestrator/references/convenciones.md del plugin revos.
 
 ## Proceso
 
@@ -221,12 +221,12 @@ Cuando el roadmap esté construido:
 
 1. Presenta el Markdown completo como documento de estructura y narrativa, incluidas las especificaciones de estructura para `/revos:entrega`: el XLSX operativo con las 5 hojas descritas (con fórmulas básicas para totales y conteos por estado) y el PPTX ejecutivo de 8-10 slides (diseño sobrio, tipografía grande, jerarquía visual clara).
 2. Añade al final una sección **"Resumen para el consultor"** con:
-   - Número total de iniciativas y su distribución por trimestre
+   - Las iniciativas, listadas por trimestre (la distribución se ve, no se declara en cifra)
    - Top 3 iniciativas de Q1
    - Carga por dueño — alerta si alguien está sobrecargado
    - Dependencias críticas — iniciativas bloqueantes
    - Nivel de confianza en la ejecutabilidad del plan (1-5)
-3. El contenido validado se guarda como `[Cliente] - Execution Roadmap v1.md` en `01 Entregables`. El orquestador lo registra en el State Log. Los ficheros finales XLSX y PPTX los genera `/revos:entrega` según la preferencia de output registrada en fase 0. Siguiente skill: `diagnostic-checkpoint` (prepara la validación con el cliente del cierre de Design).
+3. El contenido validado se guarda como `[Cliente] - Execution Roadmap v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Los ficheros finales XLSX y PPTX los genera `/revos:entrega` según la preferencia de output registrada en fase 0. Siguiente skill: `diagnostic-checkpoint` (prepara la validación con el cliente del cierre de Design).
 
 ## Lo que NO debes hacer
 

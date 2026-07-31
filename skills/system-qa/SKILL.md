@@ -34,13 +34,13 @@ Es el skill que garantiza que el sistema funciona como sistema, no como colecci�
 
 **Severidad clasificada.** Las incoherencias detectadas se clasifican en tres niveles: **[CRÍTICA]** — impide continuar hasta resolverla; **[RELEVANTE]** — conviene resolver antes de entregar al cliente; **[MENOR]** — conviene ajustar en próxima iteración pero no bloquea.
 
-**Convenciones v4:** cada [FALTA DATO] se clasifica al detectarse como bloqueante (impide una decisión de este entregable) o no bloqueante. Presupuesto máximo: 2 ciclos de revisión por entregable. Agotado el presupuesto, los [FALTA DATO] no bloqueantes se convierten en [ASUNCIÓN: valor asumido + criterio] y el sistema avanza; solo los bloqueantes detienen y se escalan al cliente de inmediato. Los datos extraídos de CRM conectado se marcan [DATO CRM: fuente, fecha]. Referencia completa: skills/revos-orchestrator/references/convenciones.md del plugin revos.
+**Convenciones v4.1 — **Precondición**: antes de producir, lee `00 Sistema/[Cliente] - Registro` y detente si falta fase 0, si el presupuesto de revisión de este entregable está agotado sin cambio tramitado por /revos:cambio, o si el cierre de fase anterior exigía un system-qa aún no APTO. **Etiquetado**: cada [FALTA DATO] se clasifica al detectarse como bloqueante (impide una decisión de este entregable) o no bloqueante. **Presupuesto**: 2 ciclos de revisión de calidad por entregable — solo consumen ciclo los cambios nacidos del juicio sobre lo escrito; las incorporaciones de información nueva (aportada por cliente o consultor, o medida por el sistema) no consumen ciclo y generan versión y entrada en el Backlog si el entregable ya está registrado. Agotado el presupuesto, los [FALTA DATO] no bloqueantes se convierten en [ASUNCIÓN: valor asumido + criterio falsable] y el sistema avanza; solo los bloqueantes detienen y se escalan de inmediato. **Resumen para el consultor**: enumera los bloqueantes y lo relevante — nunca recuentos totales (el recuento es chequeo mecánico de system-qa sobre el documento terminado). **Cierre**: todo [FALTA DATO] heredado sale con disposición explícita — resuelto, reasignado a la primera skill no ejecutada que lo necesite, o declinado con motivo. Datos de CRM conectado: [DATO CRM: fuente, fecha]. Referencia completa: skills/revos-orchestrator/references/convenciones.md del plugin revos.
 
 **Operativa v4 de la verificación.** En el plugin revos, la verificación puede delegarse en el agente system-qa (solo lectura). El informe se guarda en `03 QA` como `[Cliente] - System QA [Fase] v1.md`. Las correcciones derivadas NUNCA se aplican directamente: entran una a una por el flujo `/revos:cambio`, que clasifica, versiona y evalúa propagación.
 
 **Ejecución parcial v4.** Además del cierre de cada fase, se ejecuta system-qa parcial (solo el subconjunto afectado) cuando el orquestador lo recomienda tras una propagación en cascada de 2+ entregables.
 
-**Verificación adicional v4:** cruzar las [ASUNCIÓN] vigentes del State Log con los entregables — ninguna asunción corregida en checkpoint puede seguir operando como vigente en un documento posterior.
+**Verificación adicional v4:** cruzar las [ASUNCIÓN] vigentes del Registro con los entregables — ninguna asunción corregida en checkpoint puede seguir operando como vigente en un documento posterior.
 
 **Lenguaje.** Castellano. Registro técnico interno — este documento es para el consultor, no para el cliente. Puede ser denso.
 
@@ -68,7 +68,15 @@ Clasifica cada incoherencia en [CRÍTICA], [RELEVANTE] o [MENOR] según el crite
 Para cada incoherencia, define la acción correctiva concreta: qué output hay que ajustar, qué cambiar exactamente, en qué skill o edición manual. Las correcciones NUNCA se aplican directamente desde este skill: entran una a una por el flujo `/revos:cambio`, que clasifica, versiona y evalúa propagación.
 
 **Paso 7 — Verificación de asunciones vigentes.**
-Cruza las [ASUNCIÓN] vigentes del State Log con los entregables — ninguna asunción corregida en checkpoint puede seguir operando como vigente en un documento posterior. Si se detecta, es una incoherencia clasificable por severidad.
+Cruza las [ASUNCIÓN] vigentes del Registro con los entregables — ninguna asunción corregida en checkpoint puede seguir operando como vigente en un documento posterior. Si se detecta, es una incoherencia clasificable por severidad.
+
+**Chequeos mecánicos obligatorios.**
+Como parte del proceso — no opcionales — ejecuta siempre estas verificaciones mecánicas:
+- **Recuentos y afirmaciones cuantitativas:** contrasta cada recuento y afirmación cuantitativa de cada documento contra su contenido real (si un resumen dice "tres hechos", cuenta los hechos). Los resúmenes v4.1 no deben declarar totales — si los declaran, es hallazgo.
+- **Punteros caducados:** huecos del `[Cliente] - Estado` asignados a skills ya ejecutadas.
+- **Supervivencia de contenido retirado:** nada archivado en `04 Archivo` por un cambio de Concepto puede seguir operando en entregables vigentes.
+- **Asunciones:** ninguna [ASUNCIÓN] corregida o refutada en checkpoint puede seguir citada como vigente; toda asunción del censo del Registro debe tener criterio falsable.
+- **Coherencia interna del Estado:** sin hallazgos duplicados con estados opuestos, techo de 12 hallazgos respetado.
 
 **Paso 8 — Verificación de completitud.**
 Comprueba que no faltan outputs esperados para la fase en curso. Si la fase está cerrada pero falta algún output, [FALTA OUTPUT: descripción].
@@ -155,9 +163,9 @@ Produce el output siguiendo exactamente esta estructura.
 ---
 
 ### 3.4 Asunciones vigentes vs. entregables
-*[Cruce de las [ASUNCIÓN] vigentes del State Log con los entregables. Ninguna asunción corregida en checkpoint puede seguir operando como vigente en un documento posterior.]*
+*[Cruce de las [ASUNCIÓN] vigentes del Registro con los entregables. Ninguna asunción corregida en checkpoint puede seguir operando como vigente en un documento posterior.]*
 
-| Asunción | Estado en State Log | Documentos donde sigue operando | Severidad |
+| Asunción | Estado en Registro | Documentos donde sigue operando | Severidad |
 |----------|---------------------|---------------------------------|-----------|
 | [ASUNCIÓN: ...] | [Vigente / Corregida en checkpoint] | [Lista] | [Severidad] |
 
@@ -219,7 +227,7 @@ Cuando el QA Report esté completo:
    - Top 3 acciones inmediatas que tiene que hacer el consultor
    - Tiempo estimado de corrección
 3. Si hay [CRÍTICAS], resuélvelas antes de continuar. Si no hay [CRÍTICAS] pero sí [RELEVANTES], decide si ajustas antes de la próxima entrega al cliente o después.
-4. El informe se guarda en `03 QA` como `[Cliente] - System QA [Fase] v1.md`. El orquestador lo registra en el State Log.
+4. El informe se guarda en `03 QA` como `[Cliente] - System QA [Fase] v1.md`. El orquestador lo registra en el Registro. Al cerrar, el veredicto (**APTO / APTO CON RESERVAS / NO APTO**, con nº de críticos y mayores) se añade a la tabla "Veredictos de system-qa" del Registro — es la entrada que gobierna la doble condición del checkpoint.
 5. Las correcciones derivadas NUNCA se aplican directamente: entran una a una por el flujo `/revos:cambio`, que clasifica, versiona y evalúa propagación.
 
 ## Lo que NO debes hacer
