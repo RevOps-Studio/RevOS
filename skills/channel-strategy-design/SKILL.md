@@ -18,7 +18,7 @@ Es el documento que convierte "motor inbound SEO" en "LinkedIn orgánico + blog 
 
 ## Posición en el pipeline
 
-**Requiere:** Growth System Design, Positioning & Messaging, Competitive Landscape. Recomendado: Execution Roadmap.
+**Requiere:** Growth System Design, Positioning & Messaging, Competitive Landscape.
 
 **Produce:** Channel Strategy Design v1 en Markdown. Alimenta content-discoverability-design, media-plan-builder y content-calendar-builder.
 

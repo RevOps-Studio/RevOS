@@ -35,15 +35,17 @@ Propón un dry-run con cliente ficticio: fase 0 + client-intake-form + brief-int
 ### 5. Cierre
 Deja al consultor con la chuleta:
 
-| Momento | Comando |
+| Momento | Skill que invocas |
 |---|---|
-| Nuevo proyecto | `/revos:fase-0` |
-| Empezar cada sesión | `/revos:status` |
-| Ejecutar fases | `/revos:diagnostic` · `/revos:design` · `/revos:activation` |
-| Preparar validación con cliente | `/revos:checkpoint` |
-| Cualquier corrección | `/revos:cambio` |
-| Fichero final para cliente | `/revos:entrega` |
-| Cierre de fase | `/revos:qa` |
+| Nuevo proyecto | `fase-0` |
+| Empezar cada sesión | `status` — te dice qué toca y con qué inputs |
+| Ejecutar la fase | La skill que `status` indique, una a una, confirmando entre pasos |
+| Cierre de fase (obligatorio antes del checkpoint) | `system-qa` |
+| Preparar validación con cliente | `diagnostic-checkpoint` — sirve para las tres fases, parametrizado |
+| Cualquier corrección sobre algo ya producido | `cambio` |
+| Fichero final para cliente | `entrega` |
+
+No hay comandos de fase: el sistema es skills-only y la secuencia la calcula `status` contra el grafo. Si echas de menos lanzar una fase entera de un tirón, es una decisión de producto pendiente, no una función que estés usando mal.
 
 ## Modo 2 — Corrección de rumbo (proactivo)
 

@@ -9,7 +9,7 @@ Punto de entrada de información del sistema. Convierte la primera conversación
 
 ## Posición en el pipeline
 - **Requiere:** fase 0 completada (Registro existente). Conversación con el cliente, formulario pre-discovery si existe, web del cliente y documentos aportados.
-- **Produce:** formulario de discovery completado.
+- **Produce:** material de captura — formulario de discovery completado en `02 Anexos`. No es un entregable de cliente: no lleva versión ni consume presupuesto de revisión.
 - **Siguiente skill:** brief-intake.
 
 ## Principios de ejecución
@@ -49,8 +49,7 @@ Completa los campos pendientes con el cliente (o prepara el guion para que el co
 Señala discrepancias evidentes entre lo declarado y lo observado (web, CRM) con [CONTRADICCIÓN DETECTADA: descripción]. No las resuelvas — se resuelven con el cliente en brief-intake o en el checkpoint.
 
 ### 6. Entrega
-El contenido validado se guarda como `[Cliente] - Client Intake v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: brief-intake.
-Cierra con el resumen para el consultor: campos completados; los [FALTA DATO] bloqueantes y las contradicciones, listados — sin recuentos.
+El formulario se guarda como `[Cliente] - Client Intake.md` en `02 Anexos` — es material de captura, no un entregable: sin sufijo de versión y sin presupuesto de revisión (ver "Recolección y material de captura" en convenciones). El orquestador añade su fila a la tabla de Ejecución del Registro con entregable `— (material en 02 Anexos)`, para que la trazabilidad no se pierda. Si el cliente aporta o corrige datos después, se actualiza el fichero directamente: no hay versión que archivar ni ciclo que consumir. Siguiente skill: brief-intake.
 
 ## Lo que NO hacer
 - No interpretar ni diagnosticar — eso empieza en brief-intake.

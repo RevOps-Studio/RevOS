@@ -21,7 +21,7 @@ Es lo que convierte "queremos medir el impacto de marketing" en "medimos pipelin
 
 **Produce:** Measurement Framework v1 en Markdown, incluyendo la especificación de estructura de la matriz operativa XLSX para `/revos:entrega`. Alimenta crm-blueprint-builder, martech-measurement y reporting-operating-system.
 
-**Siguiente skill:** martech-stack-audit (inicio de Activation).
+**Siguiente skill:** `execution-roadmap-builder` — cierra Design convirtiendo todos los blueprints en roadmap. Activation no empieza hasta que el checkpoint de Design está validado.
 
 ## Principios de ejecución
 
@@ -238,7 +238,7 @@ Cuando el framework de medición esté completo:
    - Las métricas del framework, listadas por bloque — sin recuento total
    - Brechas de instrumentación más críticas
    - Nivel de confianza en el framework (1-5)
-3. El contenido validado se guarda como `[Cliente] - Measurement Framework v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. El XLSX final lo genera `/revos:entrega`. Siguiente skill: `martech-stack-audit` (inicio de la fase de Activation).
+3. El contenido validado se guarda como `[Cliente] - Measurement Framework v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. El XLSX final lo genera `/revos:entrega`. Siguiente skill: `execution-roadmap-builder` (cierre de Design). Activation arranca después del checkpoint de Design validado.
 
 ## Lo que NO debes hacer
 

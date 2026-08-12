@@ -24,7 +24,7 @@ Esta skill produce el contenido validado en Markdown. El fichero final (artefact
 
 **Produce:** Revenue Diagnostic v1 — contenido validado en Markdown estructurado, incluyendo la especificación del artefacto HTML visual de la cadena de revenue con los cuellos de botella señalados. El fichero final lo genera `/revos:entrega` según la preferencia de output de fase 0.
 
-**Siguiente skill:** diagnostic-checkpoint (validación con cliente antes de avanzar a Design).
+**Siguiente skill:** `system-qa` — QA de cierre de Diagnostic, obligatorio — y después `diagnostic-checkpoint`. Sin veredicto de QA registrado no hay checkpoint: es la doble condición F4.
 
 ## Principios de ejecución
 
@@ -221,7 +221,7 @@ Cuando el diagnóstico esté completo:
    - Recomendación de alcance (Essentials / Complete)
    - Nivel de confianza en el diagnóstico (1-5) y qué haría falta para subirlo
    - Las 2-3 decisiones más importantes que el cliente debe confirmar en el checkpoint
-3. El contenido validado se guarda como `[Cliente] - Revenue Diagnostic v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: diagnostic-checkpoint.
+3. El contenido validado se guarda como `[Cliente] - Revenue Diagnostic v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: `system-qa` (cierre de Diagnostic) y, con su veredicto en el Registro, `diagnostic-checkpoint`.
 
 ## Lo que NO debes hacer
 

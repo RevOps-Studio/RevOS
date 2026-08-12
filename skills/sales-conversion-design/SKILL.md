@@ -22,7 +22,7 @@ Es la pieza que resuelve una de las patologías más comunes de las empresas B2B
 
 **Produce:** Sales Conversion Design v1 en Markdown. Documento que define handoff, SLAs, cualificación, y alimenta el execution-roadmap-builder y el sales-process-design.
 
-**Siguiente skill:** execution-roadmap-builder (prioriza y calendariza todo el sistema diseñado).
+**Siguiente skill (secuencia de referencia):** en **Essentials**, `execution-roadmap-builder`. En **Complete**, `channel-strategy-design` — el roadmap se construye al final de Design, cuando existen los cuatro blueprints Complete. La secuencia efectiva la determina el orquestador: confírmala con `status` antes de avanzar.
 
 ## Principios de ejecución
 
@@ -272,7 +272,7 @@ Cuando el diseño esté completo:
    - Roles requeridos y cuáles existen / faltan en el equipo actual
    - Brechas detectadas en el stack actual (alto nivel)
    - Nivel de confianza en que el equipo actual puede operar este sistema (1-5)
-3. El contenido validado se guarda como `[Cliente] - Sales Conversion Design v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: `execution-roadmap-builder`.
+3. El contenido validado se guarda como `[Cliente] - Sales Conversion Design v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: en Essentials `execution-roadmap-builder`; en Complete `channel-strategy-design`. Confírmalo con `status`.
 
 ## Lo que NO debes hacer
 

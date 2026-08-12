@@ -319,9 +319,9 @@ Cuando el playbook esté completo:
 
 1. Presenta el output en Markdown.
 2. Añade al final una sección **"Resumen para el consultor"** con:
-   - Nº de objeciones cubiertas
-   - Nº de plantillas de email
-   - Nº de checklists por etapa
+   - Las objeciones cubiertas, listadas
+   - Las plantillas de email incluidas, listadas por momento del ciclo
+   - Las etapas del pipeline que quedan con checklist, listadas
    - Gaps (si hay [FALTA DATO] de objeciones reales)
    - Nivel de confianza en el playbook (1-5)
 3. El contenido validado se guarda como `[Cliente] - Conversion Playbook v1.md` en `01 Entregables`. El orquestador lo registra en el Registro.

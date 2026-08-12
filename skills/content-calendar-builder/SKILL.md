@@ -245,7 +245,7 @@ Cuando el calendario esté completo:
 
 1. Presenta el output en Markdown.
 2. Añade al final una sección **"Resumen para el consultor"** con:
-   - Total piezas planificadas Q1
+   - Las piezas de Q1, listadas por mes y formato — sin recuento total
    - Cadencia mensual
    - Mix TOFU/MOFU/BOFU
    - Brechas de capacidad detectadas

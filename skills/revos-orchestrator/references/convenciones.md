@@ -1,6 +1,10 @@
-# Convenciones transversales RevOS v4.1
+## Convenciones transversales RevOS v4.2
 
-Aplican a todos los skills, comandos y agentes del plugin. Cualquier output que las incumpla es no conforme. Cambios v4.1 respecto a v4: precondición obligatoria, dos contadores de ciclos, resúmenes sin recuentos, disposición de huecos al cierre, doble condición de checkpoint y partición del State Log en Registro + Estado. Evidencia: "RevOS v4 - Aprendizajes del piloto Diagnostic" (docs/).
+Aplican a todos los skills, comandos y agentes del plugin. Cualquier output que las incumpla es no conforme.
+
+Cambios v4.1 respecto a v4: precondición obligatoria, dos contadores de ciclos, resúmenes sin recuentos, disposición de huecos al cierre, doble condición de checkpoint y partición del State Log en Registro + Estado. Evidencia: "RevOS v4 - Aprendizajes del piloto Diagnostic" (docs/).
+
+Cambios v4.2 respecto a v4.1: extensión de la regla de resúmenes sin recuentos a Complete y opcionales, corrección de dependencias del grafo, y concepto nuevo de recolección y captura (ver el apartado correspondiente). Histórico completo en CHANGELOG.md de la raíz del plugin.
 
 ## Precondición de producción (F10-lite)
 
@@ -31,9 +35,26 @@ Lenguaje de negocio, no de agencia: prohibidos "estrategia 360", "activación de
 | [ASUNCIÓN: valor + criterio falsable] | Sustituye a un [FALTA DATO] no bloqueante al agotar revisiones, o se escribe directamente si la calibración de brief-intake lo indica. El criterio falsable es irrenunciable: una asunción refutada rápido es el sistema operando. | Estable — se valida o corrige en checkpoint |
 | [HIPÓTESIS] | Inferencia estratégica no respaldada por datos explícitos. | Validar con cliente |
 | [CONTRADICCIÓN DETECTADA: descripción] | Conflicto entre fuentes o secciones. | Resolver antes de continuar |
-| [DATO CRM: fuente, fecha] | Dato extraído de un CRM conectado. | Permanente (procedencia) |
+| [DATO CRM: fuente, fecha] | Dato extraído de un CRM conectado. Cuando el dato es un agregado de una ventana temporal (conversión, ciclo medio, win rate), la forma canónica añade el periodo: [DATO CRM: fuente, periodo, fecha]. Un agregado sin ventana declarada no es interpretable. | Permanente (procedencia) |
 | [DATO MEDIDO: herramienta, fecha] | Dato medido por conectores de research (Ahrefs, Similarweb…). Toda divergencia con lo declarado por el cliente es material de observaciones. | Permanente (procedencia) |
 | [DATO NO FIABLE] | Dato de fuente conectada inconsistente. Tratar como [FALTA DATO]. | Transitorio |
+
+## Recolección y material de captura (v4.2)
+
+No todo lo que entra al sistema es un entregable. Se distinguen tres cosas:
+
+| Naturaleza | Dónde vive | Versión | Registro | Ciclos |
+|---|---|---|---|---|
+| **Entregable** — contenido con argumento propio que el cliente recibe | `01 Entregables` | Sí, `v[N]` | Fila en Ejecución con versión y contadores | Consume presupuesto |
+| **Material de captura** — lo que el cliente declara, en sus palabras, antes de interpretarse (formulario de intake, notas de discovery, transcripciones) | `02 Anexos` | No | Fila en Ejecución con entregable `— (material en 02 Anexos)`, sin versión ni contadores | No consume |
+| **Recolección temprana** — datos medibles por terceros o inventariables que se recogen cuando es posible, no cuando toca evaluarlos | `02 Anexos` | No | Igual que captura | No consume |
+
+Reglas:
+
+1. La recolección temprana **no anticipa la skill que la consume**. Recoger el inventario del stack en Diagnostic no adelanta el `martech-stack-audit`: adelanta su materia prima. La evaluación sigue exigiendo el sistema diseñado.
+2. Toda recolección lleva su etiqueta de procedencia y fecha ([DATO MEDIDO], [DATO CRM]) — un inventario sin fecha caduca en silencio.
+3. La skill que consume recolección **comprueba si existe antes de pedirla de nuevo**. Pedir dos veces el mismo dato al cliente es el defecto que este concepto existe para evitar.
+4. El Estado lista la recolección pendiente como categoría propia. Material en `02 Anexos` que nadie referencia es material que se pierde: es el riesgo que asume este concepto y por eso se vigila desde el Estado, no desde la memoria del consultor.
 
 ## Régimen de revisiones — dos contadores (F3)
 

@@ -22,7 +22,7 @@ Tipografía: serif editorial para títulos (Georgia/'Times New Roman' como fallb
 
 - **Portada de entregable**: cliente, nombre del entregable, versión, fecha, fase y tier. Franja de acento.
 - **Kicker + título de sección**: replica el patrón editorial de la web ("— El problema" / título).
-- **Etiquetas vivas**: pills con color — [ASUNCIÓN] alerta · [HIPÓTESIS] alerta con borde · [FALTA DATO] crítico · [DATO CRM] tinta-suave con icono de base de datos.
+- **Etiquetas vivas**: pills con color — [ASUNCIÓN] alerta · [HIPÓTESIS] alerta con borde · [FALTA DATO] crítico · [DATO CRM] tinta-suave con icono de base de datos · [DATO MEDIDO] tinta-suave con icono de gráfico. Los dos últimos son procedencia, no aviso: se renderizan discretos. Su función es que el cliente vea de un vistazo qué afirmación es verificable por terceros — que es el argumento comercial del diagnóstico.
 - **Funnel con gaps** (revenue-diagnostic): barras horizontales por etapa, ancho proporcional al volumen, gap resaltado en crítico con la tasa de conversión perdida.
 - **Matriz impacto × esfuerzo** (roadmap): cuadrantes con las iniciativas como fichas.
 - **Tabla viva**: cabecera fija, filas cebradas con --linea, orden por columna si el entregable lo pide.

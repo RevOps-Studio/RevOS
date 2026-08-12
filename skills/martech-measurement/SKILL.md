@@ -22,7 +22,7 @@ Es el puente entre la aspiración del measurement framework ("quiero medir pipel
 
 **Produce:** Martech & Measurement Architecture v1 en Markdown + diagramas textuales de flujos. Alimenta reporting-operating-system y exec-deliverables.
 
-**Siguiente skill:** exec-deliverables.
+**Siguiente skill:** los opcionales de Activation contratados, si los hay (`media-plan-builder`, `content-calendar-builder`, `conversion-playbook-builder`, `reporting-operating-system`); después `system-qa` — QA de cierre de Activation, obligatorio — y finalmente `exec-deliverables`.
 
 ## Principios de ejecución
 
@@ -285,11 +285,11 @@ Cuando la arquitectura de medición esté completa:
 1. Presenta el output completo en Markdown.
 2. Añade al final una sección **"Resumen para el consultor"** con:
    - Modelo de atribución elegido
-   - Nº de integraciones críticas documentadas
+   - Las integraciones críticas documentadas, listadas — sin recuento
    - Gaps bloqueantes de tracking
    - Fases de implementación y duración total orientativa
    - Nivel de confianza en la arquitectura (1-5)
-3. El contenido validado se guarda como `[Cliente] - Martech Measurement v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: `exec-deliverables`.
+3. El contenido validado se guarda como `[Cliente] - Martech Measurement v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: los opcionales contratados si los hay; después `system-qa` (cierre de Activation) y `exec-deliverables`.
 
 ## Lo que NO debes hacer
 

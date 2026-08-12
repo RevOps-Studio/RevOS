@@ -3,6 +3,15 @@
 Versión 1.0 · 30/07/2026 · Documento de diseño para la reescritura única (paso 3)
 Plugin interno de RevOps Studio. No destinado al Directorio.
 
+> **DOCUMENTO HISTÓRICO DE DISEÑO — NO ES REFERENCIA VIGENTE.**
+> Refleja el diseño previo al piloto de Kokolski. Superado en:
+> · §1 — `.mcp.json` declara los conectores de nivel 1 de research y ficheros (Ahrefs, Similarweb, Drive, Notion, Dropbox), no CRMs. El mapa vigente es `references/conectores.md`.
+> · §1 — el plugin tiene 27 nodos + skills de control, no 26 skills. Versión real: 4.2.0.
+> · §2, §4 y §6 — el State Log único se partió en Registro (inmutable) + Estado (regenerado). Ver F7.
+> · §6 — el presupuesto de revisión son dos contadores separados, no uno. Ver F3.
+> · §5 — la precondición de checkpoint es doble (backlog + veredicto de QA). Ver F4.
+> Referencia vigente: `references/convenciones.md` (v4.2), `references/grafo-dependencias.md` (v4.2) y `CHANGELOG.md`.
+
 ---
 
 ## 0. Log de decisiones que gobiernan esta spec

@@ -46,6 +46,10 @@ Regenerado: [fecha, tras cierre de skill X]. Este fichero se reescribe entero; e
 | # | [FALTA DATO] | Bloqueante | Skill destinataria (no ejecutada) | Disposición del último cierre |
 |---|---|---|---|---|
 
+## Recolección pendiente
+| # | Qué recoger | Fuente / conector | Skill que lo consumirá | Estado |
+|---|---|---|---|---|
+
 ## Hallazgos vigentes (techo: 12 — al superarlo, consolidar antes de añadir)
 | # | Hallazgo | Fuente | Afecta a |
 |---|---|---|---|

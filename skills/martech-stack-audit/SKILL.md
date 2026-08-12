@@ -18,11 +18,13 @@ No es una comparativa de vendors ni una lista genérica de "herramientas recomen
 
 ## Posición en el pipeline
 
-**Requiere:** Measurement Framework + todos los outputs de Design Essentials (Positioning, Growth System, Sales Conversion, Execution Roadmap).
+**Requiere:** Measurement Framework + todos los outputs de Design Essentials (Positioning, Growth System, Sales Conversion, Execution Roadmap). El criterio de evaluación de este audit *es* el sistema diseñado: sin Design cerrado no hay con qué medir el fit de una herramienta.
+
+**Consume, si existe:** la recolección temprana del stack producida en `knowledge-base-builder` (inventario, costes, flujos de datos, higiene del CRM) y guardada en `02 Anexos`. Compruébalo antes de pedir nada al cliente.
 
 **Produce:** Martech Stack Audit v1 en Markdown. Alimenta crm-blueprint-builder, crm-selection (si procede) y martech-measurement.
 
-**Siguiente skill:** crm-blueprint-builder.
+**Siguiente skill:** `crm-selection` si el vendor está por decidir y el módulo está contratado; si no, `crm-blueprint-builder`.
 
 ## Principios de ejecución
 
@@ -45,7 +47,7 @@ Convenciones v4.1 — **Precondición**: antes de producir, lee `00 Sistema/[Cli
 ## Proceso
 
 **Paso 1 — Inventario completo del stack actual.**
-A partir del intake, brief y documentación aportada: lista todas las herramientas. Para cada una: categoría (CRM, MAP, analítica, SEO, ABM, telefonía, reuniones, contenido, diseño, gestión, ops, finanzas), plan contratado, número de licencias, coste mensual, fecha de renovación si se conoce, responsable interno. Si falta información, [FALTA DATO].
+Primero comprueba si existe recolección temprana del stack en `02 Anexos` (la produce `knowledge-base-builder`). Si existe: úsala como base, verifica que su fecha sigue siendo válida y complétala solo en lo que falte. Si no existe, constrúyela ahora a partir del intake, brief y documentación aportada. En ningún caso vuelvas a pedir al cliente datos que ya están recogidos. Lista todas las herramientas. Para cada una: categoría (CRM, MAP, analítica, SEO, ABM, telefonía, reuniones, contenido, diseño, gestión, ops, finanzas), plan contratado, número de licencias, coste mensual, fecha de renovación si se conoce, responsable interno. Si falta información, [FALTA DATO].
 
 **Paso 2 — Datos reales de CRM (condicional).** Si el Registro del proyecto registra un CRM conectado, lanza el agente crm-analyst del plugin: además del funnel, sus hallazgos de higiene (deals sin actividad, fechas vencidas, campos vacíos, duplicados) son evidencia directa para este audit. Incorpóralos con etiqueta [DATO CRM: fuente, fecha].
 
@@ -252,12 +254,12 @@ Cuando el audit esté completo:
 
 1. Presenta el output completo en Markdown.
 2. Añade al final una sección **"Resumen para el consultor"** con:
-   - Tamaño del stack actual (nº de herramientas, coste mensual)
-   - Nº de brechas bloqueantes
-   - Nº de herramientas a sustituir
+   - Las herramientas del stack actual, listadas por categoría, con el coste mensual total
+   - Las brechas bloqueantes, listadas — sin recuento
+   - Las herramientas a sustituir, listadas con su motivo
    - Ahorro/coste neto orientativo del stack objetivo
    - Nivel de confianza en el diagnóstico (1-5)
-3. El contenido validado se guarda como `[Cliente] - Martech Audit v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: `crm-blueprint-builder`.
+3. El contenido validado se guarda como `[Cliente] - Martech Audit v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: `crm-selection` si el vendor está por decidir y el módulo está contratado; si no, `crm-blueprint-builder`.
 
 ## Lo que NO debes hacer
 

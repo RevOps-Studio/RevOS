@@ -25,7 +25,7 @@ El entregable final es doble: un XLSX operativo (que puede vivir, actualizarse y
 
 **Produce:** Execution Roadmap v1 en Markdown, con especificación de estructura del XLSX operativo (tablero) y del PPTX ejecutivo para `/revos:entrega`.
 
-**Siguiente skill:** diagnostic-checkpoint (checkpoint de cierre de Design con el cliente). Tras validación, se avanza a Activation en tier Complete, o se cierra el alcance en tier Essentials.
+**Siguiente skill:** `system-qa` — QA de cierre de Design, obligatorio — y después `diagnostic-checkpoint` parametrizado como checkpoint de Design. Tras la validación del cliente: en **Complete** se avanza a Activation (`martech-stack-audit`); en **Essentials** se cierra el alcance.
 
 ## Principios de ejecución
 
@@ -226,7 +226,7 @@ Cuando el roadmap esté construido:
    - Carga por dueño — alerta si alguien está sobrecargado
    - Dependencias críticas — iniciativas bloqueantes
    - Nivel de confianza en la ejecutabilidad del plan (1-5)
-3. El contenido validado se guarda como `[Cliente] - Execution Roadmap v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Los ficheros finales XLSX y PPTX los genera `/revos:entrega` según la preferencia de output registrada en fase 0. Siguiente skill: `diagnostic-checkpoint` (prepara la validación con el cliente del cierre de Design).
+3. El contenido validado se guarda como `[Cliente] - Execution Roadmap v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Los ficheros finales XLSX y PPTX los genera `/revos:entrega` según la preferencia de output registrada en fase 0. Siguiente skill: `system-qa` (cierre de Design) y, con su veredicto en el Registro, `diagnostic-checkpoint` como checkpoint de Design.
 
 ## Lo que NO debes hacer
 

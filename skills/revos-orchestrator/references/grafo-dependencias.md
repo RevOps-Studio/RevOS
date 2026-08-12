@@ -1,6 +1,8 @@
-# Grafo de dependencias RevOS v4
+# Grafo de dependencias RevOS v4.2
 
-Fuente canónica: Blueprint v4 (hoja "Flujo dependencias"). Orden = secuencia cronológica de referencia; las dependencias son la verdad, no el orden.
+**Fuente única del sistema.** Este fichero es el original: es lo que el orquestador lee en ejecución. El Blueprint (hoja "Flujo dependencias") es una vista derivada y se regenera desde aquí — nunca al revés. Cualquier cambio de dependencias se hace en este fichero, se registra en CHANGELOG.md y después se regenera el Blueprint.
+
+Orden = secuencia cronológica de referencia; las dependencias son la verdad, no el orden.
 
 | # | Nodo | Fase | Tier | Modelo | Depende de |
 |---|------|------|------|--------|------------|
@@ -19,11 +21,11 @@ Fuente canónica: Blueprint v4 (hoja "Flujo dependencias"). Orden = secuencia cr
 | 12 | sales-process-design | Design | Complete | Sonnet | sales-conversion-design |
 | 13 | measurement-framework | Design | Complete | Sonnet | revenue-diagnostic · sales-conversion-design · growth-system-design |
 | 14 | execution-roadmap-builder | Design | Essentials/Complete | Opus | todos los blueprints Design del tier contratado |
-| 15 | design-checkpoint | Design | Complete | Sonnet | execution-roadmap-builder [CHECKPOINT CLIENTE] |
+| 15 | design-checkpoint | Design | Essentials / Complete | Sonnet | execution-roadmap-builder [CHECKPOINT CLIENTE] |
 | 16 | brand-copy-system | Design | Opcional | Sonnet | positioning-messaging |
-| 17 | martech-stack-audit | Activation | Complete | Sonnet | brief-intake |
+| 17 | martech-stack-audit | Activation | Complete | Sonnet | Design Essentials del tier · measurement-framework · (consume la recolección temprana de knowledge-base-builder, si existe) |
 | 18 | crm-selection | Activation | Opcional | Sonnet | sales-process-design |
-| 19 | crm-blueprint-builder | Activation | Complete | Sonnet | crm-selection (si aplica) · sales-process-design · sales-conversion-design |
+| 19 | crm-blueprint-builder | Activation | Complete | Sonnet | crm-selection (si aplica) · sales-process-design · measurement-framework · martech-stack-audit |
 | 20 | martech-measurement | Activation | Complete | Sonnet | martech-stack-audit · measurement-framework · crm-blueprint-builder |
 | 21 | media-plan-builder | Activation | Opcional | Sonnet | channel-strategy-design |
 | 22 | content-calendar-builder | Activation | Opcional | Sonnet | content-discoverability-design |

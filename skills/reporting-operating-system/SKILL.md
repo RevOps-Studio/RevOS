@@ -25,7 +25,7 @@ No es un dashboard bonito. Es la arquitectura de reuniones y reportes que obliga
 
 **Produce:** Reporting Operating System v1 en Markdown validado. Los ficheros finales maquetados (DOCX + calendario operativo XLSX con reuniones, agendas, participantes y entregables) los genera `/revos:entrega` según la preferencia de output registrada en fase 0, siguiendo la especificación de estructura incluida en este skill.
 
-**Siguiente skill:** Ninguno obligatorio. Es típicamente el último skill del proyecto junto con `exec-deliverables`.
+**Siguiente skill:** `system-qa` (cierre de Activation) y después `exec-deliverables`, que consolida este sistema de reporting en el Handover.
 
 ## Principios de ejecución
 
@@ -369,9 +369,9 @@ Cuando el sistema esté completo:
 
 1. Presenta el output en Markdown.
 2. Añade al final una sección **"Resumen para el consultor"** con:
-   - Nº total de cadencias diseñadas
+   - Las cadencias diseñadas, listadas por frecuencia — sin recuento
    - Carga total de reporting por rol (horas/semana)
-   - Nº de dashboards operativos
+   - Los dashboards operativos, listados por dueño — sin recuento
    - Gaps ([FALTA DATO] críticos)
    - Nivel de confianza en el sistema (1-5)
 3. El contenido validado se guarda como `[Cliente] - Reporting OS v1.md` en `01 Entregables`. El orquestador lo registra en el Registro.

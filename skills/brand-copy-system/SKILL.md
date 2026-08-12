@@ -303,8 +303,8 @@ Cuando el sistema de copy esté completo:
 
 1. Presenta el output completo en Markdown.
 2. Añade al final una sección **"Resumen para el consultor"** con:
-   - Nº de dimensiones de tono calibradas
-   - Nº de frases aprobadas y prohibidas
+   - Las dimensiones de tono calibradas, listadas
+   - Las frases prohibidas que más riesgo evitan, listadas
    - Tipos de pieza cubiertos
    - Nivel de confianza en el sistema (1-5)
 3. El contenido validado se guarda como `[Cliente] - Brand Copy System v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. El documento formal maquetado lo genera `/revos:entrega` según la preferencia de output registrada en fase 0. Siguiente skill: ninguno obligatorio (es skill opcional).

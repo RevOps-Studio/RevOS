@@ -266,7 +266,7 @@ Cuando el media plan esté completo:
 1. Presenta el output en Markdown.
 2. Añade al final una sección **"Resumen para el consultor"** con:
    - Inversión total a 12 meses
-   - Nº de canales activos
+   - Los canales activos, listados con su peso de inversión — sin recuento
    - KPI principal y CPL esperado en banda
    - Escenarios contemplados
    - Nivel de confianza en el plan (1-5)

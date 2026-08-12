@@ -1,30 +1,40 @@
 # revos — plugin interno de RevOps Studio
 
-Sistema RevOS v4: diagnóstico, diseño y activación de sistemas de revenue para empresas B2B, operado íntegramente en Claude/Cowork.
+Sistema RevOS: diagnóstico, diseño y activación de sistemas de revenue para empresas B2B, operado íntegramente en Claude/Cowork.
 
-## Estado: v4.1.0 — piloto de Diagnostic completado
+## Estado: v4.2.0 · sistema completo, un piloto ejecutado
 
-Incluido en este bloque:
-- **fase-0** — arranque de proyecto: estructura de carpetas estándar, configuración (tier, output, idioma, conectores) e inicialización de Registro, Estado y Backlog de cambios.
-- **status** — estado del proyecto y next best action; punto de entrada de cada sesión.
-- **revos-orchestrator** — reglas del sistema: grafo de dependencias (27 nodos), propagación de cambios, régimen de revisiones/asunciones y convenciones transversales.
-- **cambio** — puerta de entrada única de correcciones: clasificación Cosmético/Dato/Concepto, backlog, archivado en 04 Archivo y propagación aprobada por el consultor.
+Arquitectura **skills-only**: 27 nodos de producción y 7 de control, sin capa de comandos. La secuenciación por tier vive en el grafo del orquestador; el punto de entrada de cada sesión es `status`.
 
-Incluido además (bloque 3): las 6 skills de la fase Diagnostic (client-intake-form, brief-intake, knowledge-base-builder, competitive-research, revenue-diagnostic, diagnostic-checkpoint) reescritas a convenciones v4, los agentes competitive-researcher y crm-analyst, y el modelo de conectores en dos niveles: investigación y archivos (Ahrefs, Similarweb, Drive, Notion, Dropbox) en .mcp.json; CRM, transcripciones y ads activables por proyecto según el mapa del orquestador.
+- **Control** — `setup` (onboarding y corrección de rumbo) · `fase-0` (arranque: carpetas, configuración, Registro, Estado, Backlog) · `status` (estado y next best action) · `cambio` (puerta única de correcciones) · `entrega` (fichero final maquetado) · `system-qa` (coherencia transversal) · `revos-orchestrator` (reglas del sistema).
+- **Diagnostic** — client-intake-form · brief-intake · knowledge-base-builder · competitive-research · revenue-diagnostic · diagnostic-checkpoint.
+- **Design** — positioning-messaging · growth-system-design · sales-conversion-design · channel-strategy-design · content-discoverability-design · sales-process-design · measurement-framework · execution-roadmap-builder · brand-copy-system (opcional).
+- **Activation** — martech-stack-audit · crm-selection (opcional) · crm-blueprint-builder · martech-measurement · media-plan-builder · content-calendar-builder · conversion-playbook-builder · reporting-operating-system (opcionales) · exec-deliverables.
+- **Agentes** — competitive-researcher · crm-analyst · system-qa (solo lectura) · deliverable-designer.
+- **Conectores** — nivel 1 en `.mcp.json` (Ahrefs, Similarweb, Drive, Notion, Dropbox); nivel 2 activable por proyecto (CRM, transcripciones, ads, SEO alternativo) según `skills/revos-orchestrator/references/conectores.md`.
 
-Incluido además (bloque 4): las 19 skills de Design, Activation y opcionales reescritas a convenciones v4, y el agente system-qa (verificación transversal en solo lectura).
-
-Incluido además (bloque 5): skill `entrega` + agente deliverable-designer con el sistema visual RevOS (tokens de marca, plantilla HTML autocontenida, equivalencias DOCX/XLSX/PPTX). Acento de marca confirmado: #C129A1.
-
-v4.1.0 incorpora los aprendizajes del primer piloto real (Kokolski, Diagnostic completo — ver docs/RevOS v4 - Aprendizajes del piloto Diagnostic.md): resúmenes que enumeran en lugar de contar (F1), disposición obligatoria de huecos al cierre de cada skill (F2), dos contadores de ciclos — la información nueva no consume revisiones (F3), doble condición de checkpoint con veredicto de QA (F4), paso de medición de activos con conectores en knowledge-base-builder (F5), calibración económica al inicio del brief (F6), partición del State Log en Registro inmutable + Estado regenerado (F7), chequeos mecánicos obligatorios en system-qa (F8), validación de especificación antes de maquetar (F9) y precondición de producción en todas las skills (F10-lite).
-
-Pendiente: pilotos de Design y Activation; forzado determinista de precondiciones (decisión de producto para v5).
+Piloto ejecutado: fase Diagnostic completa con cliente real (07/2026). Sus aprendizajes están en `docs/` y produjeron las versiones 4.1 y 4.2. Histórico en `CHANGELOG.md`.
 
 ## Uso
 
-0. `/revos:setup` tras instalar el plugin — onboarding guiado y corrección de rumbo.
-1. `/revos:fase-0` al arrancar cada proyecto de cliente.
-2. `/revos:status` al inicio de cada sesión de trabajo.
-3. `/revos:cambio` para cualquier corrección sobre entregables ya producidos.
+1. `setup` tras instalar el plugin — onboarding guiado y corrección de rumbo.
+2. `fase-0` al arrancar cada proyecto de cliente. Innegociable: sin Registro no hay orquestador.
+3. `status` al inicio de cada sesión. Te dice qué toca, con qué inputs y qué huecos arrastra.
+4. `cambio` para cualquier corrección sobre entregables ya producidos. Nada se edita a mano.
+5. `system-qa` al cierre de cada fase, antes de preparar el checkpoint.
+6. `entrega` para producir el fichero que recibe el cliente.
 
-Referencia de diseño: "RevOS v4 - Especificacion del plugin.md".
+## Fuentes únicas
+
+| Materia | Fichero |
+|---|---|
+| Dependencias entre nodos | `skills/revos-orchestrator/references/grafo-dependencias.md` |
+| Convenciones transversales | `skills/revos-orchestrator/references/convenciones.md` |
+| Mapa de conectores | `skills/revos-orchestrator/references/conectores.md` |
+| Sistema visual | `skills/entrega/references/sistema-visual.md` |
+
+El Blueprint, el Workflow y el Timeline son vistas derivadas: se regeneran desde estas fuentes, nunca al revés. Todo cambio del plugin se registra en `CHANGELOG.md`.
+
+## Documentación interna
+
+`docs/` no se empaqueta en el `.plugin` (ver `scripts/empaquetar.sh`). Contiene el Master Doc, la especificación de diseño histórica y los aprendizajes del piloto.

@@ -224,7 +224,7 @@ Cuando el diseño de contenidos y descubribilidad esté completo:
 1. Presenta el output completo en Markdown.
 2. Añade al final una sección **"Resumen para el consultor"** con:
    - Los pilares temáticos, listados por nombre — sin recuento
-   - Total de contenidos propuestos en el plan completo y en los primeros 90 días
+   - Los contenidos de los primeros 90 días, listados por pilar — sin recuento total
    - Mix TOFU/MOFU/BOFU estimado
    - Brechas de capacidad de producción detectadas
    - Nivel de confianza en la arquitectura (1-5)

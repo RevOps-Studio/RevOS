@@ -54,6 +54,8 @@ Antes de redactar, mapea qué fuente alimenta cada sección del template. Esto a
 **Paso 4 — Medición de activos (F5).**
 Con los conectores activos del proyecto (Ahrefs, Similarweb y los de nivel 2 que declare el Registro), mide el dominio del cliente y, si están disponibles, los dominios de sus clientes y de sus competidores directos. Como mínimo: autoridad de dominio, keywords orgánicas, tráfico orgánico, histórico de 12-18 meses, perfil de enlaces y citaciones en motores generativos (Brand Radar). Marca cada cifra como [DATO MEDIDO: herramienta, fecha]. Contrasta lo medido con lo que el cliente declara: toda divergencia es material de la sección de observaciones. Un diagnóstico construido sobre lo medible por terceros vale más que uno construido sobre lo que el cliente cuenta.
 
+En el mismo movimiento, ejecuta la **recolección temprana del stack** (v4.2): inventario de herramientas con categoría, plan, licencias, coste mensual, fecha de renovación y responsable interno; y el mapa de por dónde entra, pasa y muere el dato. Si hay CRM conectado, incorpora los hallazgos de higiene del agente crm-analyst (deals sin actividad, fechas vencidas, campos vacíos, duplicados) — un CRM sucio es en sí mismo un hallazgo del diagnóstico, no una nota para dentro de cuatro meses. Esto **no** es el martech-stack-audit: es su materia prima. Guárdala en `02 Anexos` como recolección, con fecha, y regístrala en la tabla de recolección del Estado con `martech-stack-audit` como skill que la consumirá.
+
 **Paso 5 — Redacción integrada.**
 Sigue el template al pie de la letra. En cada sección, integra fuentes — no las yuxtapongas. Si una sección solo tiene una fuente, indícalo con [FUENTE ÚNICA] al final de la sección.
 
