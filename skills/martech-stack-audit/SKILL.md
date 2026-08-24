@@ -259,7 +259,7 @@ Cuando el audit esté completo:
    - Las herramientas a sustituir, listadas con su motivo
    - Ahorro/coste neto orientativo del stack objetivo
    - Nivel de confianza en el diagnóstico (1-5)
-3. El contenido validado se guarda como `[Cliente] - Martech Audit v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: `crm-selection` si el vendor está por decidir y el módulo está contratado; si no, `crm-blueprint-builder`.
+3. El contenido validado se guarda como `[Cliente] - Martech Stack Audit v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: `crm-selection` si el vendor está por decidir y el módulo está contratado; si no, `crm-blueprint-builder`.
 
 ## Lo que NO debes hacer
 

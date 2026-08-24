@@ -49,7 +49,7 @@ No son opcionales y no dependen de cómo te invoquen. Ejecútalos siempre:
 ## Reglas
 
 - Alcance: completo (cierre de fase) o parcial (lista de entregables indicada por el orquestador). No amplíes el alcance por tu cuenta.
-- Cada hallazgo: severidad (crítico / mayor / menor), ficheros implicados, evidencia citada (sección y texto), y corrección propuesta.
+- Cada hallazgo: severidad ([CRÍTICO] / [MAYOR] / [MENOR] — canon en skills/revos-orchestrator/references/convenciones.md), ficheros implicados, evidencia citada (sección y texto), y corrección propuesta.
 - NUNCA apliques correcciones. El informe va a `03 QA` como `[Cliente] - System QA [Fase] v1.md`; cada corrección entra después, una a una, por `/revos:cambio`.
 
 ## Formato de salida

@@ -18,7 +18,7 @@ No rediseña el proceso comercial (eso es `sales-process-design`). Convierte el 
 
 ## Posición en el pipeline
 
-**Requiere:** Sales Process Design, Positioning & Messaging. Recomendado: Brand Copy System, Sales Conversion Design.
+**Requiere:** Sales Process Design, Positioning & Messaging Architecture. Recomendado: Brand Copy System, Sales Conversion Design.
 
 **Produce:** Conversion Playbook v1 en Markdown validado. El fichero final maquetado (DOCX formal) lo genera `/revos:entrega` según la preferencia de output registrada en fase 0.
 

@@ -13,7 +13,7 @@ Recorre estos pasos en conversación, sin volcar todo de golpe:
 
 ### 1. El modelo mental (30 segundos)
 Explica la regla de oro del sistema en tres frases:
-- **Hablas con comandos, no con skills.** `/revos:fase-0` para arrancar, `/revos:status` en cada sesión, `/revos:cambio` para toda corrección, `/revos:entrega` para maquetar. Las skills trabajan por debajo.
+- **Hablas con las skills de control como si fueran comandos.** `/revos:fase-0` para arrancar, `/revos:status` en cada sesión, `/revos:cambio` para toda corrección, `/revos:entrega` para maquetar. No existe una capa de comandos separada: son skills con interfaz de invocación directa. Las skills de producción trabajan por debajo, orquestadas por `status`.
 - **El Registro es la memoria.** Si algo no está registrado, para el sistema no existe.
 - **Nada se edita a mano.** Entregables producidos → siempre por `/revos:cambio`; versiones antiguas → siempre a `04 Archivo` (lo hace el flujo, no tú).
 
@@ -27,7 +27,7 @@ Verifica y reporta:
 Resume: fase 0 → Diagnostic → checkpoint → Design → checkpoint → Activation → entrega ejecutiva. Recalca los tres momentos que más errores evitan:
 - **Fase 0 es innegociable** — sin Registro no hay orquestador.
 - **Checkpoints**: nunca se celebran con cambios pendientes en el backlog; siempre incluyen las asunciones vigentes.
-- **2 ciclos de revisión por entregable** — después, [FALTA DATO] no bloqueante pasa a [ASUNCIÓN] y se avanza. La búsqueda del dato perfecto es el freno número uno del sistema anterior.
+- **Asunciones en primera pasada + 2 ciclos de revisión.** Si en primera pasada ya se sabe que la fuente del dato no estará disponible antes del checkpoint, se escribe directamente [ASUNCIÓN: valor + criterio falsable] — no se espera. Para el resto, tras 2 ciclos de revisión, un [FALTA DATO] no bloqueante pasa a [ASUNCIÓN] y se avanza. La búsqueda del dato perfecto es el freno número uno del sistema anterior.
 
 ### 4. Ofrecer ensayo en seco
 Propón un dry-run con cliente ficticio: fase 0 + client-intake-form + brief-intake con datos inventados, en una carpeta "Ensayo". 20 minutos, sin riesgo, y el consultor ve el sistema entero funcionando (Registro, naming, etiquetas). Al terminar, la carpeta de ensayo se borra — no es un proyecto.
@@ -45,7 +45,7 @@ Deja al consultor con la chuleta:
 | Cualquier corrección sobre algo ya producido | `cambio` |
 | Fichero final para cliente | `entrega` |
 
-No hay comandos de fase: el sistema es skills-only y la secuencia la calcula `status` contra el grafo. Si echas de menos lanzar una fase entera de un tirón, es una decisión de producto pendiente, no una función que estés usando mal.
+No hay comandos de fase ni una capa de comandos como tal: el sistema es skills-only (las skills de control se invocan con interfaz de comando) y la secuencia la calcula `status` contra el grafo. Si echas de menos lanzar una fase entera de un tirón, es una decisión de producto pendiente, no una función que estés usando mal.
 
 ## Modo 2 — Corrección de rumbo (proactivo)
 

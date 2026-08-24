@@ -226,7 +226,7 @@ Cuando el brief esté completo:
      declares totales: enumera lo que importa.
    - Tu evaluación de la calidad del intake (1-5) con una frase explicativa
    - Recomendación sobre si proceder al siguiente skill o recoger más información primero
-3. El contenido validado se guarda como `[Cliente] - Brief Intake v1.md` en
+3. El contenido validado se guarda como `[Cliente] - Client Master Brief v1.md` en
    `01 Entregables`. El orquestador lo registra en el Registro.
    Siguiente skill: knowledge-base-builder.
 

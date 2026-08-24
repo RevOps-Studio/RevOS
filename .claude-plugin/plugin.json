@@ -1,7 +1,7 @@
 {
   "name": "revos",
-  "version": "4.3.0",
-  "description": "Sistema RevOS de RevOps Studio: diagnóstico, diseño y activación de sistemas de revenue para empresas B2B. Plugin interno de organización. v4.3: doctrina de avance (bloqueante con definición cerrada, asunción de primera pasada), lenguaje calibrado y propagación en lote para cambios de tipo Dato.",
+  "version": "4.3.1",
+  "description": "Sistema RevOS de RevOps Studio: diagnóstico, diseño y activación de sistemas de revenue para empresas B2B. Plugin interno de organización. v4.3: doctrina de avance, lenguaje calibrado y propagación en lote. v4.3.1: parche de higiene — grafo alineado con los Requiere, enums canónicos de QA, alias corregidos y validador pre-empaquetado.",
   "author": {
     "name": "RevOps Studio"
   },

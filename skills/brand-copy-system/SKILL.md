@@ -18,7 +18,7 @@ No es un libro de estilo creativo ni una guía gráfica. Es el sistema que permi
 
 ## Posición en el pipeline
 
-**Requiere:** Positioning & Messaging validado. Recomendado: Content & Discoverability Design, Channel Strategy Design.
+**Requiere:** Positioning & Messaging Architecture validada. Recomendado: Content & Discoverability Design, Channel Strategy Design.
 
 **Produce:** Brand Copy System v1 en Markdown. El documento formal para compartir con agencias, freelances y equipo lo genera `/revos:entrega` según la preferencia de output registrada en fase 0.
 

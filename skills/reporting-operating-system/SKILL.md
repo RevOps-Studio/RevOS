@@ -21,7 +21,7 @@ No es un dashboard bonito. Es la arquitectura de reuniones y reportes que obliga
 
 ## Posición en el pipeline
 
-**Requiere:** Measurement Framework (métricas, fuentes, dueños), Martech Measurement (arquitectura técnica que alimenta los datos), Sales Process Design (estructura del pipeline), Execution Roadmap (iniciativas que hay que reportar).
+**Requiere:** Measurement Framework (métricas, fuentes, dueños), Martech & Measurement Architecture (arquitectura técnica que alimenta los datos), Sales Process Design (estructura del pipeline), Execution Roadmap (iniciativas que hay que reportar).
 
 **Produce:** Reporting Operating System v1 en Markdown validado. Los ficheros finales maquetados (DOCX + calendario operativo XLSX con reuniones, agendas, participantes y entregables) los genera `/revos:entrega` según la preferencia de output registrada en fase 0, siguiendo la especificación de estructura incluida en este skill.
 
@@ -345,9 +345,9 @@ Produce el output siguiendo exactamente esta estructura.
 
 ## 12. Especificación de estructura para /revos:entrega
 
-**DOCX formal:** `[Cliente] - Reporting OS v1.docx` (lo genera `/revos:entrega`) con el sistema completo: narrativa + plantillas de agenda + estructura de actas.
+**DOCX formal:** `[Cliente] - Reporting Operating System v1.docx` (lo genera `/revos:entrega`) con el sistema completo: narrativa + plantillas de agenda + estructura de actas.
 
-**XLSX operativo:** `[Cliente] - Reporting OS v1.xlsx` (lo genera `/revos:entrega`) con hojas:
+**XLSX operativo:** `[Cliente] - Reporting Operating System v1.xlsx` (lo genera `/revos:entrega`) con hojas:
 1. Calendario operativo — todas las cadencias, participantes, pre-reads y decisiones (columnas: Cadencia, Reunión, Día recurrente, Duración, Participantes, Dueño del pre-read, Decisor, Pre-read entregado a, Dashboard fuente, Decisiones tipo que habilita)
 2. Dashboards
 3. Alertas
@@ -374,7 +374,7 @@ Cuando el sistema esté completo:
    - Los dashboards operativos, listados por dueño — sin recuento
    - Gaps ([FALTA DATO] críticos)
    - Nivel de confianza en el sistema (1-5)
-3. El contenido validado se guarda como `[Cliente] - Reporting OS v1.md` en `01 Entregables`. El orquestador lo registra en el Registro.
+3. El contenido validado se guarda como `[Cliente] - Reporting Operating System v1.md` en `01 Entregables`. El orquestador lo registra en el Registro.
 4. Los ficheros finales maquetados (DOCX + XLSX) los genera `/revos:entrega` según la preferencia de output registrada en fase 0, siguiendo la especificación de estructura de la sección 12.
 5. Este skill cierra el ciclo de Activation — combínalo con `exec-deliverables` para el handover final.
 

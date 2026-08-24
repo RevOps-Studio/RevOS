@@ -192,7 +192,7 @@ Cuando el análisis competitivo esté completo:
    - Hipótesis de posicionamiento más prometedora
    - Fuentes principales consultadas (listado)
    - Tu evaluación de la robustez del análisis (1-5) con frase explicativa
-3. El contenido validado se guarda como `[Cliente] - Competitive Research v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: `revenue-diagnostic`.
+3. El contenido validado se guarda como `[Cliente] - Competitive Landscape v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: `revenue-diagnostic`.
 
 ## Lo que NO debes hacer
 

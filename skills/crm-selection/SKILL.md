@@ -252,9 +252,9 @@ Produce el output siguiendo exactamente esta estructura.
 
 Los ficheros finales maquetados los genera `/revos:entrega` según la preferencia de output registrada en fase 0, con esta estructura:
 
-**DOCX formal:** `[Cliente] - CRM Selection v1.docx` — narrativa completa del report + matriz resumen.
+**DOCX formal:** `[Cliente] - CRM Selection Report v1.docx` — narrativa completa del report + matriz resumen.
 
-**XLSX de scoring:** `[Cliente] - CRM Selection v1.xlsx` — matriz de scoring editable: requisitos en filas, finalistas en columnas, score 1-5 por celda, peso del requisito editable, score ponderado calculado automáticamente, fila final con total ponderado recalculado al modificar pesos.
+**XLSX de scoring:** `[Cliente] - CRM Selection Report v1.xlsx` — matriz de scoring editable: requisitos en filas, finalistas en columnas, score 1-5 por celda, peso del requisito editable, score ponderado calculado automáticamente, fila final con total ponderado recalculado al modificar pesos.
 
 ---
 
@@ -290,7 +290,7 @@ Cuando el report esté completo:
    - Finalistas descartados y por qué
    - Gaps ([FALTA DATO] / [FALTA BENCHMARK] críticos)
    - Nivel de confianza en la recomendación (1-5)
-3. El contenido validado se guarda como `[Cliente] - CRM Selection v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. El DOCX y el XLSX finales los genera `/revos:entrega` según la preferencia de output registrada en fase 0. Siguiente skill: `crm-blueprint-builder`.
+3. El contenido validado se guarda como `[Cliente] - CRM Selection Report v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. El DOCX y el XLSX finales los genera `/revos:entrega` según la preferencia de output registrada en fase 0. Siguiente skill: `crm-blueprint-builder`.
 
 ## Lo que NO debes hacer
 

@@ -17,7 +17,7 @@ Es el documento que convierte el sales-process-design en algo ejecutable dentro 
 
 ## Posición en el pipeline
 
-**Requiere:** Sales Process Design, Martech Stack Audit, Measurement Framework. Recomendado: CRM Selection si todavía no hay decisión de vendor.
+**Requiere:** Sales Process Design, Martech Stack Audit, Measurement Framework. Recomendado: CRM Selection Report si todavía no hay decisión de vendor.
 
 **Produce:** CRM Blueprint v1 en Markdown (contenido validado). El fichero final maquetado (DOCX formal + XLSX de campos y pipelines) lo genera `/revos:entrega` según la preferencia de output registrada en fase 0. Alimenta martech-measurement y reporting-operating-system.
 

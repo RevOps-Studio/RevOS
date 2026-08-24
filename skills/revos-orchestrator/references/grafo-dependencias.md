@@ -1,4 +1,4 @@
-# Grafo de dependencias RevOS v4.2
+# Grafo de dependencias RevOS v4.3.1
 
 **Fuente única del sistema.** Este fichero es el original: es lo que el orquestador lee en ejecución. El Blueprint (hoja "Flujo dependencias") es una vista derivada y se regenera desde aquí — nunca al revés. Cualquier cambio de dependencias se hace en este fichero, se registra en CHANGELOG.md y después se regenera el Blueprint.
 
@@ -17,26 +17,27 @@ Orden = secuencia cronológica de referencia; las dependencias son la verdad, no
 | 8 | growth-system-design | Design | Essentials | Opus | positioning-messaging · revenue-diagnostic |
 | 9 | sales-conversion-design | Design | Essentials | Sonnet | revenue-diagnostic · growth-system-design |
 | 10 | channel-strategy-design | Design | Complete | Sonnet | growth-system-design |
-| 11 | content-discoverability-design | Design | Complete | Sonnet | positioning-messaging · growth-system-design |
+| 11 | content-discoverability-design | Design | Complete | Sonnet | channel-strategy-design · positioning-messaging |
 | 12 | sales-process-design | Design | Complete | Sonnet | sales-conversion-design |
-| 13 | measurement-framework | Design | Complete | Sonnet | revenue-diagnostic · sales-conversion-design · growth-system-design |
+| 13 | measurement-framework | Design | Complete | Sonnet | revenue-diagnostic · sales-conversion-design · growth-system-design · channel-strategy-design · content-discoverability-design · sales-process-design |
 | 14 | execution-roadmap-builder | Design | Essentials/Complete | Opus | todos los blueprints Design del tier contratado |
 | 15 | design-checkpoint | Design | Essentials / Complete | Sonnet | execution-roadmap-builder [CHECKPOINT CLIENTE] |
 | 16 | brand-copy-system | Design | Opcional | Sonnet | positioning-messaging |
 | 17 | martech-stack-audit | Activation | Complete | Sonnet | Design Essentials del tier · measurement-framework · (consume la recolección temprana de knowledge-base-builder, si existe) |
-| 18 | crm-selection | Activation | Opcional | Sonnet | sales-process-design |
+| 18 | crm-selection | Activation | Opcional | Sonnet | sales-process-design · martech-stack-audit · growth-system-design (condicional: si el plan incluye marketing automation) |
 | 19 | crm-blueprint-builder | Activation | Complete | Sonnet | crm-selection (si aplica) · sales-process-design · measurement-framework · martech-stack-audit |
 | 20 | martech-measurement | Activation | Complete | Sonnet | martech-stack-audit · measurement-framework · crm-blueprint-builder |
 | 21 | media-plan-builder | Activation | Opcional | Sonnet | channel-strategy-design |
 | 22 | content-calendar-builder | Activation | Opcional | Sonnet | content-discoverability-design |
-| 23 | conversion-playbook-builder | Activation | Opcional | Sonnet | sales-process-design · brand-copy-system |
-| 24 | reporting-operating-system | Activation | Opcional | Sonnet | measurement-framework |
-| 25 | exec-deliverables | Activation | Complete | Opus | execution-roadmap-builder · design-checkpoint · system-qa |
-| 26 | system-qa | Transversal | Todos | Opus | se ejecuta al cierre de cada fase y bajo demanda tras propagaciones |
+| 23 | conversion-playbook-builder | Activation | Opcional | Sonnet | sales-process-design · brand-copy-system (recomendado, no bloqueante) |
+| 24 | reporting-operating-system | Activation | Opcional | Sonnet | measurement-framework · martech-measurement · sales-process-design · execution-roadmap-builder |
+| 25 | exec-deliverables | Activation | Complete | Opus | execution-roadmap-builder · design-checkpoint · system-qa · todos los outputs de Activation del tier contratado, validados |
+| 26 | activation-checkpoint | Activation | Complete | Sonnet | exec-deliverables · system-qa [CHECKPOINT CLIENTE — checkpoint ejecutivo final, nodo virtual: lo materializa diagnostic-checkpoint] |
+| 27 | system-qa | Transversal | Todos | Opus | se ejecuta al cierre de cada fase y bajo demanda tras propagaciones |
 
 ## Reglas de secuencia
 
-- Los nodos de checkpoint (diagnostic-checkpoint, design-checkpoint, final checkpoint) los materializa una única skill: diagnostic-checkpoint, parametrizada por fase. No existe skill separada design-checkpoint.
+- Los nodos de checkpoint (diagnostic-checkpoint, design-checkpoint, activation-checkpoint) los materializa una única skill: diagnostic-checkpoint, parametrizada por fase. No existe skill separada design-checkpoint.
 
 - Complete contiene Essentials. Los opcionales requieren Complete.
 - En Essentials, la fase Design termina en execution-roadmap-builder + checkpoint; no existen los nodos Complete.

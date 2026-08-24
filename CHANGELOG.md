@@ -15,7 +15,33 @@ Fuentes únicas, para que no haya duda de dónde se edita qué:
 | Sistema visual | `skills/entrega/references/sistema-visual.md` | Plantilla HTML · plantillas Office |
 | Método de cada nodo | El `SKILL.md` correspondiente | Blueprint, hoja "Matriz RevOS" (columna Propósito) |
 | Versión y estado del plugin | `.claude-plugin/plugin.json` | `README.md` (línea de Estado y nota de versiones) · entrada más reciente de este CHANGELOG |
-| Versión y estado del plugin | `.claude-plugin/plugin.json` | `README.md` (línea de Estado y nota de versiones) · entrada más reciente de este CHANGELOG |
+
+---
+
+## [4.3.1] — 24/08/2026
+
+Parche de higiene derivado de la auditoría externa (Sol 5.6, 24/08/2026) sobre el ZIP v4.3.0, con verificación independiente hallazgo a hallazgo antes de aplicar. Ningún cambio de doctrina: solo coherencia e instrumentación.
+
+### Coherencia
+
+- **Grafo alineado con los `Requiere` reales de las skills** (`grafo-dependencias.md`, 6 nodos). measurement-framework (+channel-strategy, +content-discoverability, +sales-process), content-discoverability-design (channel-strategy sustituye a growth-system como arista directa), crm-selection (+martech-stack-audit, +growth-system condicional), reporting-operating-system (+martech-measurement, +sales-process, +execution-roadmap), conversion-playbook-builder (brand-copy-system pasa a recomendado — un opcional no contratado ya no bloquea otro opcional), exec-deliverables (+outputs de Activation del tier). Las dependencias cubiertas transitivamente (channel-strategy, sales-process, media-plan, sales-conversion, positioning) se documentan en el validador como lista blanca, no se añaden como aristas. *Concepto.*
+- **Alias `/revos:qa` inexistente → `/revos:system-qa`** en `diagnostic-checkpoint` y `revos-orchestrator`. *Dato.*
+- **Enums canónicos de QA declarados en `convenciones.md`**: severidad `[CRÍTICO] · [MAYOR] · [MENOR]`, veredicto `APTO · APTO CON RESERVAS · NO APTO`. Normalizados en `system-qa` (skill y agente); [RELEVANTE] y los veredictos de plantilla antiguos quedan retirados con tabla de correspondencia. *Concepto.*
+- **`setup` desambiguado**: "hablas con las skills de control como si fueran comandos" (resuelve la contradicción con "skills-only") e incorpora la asunción en primera pasada de v4.3 a la regla de los 2 ciclos. *Dato.*
+- **README**: taxonomía corregida — 31 skills ejecutables (24 producción + 7 control) que implementan 27 nodos del grafo. *Dato.*
+- **CHANGELOG**: fila duplicada "Versión y estado del plugin" eliminada de la tabla de fuentes. *Cosmético.*
+
+### Instrumentación
+
+- **`scripts/validar_revos.py` nuevo**: valida frontmatter y nombres, alias inexistentes, grafo↔Requiere (con lista blanca de transitivas), enums fuera de canon y versiones divergentes. Estado actual: 0 errores, 17 avisos (transitivas documentadas + 3 fórmulas en prosa del grafo, candidatas a explicitar en v5). *Concepto.*
+- **`empaquetar.sh`**: ejecuta el validador y aborta si falla; `mktemp -u` → `mktemp -d`; comprobación de integridad del ZIP. *Dato.*
+
+### Decisiones cerradas (24/08/2026, mismo día — la entrada se amplía antes de distribuir)
+
+- **Secuencia final de Activation resuelta — opción A.** Nuevo nodo virtual `activation-checkpoint` (26, RCAC005) tras `exec-deliverables`; system-qa renumerado a 27. Secuencia codificada: outputs Activation → system-qa → exec-deliverables → checkpoint ejecutivo final → correcciones vía /revos:cambio → /revos:entrega → cierre. `exec-deliverables` deja de declararse terminal; `diagnostic-checkpoint` materializa el checkpoint final. El grafo pasa a 28 nodos (26 reales + 2 virtuales). *Concepto.*
+- **Registro canónico de artefactos — opción A (renombrado).** El nombre de producción es el canónico: fichero, Requiere y Registro se conforman a él. Tabla A01–A24 en `convenciones.md`. Renombrados 10 artefactos (los 8 de la auditoría + 2 no detectados por ella: Reporting Operating System y Sales Process Design) + Handover Document. Formas cortas en los Requiere normalizadas en 13 skills. Validador ampliado con check F6 (guardado conforme al registro). Migración: proyectos con nombres antiguos migran al reabrirse como cambio Cosmético; proyectos nuevos usan el canon desde fase 0. *Concepto.*
+- **Vistas derivadas regeneradas desde las fuentes v4.3.1**: Master Doc v3 (reposicionado como vista derivada — las fuentes canónicas son los ficheros del plugin; incorpora doctrina v4.3, skills-only, Registro/Estado, enums, 28 nodos, y nota de re-estimación pendiente en pricing), Blueprint v6 (sin capa de comandos; matriz de 28 nodos con IDs; conectores a dos niveles), Workflow v5 (secuencia por /revos:status, naming canónico, reglas v4.3.1), Timeline v3 (28 nodos, activation-checkpoint, generado desde el grafo). Versiones anteriores en `docs/archivo/` con nota de no-uso. *Concepto.*
+- **Nota histórica**: la entrada 4.2.0 menciona 34 skills; es correcto — entre 4.2 y 4.3 se retiraron 3 skills. No se corrige.
 
 ---
 

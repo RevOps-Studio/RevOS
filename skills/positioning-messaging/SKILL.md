@@ -232,7 +232,7 @@ Cuando la arquitectura esté completa:
    - Nivel de confianza en la arquitectura (1-5)
    - Las 2-3 decisiones que el cliente tendría que validar antes de avanzar
    - Alerta sobre claims que requieren evidencia
-3. El contenido validado se guarda como `[Cliente] - Positioning & Messaging v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: `growth-system-design`.
+3. El contenido validado se guarda como `[Cliente] - Positioning & Messaging Architecture v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: `growth-system-design`.
 
 ## Lo que NO debes hacer
 

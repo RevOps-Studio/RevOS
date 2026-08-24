@@ -17,7 +17,7 @@ No redacta copy ni diseña creatividades (eso es `brand-copy-system` + trabajo c
 
 ## Posición en el pipeline
 
-**Requiere:** Channel Strategy Design, Positioning & Messaging. Recomendado: Content & Discoverability Design, Brand Copy System.
+**Requiere:** Channel Strategy Design, Positioning & Messaging Architecture. Recomendado: Content & Discoverability Design, Brand Copy System.
 
 **Produce:** Media Plan v1 en Markdown validado. El fichero final maquetado (XLSX operativo) lo genera `/revos:entrega` según la preferencia de output registrada en fase 0, siguiendo la especificación de estructura incluida en este skill.
 

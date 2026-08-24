@@ -20,7 +20,7 @@ Aunque se llama "diagnostic-checkpoint" por consistencia con el nombre original 
 
 ## Posición en el pipeline
 
-**Requiere:** todos los outputs de la fase que se está cerrando. Por defecto, el checkpoint de Diagnostic requiere brief, knowledge base, competitive research y revenue diagnostic.
+**Requiere:** todos los outputs de la fase que se está cerrando. Por defecto, el checkpoint de Diagnostic requiere Client Master Brief, Knowledge Base, Competitive Landscape y Revenue Diagnostic.
 
 **Produce:** Checkpoint [Fase] v1 — contenido validado en Markdown, con la especificación del artefacto HTML de presentación y del documento formal extenso (la materialización la genera `/revos:entrega`).
 
@@ -28,7 +28,7 @@ Aunque se llama "diagnostic-checkpoint" por consistencia con el nombre original 
 · Diagnostic → `positioning-messaging`
 · Design en Complete → `martech-stack-audit`
 · Design en Essentials → cierre del alcance contratado
-· Activation → cierre del proyecto (`exec-deliverables` ya producido)
+· Activation (checkpoint ejecutivo final, nodo `activation-checkpoint`, con los outputs de `exec-deliverables` como material base) → cierre del proyecto tras validación del cliente y entrega final vía `/revos:entrega`
 Si el cliente no valida, la corrección entra por `/revos:cambio` sobre el entregable afectado — nunca editando el checkpoint ni el entregable a mano.
 
 ## Principios de ejecución
@@ -193,7 +193,7 @@ Cuando el checkpoint esté completo:
    - Nivel de confianza en la validación (alta / media / baja) y por qué
    - Riesgos identificados para la reunión (temas sensibles, posibles desacuerdos)
 5. Después de la reunión, actualiza este checkpoint con las decisiones validadas. El contenido validado se guarda como `[Cliente] - Checkpoint [Fase] Validado v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: el primero de la siguiente fase según la tabla de la sección "Posición en el pipeline", solo una vez recibida la validación del cliente.
-6. Ningún checkpoint se celebra sin cumplir la doble condición: (1) Backlog sin cambios abiertos Y (2) último system-qa de la fase con veredicto APTO — o con sus críticos y mayores de bloqueo ya tramitados vía /revos:cambio. Sin system-qa ejecutado, no hay checkpoint: la next best action es /revos:qa. Verifica la tabla de veredictos del Registro antes de preparar el material.
+6. Ningún checkpoint se celebra sin cumplir la doble condición: (1) Backlog sin cambios abiertos Y (2) último system-qa de la fase con veredicto APTO — o con sus críticos y mayores de bloqueo ya tramitados vía /revos:cambio. Sin system-qa ejecutado, no hay checkpoint: la next best action es /revos:system-qa. Verifica la tabla de veredictos del Registro antes de preparar el material.
 
 ## Lo que NO debes hacer
 

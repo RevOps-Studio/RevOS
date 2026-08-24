@@ -19,7 +19,7 @@ No es un calendario editorial (eso es content-calendar-builder). Es el mapa estr
 
 ## Posición en el pipeline
 
-**Requiere:** Channel Strategy Design, Positioning & Messaging, Competitive Landscape.
+**Requiere:** Channel Strategy Design, Positioning & Messaging Architecture, Competitive Landscape.
 
 **Produce:** Content & Discoverability Design v1 en Markdown. Alimenta content-calendar-builder, brand-copy-system y sales-conversion-design (lead magnets).
 
@@ -228,7 +228,7 @@ Cuando el diseño de contenidos y descubribilidad esté completo:
    - Mix TOFU/MOFU/BOFU estimado
    - Brechas de capacidad de producción detectadas
    - Nivel de confianza en la arquitectura (1-5)
-3. El contenido validado se guarda como `[Cliente] - Content Discoverability v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: `sales-process-design`.
+3. El contenido validado se guarda como `[Cliente] - Content & Discoverability Design v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: `sales-process-design`.
 
 ## Lo que NO debes hacer
 

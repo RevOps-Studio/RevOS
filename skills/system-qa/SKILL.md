@@ -32,7 +32,7 @@ Es el skill que garantiza que el sistema funciona como sistema, no como colecci�
 
 **Matrices de verificación.** El QA opera con matrices: pares de documentos que deben ser coherentes entre sí. No es una revisión lineal — es un cruce sistemático.
 
-**Severidad clasificada.** Las incoherencias detectadas se clasifican en tres niveles: **[CRÍTICA]** — impide continuar hasta resolverla; **[RELEVANTE]** — conviene resolver antes de entregar al cliente; **[MENOR]** — conviene ajustar en próxima iteración pero no bloquea.
+**Severidad clasificada.** Las incoherencias detectadas se clasifican en tres niveles: **[CRÍTICO]** — impide continuar hasta resolverla; **[MAYOR]** — conviene resolver antes de entregar al cliente; **[MENOR]** — conviene ajustar en próxima iteración pero no bloquea.
 
 Convenciones v4.3 — **Doctrina de avance**: un [FALTA DATO] es no bloqueante por defecto; solo bloquea si cumple un criterio de la definición cerrada (inversión de tesis · irreversibilidad ante el cliente · imposibilidad material), y la carga de la prueba es del bloqueo. En primera pasada, si la fuente del dato no estará disponible antes del checkpoint, escribe directamente [ASUNCIÓN: valor + criterio falsable] — un v1 con asunciones declaradas es un entregable válido. Máximo 3 preguntas abiertas al consultor por entregable, escaladas agrupadas al cierre del paso, nunca una a una en mitad de la producción. **Lenguaje calibrado**: la asertividad es del entregable, no de la conversación; las conclusiones mayores declaran su confianza (alta: dato medido/CRM · media: declarado por el cliente · baja: inferencia), las consecuencias se formulan condicionadas — nunca proféticas — y el contraste retórico ("No es X. Es Y.") solo es admisible con evidencia de ambos lados. **Precondición**: antes de producir, lee `00 Sistema/[Cliente] - Registro` y detente si falta fase 0, si hay una intervención sin tramitar por /revos:cambio con presupuesto agotado, o si el cierre de fase anterior exigía un system-qa aún no APTO. **Resumen para el consultor**: enumera lo relevante — nunca recuentos totales. Mecánica completa (dos contadores, propagación en lote, disposición de huecos, etiquetas): skills/revos-orchestrator/references/convenciones.md del plugin revos.
 
@@ -59,9 +59,9 @@ Cruza cada output con cada otro output relevante. Por ejemplo: ICP del brief vs.
 Por cada cruce, identifica incoherencias. No solo "discrepancias obvias" — también inconsistencias sutiles (mismo concepto con dos nombres, secuencia cronológica imposible, prioridad dicha en un lugar y contradicha en otro).
 
 **Paso 5 — Clasificación por severidad.**
-Clasifica cada incoherencia en [CRÍTICA], [RELEVANTE] o [MENOR] según el criterio:
-- [CRÍTICA]: la incoherencia invalida la lógica del sistema o confundiría al cliente
-- [RELEVANTE]: la incoherencia se notaría si el cliente lee dos documentos seguidos
+Clasifica cada incoherencia en [CRÍTICO], [MAYOR] o [MENOR] según el criterio:
+- [CRÍTICO]: la incoherencia invalida la lógica del sistema o confundiría al cliente
+- [MAYOR]: la incoherencia se notaría si el cliente lee dos documentos seguidos
 - [MENOR]: la incoherencia es detectable pero no compromete la experiencia
 
 **Paso 6 — Articulación de acciones correctivas.**
@@ -97,8 +97,8 @@ Produce el output siguiendo exactamente esta estructura.
 
 **Fase auditada:** [Diagnostic / Design Essentials / Design Complete / Activation / Completo]
 **Outputs revisados:** [Número total de outputs auditados]
-**Incoherencias detectadas:** [N críticas / N relevantes / N menores]
-**Veredicto:** **[APTO PARA ENTREGAR / AJUSTES RELEVANTES REQUERIDOS / BLOQUEADO POR CRÍTICAS]**
+**Incoherencias detectadas:** [N críticos / N mayores / N menores]
+**Veredicto:** **[APTO / APTO CON RESERVAS / NO APTO]**
 **Acción inmediata recomendada:** [Frase concreta]
 
 ---
@@ -227,7 +227,7 @@ Cuando el QA Report esté completo:
    - Veredicto en una frase
    - Top 3 acciones inmediatas que tiene que hacer el consultor
    - Tiempo estimado de corrección
-3. Si hay [CRÍTICAS], resuélvelas antes de continuar. Si no hay [CRÍTICAS] pero sí [RELEVANTES], decide si ajustas antes de la próxima entrega al cliente o después.
+3. Si hay [CRÍTICOS], resuélvelas antes de continuar. Si no hay [CRÍTICOS] pero sí [MAYORES], decide si ajustas antes de la próxima entrega al cliente o después.
 4. El informe se guarda en `03 QA` como `[Cliente] - System QA [Fase] v1.md`. El orquestador lo registra en el Registro. Al cerrar, el veredicto (**APTO / APTO CON RESERVAS / NO APTO**, con nº de críticos y mayores) se añade a la tabla "Veredictos de system-qa" del Registro — es la entrada que gobierna la doble condición del checkpoint.
 5. Las correcciones derivadas NUNCA se aplican directamente: entran una a una por el flujo `/revos:cambio`, que clasifica, versiona y evalúa propagación.
 
@@ -236,7 +236,7 @@ Cuando el QA Report esté completo:
 - No generes contenido nuevo — este skill solo audita.
 - No apliques correcciones directamente sobre los entregables — toda corrección entra por el flujo `/revos:cambio`.
 - No evalúes la calidad subjetiva de los outputs — solo la coherencia entre ellos.
-- No clasifiques todo como [CRÍTICA] — la clasificación tiene que discriminar de verdad.
+- No clasifiques todo como [CRÍTICO] — la clasificación tiene que discriminar de verdad.
 - No hagas QA sobre outputs que aún no existen — audita solo lo disponible.
 - No marques incoherencia sobre datos que están explícitamente marcados como [FALTA DATO], [ASUNCIÓN] o [HIPÓTESIS] en los outputs originales — eso es transparencia, no incoherencia.
 - No entregues un QA Report que termine con "todo está bien" si no lo está — la función del skill es detectar, no tranquilizar.

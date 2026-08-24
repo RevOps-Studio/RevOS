@@ -18,7 +18,7 @@ Es la pieza que resuelve una de las patologías más comunes de las empresas B2B
 
 ## Posición en el pipeline
 
-**Requiere:** Growth System Design v1 (obligatorio), Positioning & Messaging, Revenue Diagnostic.
+**Requiere:** Growth System Design v1 (obligatorio), Positioning & Messaging Architecture, Revenue Diagnostic.
 
 **Produce:** Sales Conversion Design v1 en Markdown. Documento que define handoff, SLAs, cualificación, y alimenta el execution-roadmap-builder y el sales-process-design.
 

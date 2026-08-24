@@ -18,7 +18,7 @@ Es el documento que traduce el diseño de conversión (qué pasa para que un con
 
 ## Posición en el pipeline
 
-**Requiere:** Sales Conversion Design, Positioning & Messaging, Revenue Diagnostic (para entender el punto de partida comercial real).
+**Requiere:** Sales Conversion Design, Positioning & Messaging Architecture, Revenue Diagnostic (para entender el punto de partida comercial real).
 
 **Produce:** Sales Process Design v1 en Markdown. Alimenta crm-blueprint-builder, measurement-framework y conversion-playbook-builder.
 
@@ -262,7 +262,7 @@ Cuando el diseño del proceso comercial esté completo:
    - Duración media prevista del ciclo
    - Principales cambios respecto al proceso actual
    - Nivel de confianza en el diseño (1-5)
-3. El contenido validado se guarda como `[Cliente] - Sales Process v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: `measurement-framework`.
+3. El contenido validado se guarda como `[Cliente] - Sales Process Design v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: `measurement-framework`.
 
 ## Lo que NO debes hacer
 

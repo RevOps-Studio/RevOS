@@ -9,7 +9,7 @@ Función: mantener la coherencia del sistema RevOS de principio a fin del proyec
 
 ## Fuentes de verdad
 
-1. `references/grafo-dependencias.md` — los 27 nodos del sistema con sus dependencias, fase, tier y modelo recomendado.
+1. `references/grafo-dependencias.md` — los 28 nodos del sistema con sus dependencias, fase, tier y modelo recomendado.
 2. `references/convenciones.md` — terminología, naming, etiquetado, régimen de revisiones y esquema de versionado.
 3. `00 Sistema/[Cliente] - Registro v[N].md` — histórico inmutable (solo adición) y `[Cliente] - Estado v[N].md` — vistas de trabajo que este orquestador regenera completas en cada cierre de skill.
 
@@ -21,7 +21,7 @@ Lee siempre el Registro antes de decidir nada. Si no existe, el proyecto no ha p
 2. Consulta el grafo: identifica los nodos cuyos prerequisitos están completos y validados.
 3. Aplica las reglas de bloqueo, en este orden:
    - Cambios de **Concepto** en estado "pendiente" → la next best action es resolverlos. Los **Dato** en "pendiente de evaluar" no bloquean: su propagación se evalúa en lote en el siguiente cierre de skill o antes del checkpoint, lo que llegue antes (v4.3).
-   - Doble condición de checkpoint (F4): backlog sin cambios abiertos Y último system-qa de la fase con veredicto APTO (o críticos/mayores de bloqueo tramitados). Sin QA ejecutado no hay checkpoint; si falta, la next best action es /revos:qa.
+   - Doble condición de checkpoint (F4): backlog sin cambios abiertos Y último system-qa de la fase con veredicto APTO (o críticos/mayores de bloqueo tramitados). Sin QA ejecutado no hay checkpoint; si falta, la next best action es /revos:system-qa.
    - Checkpoint de fase sin celebrar → la next best action es el checkpoint.
    - [FALTA DATO] bloqueante abierto (definición cerrada de la Doctrina de avance: inversión de tesis · irreversibilidad · imposibilidad material) → escalarlo agrupado con los demás bloqueantes al cierre del paso en curso; no esperar al checkpoint, pero tampoco interrumpir la producción uno a uno.
 4. Devuelve: skill siguiente + inputs que requiere + huecos conocidos que arrastrará.

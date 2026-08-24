@@ -18,7 +18,7 @@ Es el documento que convierte "motor inbound SEO" en "LinkedIn orgánico + blog 
 
 ## Posición en el pipeline
 
-**Requiere:** Growth System Design, Positioning & Messaging, Competitive Landscape.
+**Requiere:** Growth System Design, Positioning & Messaging Architecture, Competitive Landscape.
 
 **Produce:** Channel Strategy Design v1 en Markdown. Alimenta content-discoverability-design, media-plan-builder y content-calendar-builder.
 
@@ -228,7 +228,7 @@ Cuando la estrategia de canales esté completa:
    - Inversión total orientativa del primer trimestre
    - Brechas de equipo/skill detectadas
    - Nivel de confianza en el mix (1-5)
-3. El contenido validado se guarda como `[Cliente] - Channel Strategy v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: `content-discoverability-design`.
+3. El contenido validado se guarda como `[Cliente] - Channel Strategy Design v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: `content-discoverability-design`.
 
 ## Lo que NO debes hacer
 

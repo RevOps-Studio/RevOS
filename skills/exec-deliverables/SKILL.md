@@ -23,11 +23,11 @@ No genera contenido nuevo: sintetiza y consolida lo producido en los skills prev
 
 ## Posición en el pipeline
 
-**Requiere:** Todos los outputs de Design + Activation validados (especialmente Revenue Diagnostic, Growth System, Sales Conversion, Execution Roadmap, Channel Strategy, Sales Process, Measurement Framework, CRM Blueprint, Martech & Measurement).
+**Requiere:** Todos los outputs de Design + Activation validados (especialmente Revenue Diagnostic, Growth System Design, Sales Conversion Design, Execution Roadmap, Channel Strategy Design, Sales Process Design, Measurement Framework, CRM Blueprint, Martech & Measurement Architecture).
 
 **Produce:** Contenido validado en Markdown de los tres entregables: Executive Summary, Board Deck y Handover Document. Los ficheros finales (PPTX + 2 DOCX) los genera `/revos:entrega`.
 
-**Siguiente skill:** Ninguno — es el cierre del proyecto.
+**Siguiente skill:** `diagnostic-checkpoint`, parametrizada como checkpoint ejecutivo final (nodo virtual `activation-checkpoint` del grafo). El proyecto se cierra tras la validación del cliente en ese checkpoint y la entrega final vía `/revos:entrega`.
 
 ## Principios de ejecución
 
@@ -170,7 +170,7 @@ Proceso para actualizar el sistema (nuevo ICP, nueva línea, nuevo canal): a qui
 Cuando los tres entregables estén listos:
 
 1. Presenta en chat el contenido completo en Markdown de los tres entregables, junto a un resumen con el índice de cada documento y los "3 mensajes que queremos que el Board recuerde".
-2. El contenido validado se guarda como `[Cliente] - Executive Summary v1.md`, `[Cliente] - Board Deck v1.md` y `[Cliente] - Handover v1.md` en `01 Entregables`. El orquestador los registra en el Registro. Los ficheros finales maquetados (PPTX + 2 DOCX) los genera `/revos:entrega` según la preferencia de output registrada en fase 0.
+2. El contenido validado se guarda como `[Cliente] - Executive Summary v1.md`, `[Cliente] - Board Deck v1.md` y `[Cliente] - Handover Document v1.md` en `01 Entregables`. El orquestador los registra en el Registro. Los ficheros finales maquetados (PPTX + 2 DOCX) los genera `/revos:entrega` según la preferencia de output registrada en fase 0.
 3. Indica al consultor: "Te entrego el contenido de los tres documentos finales. Tómalo como base para tu sesión de cierre con el cliente. Confirma si quieres ajustes de tono, de énfasis o de diseño antes de generar los ficheros con `/revos:entrega`."
 
 ## Lo que NO debes hacer

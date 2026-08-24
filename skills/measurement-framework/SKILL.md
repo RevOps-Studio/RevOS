@@ -17,7 +17,7 @@ Es lo que convierte "queremos medir el impacto de marketing" en "medimos pipelin
 
 ## Posición en el pipeline
 
-**Requiere:** Revenue Diagnostic, Growth System Design, Sales Conversion Design, Channel Strategy, Content & Discoverability, Sales Process Design.
+**Requiere:** Revenue Diagnostic, Growth System Design, Sales Conversion Design, Channel Strategy Design, Content & Discoverability Design, Sales Process Design.
 
 **Produce:** Measurement Framework v1 en Markdown, incluyendo la especificación de estructura de la matriz operativa XLSX para `/revos:entrega`. Alimenta crm-blueprint-builder, martech-measurement y reporting-operating-system.
 

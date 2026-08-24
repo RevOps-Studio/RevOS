@@ -289,7 +289,7 @@ Cuando la arquitectura de medición esté completa:
    - Gaps bloqueantes de tracking
    - Fases de implementación y duración total orientativa
    - Nivel de confianza en la arquitectura (1-5)
-3. El contenido validado se guarda como `[Cliente] - Martech Measurement v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: los opcionales contratados si los hay; después `system-qa` (cierre de Activation) y `exec-deliverables`.
+3. El contenido validado se guarda como `[Cliente] - Martech & Measurement Architecture v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: los opcionales contratados si los hay; después `system-qa` (cierre de Activation) y `exec-deliverables`.
 
 ## Lo que NO debes hacer
 

@@ -117,3 +117,45 @@ Reglas duras: un cambio de Concepto archiva la versión anterior en `04 Archivo`
 ## Formato de contenido
 
 Los skills producen contenido validado en Markdown dentro de `01 Entregables`. El fichero final (HTML u Office, según la preferencia registrada en fase 0) lo genera `/revos:entrega`, previa validación de la especificación del artefacto (F9): estados declarados = estados usados, etiquetas = nombres de las secciones referenciadas, todo elemento marcado tiene entrada en la leyenda.
+
+## Enums canónicos de QA (v4.3.1)
+
+Fuente única de severidades y veredictos. Cualquier otro vocabulario en skills, agentes, plantillas o Registro es no conforme.
+
+- **Severidad de hallazgo:** `[CRÍTICO]` (impide continuar hasta resolverlo) · `[MAYOR]` (resolver antes de entregar al cliente) · `[MENOR]` (ajustar en próxima iteración, no bloquea).
+- **Veredicto de system-qa:** `APTO` · `APTO CON RESERVAS` · `NO APTO`.
+
+Correspondencia con vocabulario retirado: [RELEVANTE] → [MAYOR] · APTO PARA ENTREGAR → APTO · AJUSTES RELEVANTES REQUERIDOS → APTO CON RESERVAS · BLOQUEADO POR CRÍTICAS → NO APTO.
+
+## Registro canónico de artefactos (v4.3.1)
+
+Un solo nombre por concepto. El nombre de producción es el canónico: se usa en la línea **Produce**, en el fichero de guardado, en los **Requiere** de las skills consumidoras y en el Registro del proyecto. Ninguna variante abreviada es conforme.
+
+| ID | Nombre canónico | Fichero | Productor |
+|---|---|---|---|
+| A01 | Client Master Brief | `[Cliente] - Client Master Brief vN.md` | brief-intake |
+| A02 | Knowledge Base | `[Cliente] - Knowledge Base vN.md` | knowledge-base-builder |
+| A03 | Competitive Landscape | `[Cliente] - Competitive Landscape vN.md` | competitive-research |
+| A04 | Revenue Diagnostic | `[Cliente] - Revenue Diagnostic vN.md` | revenue-diagnostic |
+| A05 | Positioning & Messaging Architecture | `[Cliente] - Positioning & Messaging Architecture vN.md` | positioning-messaging |
+| A06 | Growth System Design | `[Cliente] - Growth System Design vN.md` | growth-system-design |
+| A07 | Sales Conversion Design | `[Cliente] - Sales Conversion Design vN.md` | sales-conversion-design |
+| A08 | Channel Strategy Design | `[Cliente] - Channel Strategy Design vN.md` | channel-strategy-design |
+| A09 | Content & Discoverability Design | `[Cliente] - Content & Discoverability Design vN.md` | content-discoverability-design |
+| A10 | Sales Process Design | `[Cliente] - Sales Process Design vN.md` | sales-process-design |
+| A11 | Measurement Framework | `[Cliente] - Measurement Framework vN.md` | measurement-framework |
+| A12 | Execution Roadmap | `[Cliente] - Execution Roadmap vN.md` | execution-roadmap-builder |
+| A13 | Martech Stack Audit | `[Cliente] - Martech Stack Audit vN.md` | martech-stack-audit |
+| A14 | CRM Selection Report | `[Cliente] - CRM Selection Report vN.md` | crm-selection |
+| A15 | CRM Blueprint | `[Cliente] - CRM Blueprint vN.md` | crm-blueprint-builder |
+| A16 | Martech & Measurement Architecture | `[Cliente] - Martech & Measurement Architecture vN.md` | martech-measurement |
+| A17 | Media Plan | `[Cliente] - Media Plan vN.md` | media-plan-builder |
+| A18 | Content Calendar | `[Cliente] - Content Calendar vN.md` | content-calendar-builder |
+| A19 | Brand Copy System | `[Cliente] - Brand Copy System vN.md` | brand-copy-system |
+| A20 | Conversion Playbook | `[Cliente] - Conversion Playbook vN.md` | conversion-playbook-builder |
+| A21 | Reporting Operating System | `[Cliente] - Reporting Operating System vN.md` | reporting-operating-system |
+| A22 | Executive Summary | `[Cliente] - Executive Summary vN.md` | exec-deliverables |
+| A23 | Board Deck | `[Cliente] - Board Deck vN.md` | exec-deliverables |
+| A24 | Handover Document | `[Cliente] - Handover Document vN.md` | exec-deliverables |
+
+**Migración**: proyectos con ficheros bajo nombre antiguo (p. ej. Kokolski) migran al reabrirse — el renombrado se registra como cambio Cosmético en su Backlog. Proyectos nuevos usan el canon desde fase 0.

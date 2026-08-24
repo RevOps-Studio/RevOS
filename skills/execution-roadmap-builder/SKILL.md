@@ -21,7 +21,7 @@ El entregable final es doble: un XLSX operativo (que puede vivir, actualizarse y
 
 ## Posición en el pipeline
 
-**Requiere:** Revenue Diagnostic, Positioning & Messaging, Growth System Design, Sales Conversion Design. Si se está ejecutando Complete: + Channel Strategy, Content Discoverability, Sales Process, Measurement Framework.
+**Requiere:** Revenue Diagnostic, Positioning & Messaging Architecture, Growth System Design, Sales Conversion Design. Si se está ejecutando Complete: + Channel Strategy Design, Content & Discoverability Design, Sales Process Design, Measurement Framework.
 
 **Produce:** Execution Roadmap v1 en Markdown, con especificación de estructura del XLSX operativo (tablero) y del PPTX ejecutivo para `/revos:entrega`.
 
