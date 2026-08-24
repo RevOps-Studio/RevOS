@@ -16,10 +16,10 @@ Lee `00 Sistema/[Cliente] - Registro v[N].md` (histórico inmutable), `[Cliente]
 Carga `skills/revos-orchestrator/references/grafo-dependencias.md` (desde la raíz del plugin) y aplica las reglas del orquestador (`skills/revos-orchestrator/SKILL.md`): nodos completados vs. nodos desbloqueados según el tier contratado.
 
 ### 3. Detectar bloqueos (en este orden de prioridad)
-1. Cambios del backlog en estado "pendiente" → bloquean el avance.
+1. Cambios de **Concepto** en estado "pendiente" → bloquean el avance. Los **Dato** en "pendiente de evaluar" no bloquean: se listan como lote pendiente para el próximo cierre de skill o pre-checkpoint (v4.3).
 2. Doble condición de checkpoint: backlog sin cambios abiertos Y último system-qa de la fase en veredicto APTO (consulta la tabla de veredictos del Registro). Sin QA ejecutado, no hay checkpoint.
 3. Checkpoint de fase sin celebrar → bloquea la fase siguiente.
-4. [FALTA DATO] bloqueantes abiertos → escalar al cliente de inmediato.
+4. [FALTA DATO] bloqueantes abiertos (definición cerrada de la Doctrina de avance) → escalarlos agrupados al cierre del paso en curso, sin esperar al checkpoint.
 5. Entregables que agotaron sus 2 ciclos de revisión de calidad con [FALTA DATO] sin convertir a [ASUNCIÓN] → señalar la conversión pendiente. (Las incorporaciones de información no consumen ciclo.)
 6. Huecos vivos del Estado con destinataria ya ejecutada → reasignación pendiente del orquestador.
 
@@ -28,7 +28,7 @@ Presenta, en este orden y sin relleno:
 - **Proyecto**: cliente, tier, output elegido, conectores.
 - **Fase actual** y entregables producidos (con versión y ciclos consumidos por contador (calidad / incorporaciones)).
 - **Asunciones vigentes** (las pendientes de validar en el próximo checkpoint).
-- **Cambios pendientes** de propagar, si los hay.
+- **Cambios pendientes**: Concepto abiertos (bloquean) y lote de Dato pendiente de evaluar (no bloquea; se evalúa en el próximo cierre de skill o pre-checkpoint).
 - **Next best action**: skill siguiente + inputs que requiere + huecos que arrastrará.
 
 ### 5. Cierre
@@ -36,4 +36,4 @@ Ofrece ejecutar la next best action. No la ejecutes sin confirmación explícita
 
 ## Lo que NO hacer
 - No modificar Registro, Estado ni backlog (eso es del orquestador y del flujo de cambios).
-- No proponer saltarse un checkpoint o un bloqueo del backlog para "ir más rápido".
+- No proponer saltarse un checkpoint o un bloqueo de Concepto para "ir más rápido". (Los Dato en lote no son un bloqueo: no los presentes como tal.)

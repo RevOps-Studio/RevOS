@@ -31,15 +31,17 @@ Presenta la clasificación al consultor con su justificación en una frase. Él 
 
 ### 3. Registrar en el backlog
 Añade la fila a `00 Sistema/[Cliente] - Backlog de cambios v[N].md`:
-fecha · entregable origen · tipo · descripción · ficheros afectados (se completa en el paso 4) · estado global "abierto".
+fecha · entregable origen · tipo · descripción · ficheros afectados (se completa en el paso 4 o en el lote) · estado global: "abierto" (Concepto) o "pendiente de evaluar" (Dato — v4.3).
 Cosmético: el registro es opcional — regístralo solo si el consultor lo pide o si afecta a un entregable ya entregado al cliente.
 
-### 4. Evaluar propagación (Dato y Concepto)
-Invoca el procedimiento de propagación del orquestador (`skills/revos-orchestrator/SKILL.md`):
+### 4. Evaluar propagación (Concepto: inmediata · Dato: en lote — v4.3)
+**Concepto** — evaluación inmediata. Invoca el procedimiento de propagación del orquestador (`skills/revos-orchestrator/SKILL.md`):
 1. Lista los descendientes del entregable según el grafo.
 2. Evalúa impacto por descendiente: sin impacto · pendiente de editar · pendiente de reescribir.
 3. Presenta el plan de propagación en tabla al consultor y **espera su aprobación**. Nada se propaga sin ella.
 4. Registra el plan aprobado en la columna "ficheros afectados" del backlog, con el estado de cada fichero.
+
+**Dato** — evaluación diferida en lote. El cambio se ejecuta en el entregable origen (paso 5) y entra al backlog como "pendiente de evaluar". Su propagación se evalúa en lote — todos los Dato acumulados en una sola pasada — en el siguiente cierre de skill o antes del checkpoint, lo que llegue antes; el lote lo ejecuta el orquestador con el mismo procedimiento y la misma aprobación del consultor. La incoherencia transitoria entre origen y descendientes es un coste aceptado: la caza el lote y, en última instancia, el chequeo de coherencia de datos de system-qa. Si el consultor pide evaluar un Dato ahora, se evalúa ahora.
 
 ### 5. Ejecutar el cambio
 - **Cosmético / Dato**: edita el entregable vigente. La versión no cambia.
@@ -48,9 +50,9 @@ Invoca el procedimiento de propagación del orquestador (`skills/revos-orchestra
 
 ### 6. Cerrar
 - Añade al Registro: versiones nuevas, ciclo consumido en el contador que corresponda según el origen clasificado, asunciones afectadas. El orquestador regenera el Estado.
-- Marca los ficheros del backlog como "resuelto" y el estado global como "cerrado" (o "propagado" si quedan descendientes pendientes para otra sesión).
+- Marca los ficheros del backlog como "resuelto" y el estado global como "cerrado" (o "propagado" si quedan descendientes pendientes para otra sesión). Un Dato diferido conserva "pendiente de evaluar" hasta que el lote del próximo cierre de skill o pre-checkpoint evalúe su propagación — solo entonces se cierra.
 - Si hubo cascada de Concepto sobre 2+ entregables, recomienda `system-qa` parcial antes de continuar la fase.
-- Recuerda si aplica: ningún checkpoint se celebra con cambios en estado "pendiente".
+- Recuerda si aplica: ningún checkpoint se celebra con cambios en estado "pendiente" ni con el lote de Dato sin evaluar. Entre cierres, un Dato "pendiente de evaluar" no bloquea la next best action (v4.3).
 
 ## Interacción con el régimen de revisiones (dos contadores)
 - Un cambio de origen *juicio* consume 1 de los 2 ciclos de calidad del entregable origen. Regístralo en el contador de calidad del Registro.

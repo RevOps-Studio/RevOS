@@ -14,7 +14,7 @@ description: >
 
 Este skill produce el Revenue Diagnostic: el documento que cierra la fase de diagnóstico con una lectura end-to-end de la cadena de revenue del cliente y una priorización clara de dónde están los cuellos de botella.
 
-No es un inventario de problemas. Es una tesis. Tiene que responder con claridad tres preguntas: (1) ¿dónde se está rompiendo el revenue de esta empresa hoy?, (2) ¿cuál es el patrón causal — qué causa qué?, (3) ¿qué hay que intervenir primero y por qué?
+Es una tesis, no un inventario de problemas. Tiene que responder con claridad tres preguntas: (1) ¿dónde se está rompiendo el revenue de esta empresa hoy?, (2) ¿cuál es el patrón causal — qué causa qué?, (3) ¿qué hay que intervenir primero y por qué?
 
 Esta skill produce el contenido validado en Markdown. El fichero final (artefacto HTML interactivo del funnel para la presentación al cliente y/o documento formal con el análisis completo) lo genera `/revos:entrega` según la preferencia de output de fase 0, siguiendo la especificación de la sección 9.
 
@@ -36,9 +36,9 @@ Esta skill produce el contenido validado en Markdown. El fichero final (artefact
 
 **Priorizar con criterio explícito.** La priorización usa dos ejes: impacto (cuánto revenue desbloquea) y esfuerzo (cuánto cuesta intervenir). Marca cada problema identificado con un score Impacto (A/M/B) × Esfuerzo (A/M/B). No uses escalas numéricas falsas — son juicios cualitativos, que se vean como tales.
 
-**Lenguaje.** Castellano. Registro ejecutivo directo. Di "aquí se está rompiendo", "aquí se está perdiendo", "este es el cuello de botella". Evita "podría ser conveniente", "sería interesante explorar" — el diagnóstico es asertivo, no sugerente.
+**Lenguaje.** Castellano. Registro ejecutivo directo. Di "aquí se está rompiendo", "aquí se está perdiendo", "este es el cuello de botella". Evita "podría ser conveniente", "sería interesante explorar" — el diagnóstico es asertivo en sus tesis y calibrado en sus fundamentos: cada conclusión mayor declara su confianza (alta: dato medido/CRM · media: declarado por el cliente · baja: inferencia) y las consecuencias se formulan condicionadas ("si ocurre A y no se mitiga B, el riesgo es C"), nunca como profecías. Asertividad sin calibración es retórica (convenciones v4.3, Lenguaje calibrado).
 
-Convenciones v4.1 — **Precondición**: antes de producir, lee `00 Sistema/[Cliente] - Registro` y detente si falta fase 0, si el presupuesto de revisión de este entregable está agotado sin cambio tramitado por /revos:cambio, o si el cierre de fase anterior exigía un system-qa aún no APTO. **Etiquetado**: cada [FALTA DATO] se clasifica al detectarse como bloqueante (impide una decisión de este entregable) o no bloqueante. **Presupuesto**: 2 ciclos de revisión de calidad por entregable — solo consumen ciclo los cambios nacidos del juicio sobre lo escrito; las incorporaciones de información nueva (aportada por cliente o consultor, o medida por el sistema) no consumen ciclo y generan versión y entrada en el Backlog si el entregable ya está registrado. Agotado el presupuesto, los [FALTA DATO] no bloqueantes se convierten en [ASUNCIÓN: valor asumido + criterio falsable] y el sistema avanza; solo los bloqueantes detienen y se escalan de inmediato. **Resumen para el consultor**: enumera los bloqueantes y lo relevante — nunca recuentos totales (el recuento es chequeo mecánico de system-qa sobre el documento terminado). **Cierre**: todo [FALTA DATO] heredado sale con disposición explícita — resuelto, reasignado a la primera skill no ejecutada que lo necesite, o declinado con motivo. Datos de CRM conectado: [DATO CRM: fuente, fecha]. Referencia completa: skills/revos-orchestrator/references/convenciones.md del plugin revos.
+Convenciones v4.3 — **Doctrina de avance**: un [FALTA DATO] es no bloqueante por defecto; solo bloquea si cumple un criterio de la definición cerrada (inversión de tesis · irreversibilidad ante el cliente · imposibilidad material), y la carga de la prueba es del bloqueo. En primera pasada, si la fuente del dato no estará disponible antes del checkpoint, escribe directamente [ASUNCIÓN: valor + criterio falsable] — un v1 con asunciones declaradas es un entregable válido. Máximo 3 preguntas abiertas al consultor por entregable, escaladas agrupadas al cierre del paso, nunca una a una en mitad de la producción. **Lenguaje calibrado**: la asertividad es del entregable, no de la conversación; las conclusiones mayores declaran su confianza (alta: dato medido/CRM · media: declarado por el cliente · baja: inferencia), las consecuencias se formulan condicionadas — nunca proféticas — y el contraste retórico ("No es X. Es Y.") solo es admisible con evidencia de ambos lados. **Precondición**: antes de producir, lee `00 Sistema/[Cliente] - Registro` y detente si falta fase 0, si hay una intervención sin tramitar por /revos:cambio con presupuesto agotado, o si el cierre de fase anterior exigía un system-qa aún no APTO. **Resumen para el consultor**: enumera lo relevante — nunca recuentos totales. Mecánica completa (dos contadores, propagación en lote, disposición de huecos, etiquetas): skills/revos-orchestrator/references/convenciones.md del plugin revos.
 
 ## Proceso
 
@@ -82,6 +82,8 @@ Produce el output siguiendo exactamente esta estructura.
 
 ## 1. Tesis del diagnóstico
 *[Una frase de máximo dos líneas. La lectura central del diagnóstico articulada con asertividad. "El revenue de [empresa] se rompe principalmente en [punto] porque [causa], lo que explica [síntoma visible]."]*
+
+**Confianza de la tesis:** [alta / media / baja — con la fuente principal que la sostiene]
 
 ---
 
@@ -132,6 +134,7 @@ Produce el output siguiendo exactamente esta estructura.
 **Por qué pasa:** [Análisis causal — qué lo origina]
 **Impacto:** [Qué le está costando al cliente hoy — revenue no capturado, tiempo perdido, oportunidades pasadas]
 **Evidencia:** [Qué fuentes del brief/knowledge base soportan este diagnóstico]
+**Confianza:** [alta / media / baja según la evidencia]
 **Impacto × Esfuerzo:** [A/M/B × A/M/B]
 
 ### 4.2 Cuello de botella #2 — [Nombre descriptivo]

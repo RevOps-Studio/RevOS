@@ -1,4 +1,4 @@
-# Plantillas de fase 0 (v4.1)
+# Plantillas de fase 0 (v4.3)
 
 ## Registro — `[Cliente] - Registro v1.md`
 Inmutable y acumulativo: crece por adición, nunca se reescribe. Lo mantiene el orquestador.
@@ -69,7 +69,7 @@ Regenerado: [fecha, tras cierre de skill X]. Este fichero se reescribe entero; e
 
 ```markdown
 # [Cliente] — Backlog de cambios
-Un cambio por fila. Tipos: Cosmético / Dato / Concepto. Origen: juicio (consume ciclo) / información nueva (no consume).
+Un cambio por fila. Tipos: Cosmético / Dato / Concepto. Origen: juicio (consume ciclo) / información nueva (no consume). Estados: abierto · pendiente de evaluar (solo Dato — propagación en lote en el próximo cierre de skill o pre-checkpoint, no bloquea la next best action) · propagado · cerrado.
 
 | Fecha | Entregable origen | Tipo | Origen | Descripción | Ficheros afectados (con estado) | Estado global |
 |---|---|---|---|---|---|---|

@@ -10,10 +10,50 @@ Fuentes únicas, para que no haya duda de dónde se edita qué:
 | Materia | Fuente única | Vistas derivadas |
 |---|---|---|
 | Dependencias entre nodos | `skills/revos-orchestrator/references/grafo-dependencias.md` | Blueprint, hoja "Flujo dependencias" · Timeline · Workflow |
-| Convenciones transversales | `skills/revos-orchestrator/references/convenciones.md` | Bloque "Convenciones v4.x" replicado en cada SKILL.md · Master Doc §6 |
+| Convenciones transversales | `skills/revos-orchestrator/references/convenciones.md` | Bloque esencial "Convenciones v4.x" + puntero en cada SKILL.md · Master Doc §6 |
 | Mapa de conectores | `skills/revos-orchestrator/references/conectores.md` | Blueprint, hoja "Arquitectura plugin" · `.mcp.json` (solo nivel 1) |
 | Sistema visual | `skills/entrega/references/sistema-visual.md` | Plantilla HTML · plantillas Office |
 | Método de cada nodo | El `SKILL.md` correspondiente | Blueprint, hoja "Matriz RevOS" (columna Propósito) |
+| Versión y estado del plugin | `.claude-plugin/plugin.json` | `README.md` (línea de Estado y nota de versiones) · entrada más reciente de este CHANGELOG |
+| Versión y estado del plugin | `.claude-plugin/plugin.json` | `README.md` (línea de Estado y nota de versiones) · entrada más reciente de este CHANGELOG |
+
+---
+
+## [4.3.0] — 24/08/2026
+
+Parche de usabilidad tras dos iteraciones reales de proyecto. Diagnóstico de origen: tres síntomas convergentes — "lucha" por avanzar en el arranque (frentes abiertos que se tratan como bloqueos), conclusiones categóricas y dramáticas, y backlog que crece más rápido de lo que se resuelve. Causa raíz común: diseño defensivo pensado para modelos con menos juicio, ejecutado por modelos que sobre-cumplen cada raíl. Responde parcialmente a la decisión abierta "¿modo ligero?" registrada en 4.2.0: reduce el peso del gobierno sin crear un perfil separado.
+
+### Doctrina de avance
+
+- **Definición cerrada de bloqueante.** La definición anterior ("impide una decisión de este entregable") era circular y dejaba la clasificación al criterio expansivo del modelo. Sustituida por tres criterios cerrados — inversión de tesis · irreversibilidad ante el cliente · imposibilidad material — con **no bloqueante por defecto** y carga de la prueba en el bloqueo. *Concepto.*
+- **Asunción de primera pasada (generalización de F6).** La conversión [FALTA DATO] → [ASUNCIÓN] operaba solo al agotar el presupuesto de revisión — un mecanismo de fin de vida, no un default. En el arranque (primera pasada de brief, KB, diagnostic) los huecos se acumulaban abiertos: ahí nacía la "lucha". Ahora: si la fuente del dato no estará disponible antes del checkpoint, se asume directamente con criterio falsable. [FALTA DATO] queda reservado a lo que cliente o consultor sí pueden responder antes del checkpoint. Es el patrón de la calibración económica de brief-intake (F6), generalizado. *Concepto.*
+- **Tope de preguntas y escalado agrupado.** Máximo 3 preguntas abiertas al consultor por entregable; los bloqueantes se escalan agrupados al cierre del paso, nunca uno a uno en mitad de la producción. Sustituye el "escalarlo de inmediato" del orquestador. *Concepto.*
+- Precedente interno: F3 (v4.1) corrigió que "el sistema penalizaba exactamente la conducta que quiere fomentar" en los ciclos. Esta doctrina corrige el mismo patrón un nivel más arriba, y matiza el F10-lite que el propio registro de v4.1 señaló como "el cambio de comportamiento más consecuente de la v4" implementado contra la evaluación original ("coste alto, contrario a la agilidad buscada").
+
+### Lenguaje calibrado
+
+- Sección nueva en convenciones, **reconciliada** con la asertividad prescrita en revenue-diagnostic (que se mantiene, acotada): la asertividad es del entregable, no de la conversación. Tres límites: confianza declarada en conclusiones mayores (alta: medido/CRM · media: declarado · baja: inferencia), consecuencias condicionadas — nunca proféticas —, y contraste retórico ("No es X. Es Y.") solo con evidencia de ambos lados. *Concepto.*
+- **revenue-diagnostic**: lenguaje acotado ("asertivo en sus tesis y calibrado en sus fundamentos"), campo de confianza en la tesis y en cada cuello de botella del template, y limpieza del propio patrón retórico en el texto de la skill — el estilo de las instrucciones contagia el estilo del output. *Dato.*
+- **system-qa (skill y agente)**: chequeo mecánico nuevo — conclusiones sin confianza declarada, profecías y contraste retórico sin evidencia son hallazgos clasificables. *Dato.*
+
+### Propagación en lote
+
+- Los cambios de **Dato** se ejecutan en el origen y entran al backlog como "pendiente de evaluar"; su propagación se evalúa **en lote** en el siguiente cierre de skill o pre-checkpoint, lo que llegue antes. Los Dato en lote **no bloquean la next best action** — solo la bloquean los Concepto pendientes y los bloqueantes abiertos. La incoherencia transitoria origen/descendientes es un coste aceptado que cazan el lote y el chequeo de coherencia de datos de system-qa. La doble condición de checkpoint no cambia: backlog limpio (incluido el lote evaluado) y QA APTO. Corrige el multiplicador del atasco: cada dato nuevo bloqueaba la NBA hasta tramitarse individualmente — el sistema penalizaba aportar información. *Concepto.*
+- Ficheros tocados en la misma pasada para evitar la edición parcial: convenciones, orquestador (reglas de bloqueo, cierre de skill con paso de lote, régimen), status (detección de bloqueos e informe), cambio (paso 4 bifurcado), plantilla de backlog (estados). *Concepto.*
+
+### Bloque esencial + puntero (adelanto del Track 1 de v5)
+
+- El bloque "Convenciones v4.1" replicado íntegro en 25 skills (con dos variantes tipográficas divergentes) se sustituye por un **bloque esencial** — la doctrina de comportamiento en un párrafo — más puntero a `convenciones.md` para la mecánica. La doctrina viaja siempre en contexto; la mecánica vive en un solo sitio. Corrige de paso la divergencia ya instalada: bloques etiquetados v4.1 conviviendo con convenciones centrales v4.2. *Concepto.*
+
+### Fuera de alcance deliberado
+
+- El aflojamiento estructural de templates y tests mecánicos (paradigma mapa/territorio, menos raíles de procedimiento y más criterios de aceptación) **no entra en este parche**: su radio de propagación alcanza a entrega y system-qa, y pertenece al plan de sprints v5.
+- Los pendientes de punteros por tier e inserción de /revos:qa registrados en 4.2.0 para esta versión siguen bloqueados por la revisión de commands/ y agents/: pasan a 4.4.0.
+- La decisión "¿modo ligero?" sigue abierta: esta versión reduce el peso del gobierno para todos los tiers; un perfil Essentials reducido explícito queda por decidir.
+
+### Validación pendiente
+
+- Prueba de territorio: próxima sesión real (Kokolski) con las tareas que hoy generan fricción. Criterios de éxito: arranque de skill sin interrogatorio previo (≤3 preguntas), entregables v1 con asunciones en lugar de huecos abiertos, backlog estable entre cierres, y ausencia de profecías y contrastes retóricos sin evidencia en los outputs.
 
 ---
 

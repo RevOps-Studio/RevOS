@@ -2,7 +2,7 @@
 
 Sistema RevOS: diagnóstico, diseño y activación de sistemas de revenue para empresas B2B, operado íntegramente en Claude/Cowork.
 
-## Estado: v4.2.0 · sistema completo, un piloto ejecutado
+## Estado: v4.3.0 · sistema completo, un piloto ejecutado
 
 Arquitectura **skills-only**: 27 nodos de producción y 7 de control, sin capa de comandos. La secuenciación por tier vive en el grafo del orquestador; el punto de entrada de cada sesión es `status`.
 
@@ -13,7 +13,7 @@ Arquitectura **skills-only**: 27 nodos de producción y 7 de control, sin capa d
 - **Agentes** — competitive-researcher · crm-analyst · system-qa (solo lectura) · deliverable-designer.
 - **Conectores** — nivel 1 en `.mcp.json` (Ahrefs, Similarweb, Drive, Notion, Dropbox); nivel 2 activable por proyecto (CRM, transcripciones, ads, SEO alternativo) según `skills/revos-orchestrator/references/conectores.md`.
 
-Piloto ejecutado: fase Diagnostic completa con cliente real (07/2026). Sus aprendizajes están en `docs/` y produjeron las versiones 4.1 y 4.2. Histórico en `CHANGELOG.md`.
+Piloto ejecutado: fase Diagnostic completa con cliente real (07/2026). Sus aprendizajes están en `docs/` y produjeron las versiones 4.1 y 4.2. La 4.3 es un parche de usabilidad tras dos iteraciones reales: doctrina de avance (bloqueante con definición cerrada, asunción de primera pasada), lenguaje calibrado y propagación en lote para cambios de Dato. Histórico en `CHANGELOG.md`.
 
 ## Uso
 
