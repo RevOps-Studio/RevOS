@@ -16,6 +16,50 @@ Fuentes únicas, para que no haya duda de dónde se edita qué:
 | Método de cada nodo | El `SKILL.md` correspondiente | Blueprint, hoja "Matriz RevOS" (columna Propósito) |
 | Versión y estado del plugin | `.claude-plugin/plugin.json` | `README.md` (línea de Estado y nota de versiones) · entrada más reciente de este CHANGELOG |
 
+**Descripción del manifiesto (v4.4).** `description` de `plugin.json` tiene un límite de **500 caracteres** en la instalación. Lleva la descripción del sistema más la nota de **la versión vigente únicamente**: las notas de versiones anteriores se retiran al publicar, porque su sitio es este CHANGELOG. El check F7 del validador lo hace cumplir y avisa cuando queda poco margen.
+
+---
+
+## [4.4.0] — 31/08/2026
+
+Rescate del programa v5 hacia 4.3.1, adjudicado entrada a entrada contra el baseline congelado (ZIP SHA-256 `3c5594da…0ba1`) y no contra el expediente de v5. Dos lecturas ordenan la versión. La primera: de los cuatro `METHOD_CHANGE` que el programa presentaba como correcciones al método, **uno corrige el plugin y tres corrigen a v5** o afinan algo que ya estaba bien — la disciplina epistémica ([ASUNCIÓN] con criterio falsable, [DATO MEDIDO], confianza declarada por conclusión, la sección "lo que NO es el problema") ya era de la metodología; v5 no la añadió, la convirtió en schema. La segunda, aplicada al propio rescate: **el programa v5 fue en buena medida sobreingeniería de algo que no estaba roto**, y el mismo test hay que pasarlo a lo que vuelve. De las siete piezas del expediente inicial, entran las cuatro con daño observado; tres se descartan por añadir gobierno sin defecto que lo justifique, y una de las descartadas hacía redundantes 20 ediciones.
+
+Decisión de rumbo: el rescate entra **dentro del contrato actual de QA**. La capa de juicio de calidad (MC-002, rúbrica de dimensiones puntuadas, separación QA estructural/sustantiva de ADR-009) queda aplazada, con criterio de reapertura declarado: cuando un entregable pase el QA de coherencia y falle ante el cliente por calidad, o cuando haga falta responder *qué conclusiones se caen si esta asunción resulta falsa* sin que alguien lea el documento entero.
+
+### El método deja de recomendar alcance
+
+- **Retirada de la recomendación de alcance en los tres sitios donde vivía**: `revenue-diagnostic` §7.3 *Alcance sugerido* y su punto en el Resumen para el consultor, y `diagnostic-checkpoint` §8.2 *Alcance recomendado*. Essentials/Complete se firma en pre-venta: el sistema recomendando lo ya contratado produce una recomendación que no puede no confirmarse, y el diagnóstico real entregado a cliente lo exhibe — *«Alcance recomendado: Complete»* con sección propia. **El sesgo no lo pone el modelo: lo pone la plantilla.** En `diagnostic-checkpoint` la sección se reconvierte en lo único que conservaba valor y no es recomendación de alcance: la **retirada** de activaciones opcionales que el diagnóstico deja sin objeto — ahorro para el cliente, no ampliación. Guardia mecánica: F9. *Concepto.*
+
+### Autoría de los juicios
+
+- **El *Resumen para el consultor* no se traslada al fichero maquetado** (`entrega`, paso 4 y "Lo que NO hacer"; `convenciones.md` §Resúmenes). Hallazgo no previsto por el mapeo inverso: `entrega` no mencionaba la sección en ningún punto de su proceso y `convenciones.md` asumía lo contrario — *«una cifra … que un cliente con criterio comprueba»*. Verificado: **las 21 notas numéricas del sistema viven todas dentro de ese bloque**, entre 4 y 6 líneas bajo su cabecera; ninguna está en el cuerpo de un entregable. Una sola exclusión en el render las saca del documento del cliente. Es la corrección de R-015 en su forma económica: la nota del productor deja de heredar autoridad ante el cliente porque deja de llegarle, no porque se reetiquete en veinte ficheros. *Concepto.*
+- **Postura de revisión en `system-qa`**, trasladada al dominio que el baseline sí tiene: la unidad no es la dimensión puntuada de v5 —que 4.x no tiene, y cuya introducción sería MC-002 por la puerta de atrás— sino **el cruce de la matriz de verificación**. Por cada cruce se construye primero el argumento más fuerte de que los documentos se contradicen; sólo si no se sostiene, el cruce se declara limpio. Entra como principio, sin obligación de reporte por cruce: el experimento controlado que la avala medía juicio de calidad con rúbrica, no coherencia, y no hay caso registrado de `system-qa` dando por coherente algo que no lo era — el principio cuesta una inserción y no infla ningún informe; la obligación de reporte habría crecido al cuadrado con el número de documentos para prevenir un fallo no observado. *Concepto.*
+
+### Doctrina de fuentes
+
+- **Un resumen generado por modelo no es fuente admisible de evidencia** (`convenciones.md` §Recolección, regla 5; mención en `brief-intake` y `knowledge-base-builder`). Origen: un digest de reunión atribuyó al cliente un producto que era del consultor, y tres de sus cifras no cuadraban contra el cuestionario. Es el único agujero de la versión que es **de hoy**: los notetakers automáticos ya están dentro del flujo real y el baseline no nombraba esa clase de fuente en ningún sitio. Punto de inserción corregido respecto al mapeo: §Recolección ya nombraba las transcripciones como material de captura, así que la regla va a la fuente única y no a dos doctrinas locales que se desincronizarían. Sin etiqueta nueva: la regla se ejecuta entera con [ASUNCIÓN] + criterio falsable, y añadir un enum obligaría a enseñárselo al chequeo de etiquetas vivas para una función ya cubierta. *Concepto.*
+- **El checkpoint declara de qué se alimentó la fase** (`diagnostic-checkpoint` §2): una línea por entrada — *producido en esta fase*, nombrando la herramienta que lo midió / *aportado por el cliente* / *dado por provisto sin producir*, con motivo. En 4.x no es corrección sino refuerzo: el `Requiere … (todos obligatorios)` de `revenue-diagnostic` ya estaba bien, y es **más estricto que lo que v5 relajó** al convertirlo en `consumes` satisfacible por provisión — el hard stop del engagement de v5 fue deuda del porte, no del plugin. Lo que faltaba era que quedara escrito ante el cliente, porque es el contraste que hace visible el valor de la fase. *Concepto.*
+
+### Plantillas
+
+- **Ningún template afirma un hecho del proyecto** (`system-qa` §2, inventario de outputs auditados). Cuatro filas terminadas en `| ✓ |` le decían al modelo que los outputs estaban presentes, cuando el paso 1 del propio método es enumerar los existentes y los que faltan: el template pre-rellenaba la respuesta a su propia pregunta. En 4.x el `SKILL.md` **es** el prompt. Sustituidas por una fila de ejemplo con marcador sin resolver. Barrido confirmado: era la única aparición de ✓/✔ en las 31 skills, así que la corrección es puntual y **no se acompaña de doctrina ni de check mecánico** — un defecto de instancia única no justifica ninguno de los dos. *Dato.*
+
+### Instrumentación
+
+- **`scripts/validar_revos.py` — checks F7 y F8.** **F8**: ninguna skill recomienda alcance — guarda un cambio de Concepto que sí puede reintroducirse por deriva de redacción. **F7**: el manifiesto dentro de límites — `description` no excede 500 caracteres, con aviso a partir de 440 y comprobación de que `version` existe y de que el JSON es parseable. Los dos verificados en negativo: reintroducir §7.3 dispara F8; una descripción de 608 caracteres dispara F7 como error y una de 460 como aviso de margen. *Concepto.*
+- **La descripción del manifiesto pasa a llevar sólo la versión vigente.** La convención anterior acumulaba una nota por versión y la 4.4 la llevó a 602 caracteres, por encima del límite de 500 que impone la instalación — el fallo no es de esta versión, es del patrón: cada versión futura habría vuelto a romperlo. Retiradas las notas de 4.3 y 4.3.1, que ya viven en este CHANGELOG, y añadido el puntero explícito. Queda en 427 caracteres. F7 lo vigila. *Dato.*
+- **Dos checks propuestos y descartados**, sin número asignado para no reservar hueco: el que vigilaría los ✓ afirmativos en plantillas —un defecto de instancia única en 31 skills— y el que vigilaría la autoría de la nota numérica, que queda sin objeto tras la exclusión del Resumen y además nació mal, porque su lista de exclusiones fallaba en el primer caso: `crm-selection` tiene la matriz de scoring 1-5 **y** su propia nota de autoevaluación.
+- **El bloque esencial no sube de versión.** F5 no exige que la cadena suba: exige que sea **una sola** en todas las skills, y lo es (`Convenciones v4.3`). La cadena nombra la generación de doctrina, no la versión del plugin — el propio fichero ya contiene secciones marcadas (v4.2) y (v4.3.1) bajo esa cabecera. Subirla habría costado una edición atómica de 25 ficheros por cero cambio de comportamiento. Las reglas nuevas se marcan (v4.4) en su sección.
+- **Estado del validador**: 0 errores, 22 avisos — idéntico al baseline, porque 4.4 no toca el grafo.
+
+### Higiene detectada, no corregida
+
+- La entrada 4.3.1 declara *«0 errores, 17 avisos»*. El baseline congelado mide **22** (19 transitivas + 3 fórmulas en prosa). La divergencia parece venir de que una misma dependencia transitiva emite un aviso por cada variante de nombre del artefacto (`positioning`, `positioning & messaging`, `positioning & messaging architecture`). No se corrige aquí: es deriva documental de 4.3.1 y no afecta al comportamiento. Candidata a 4.4.1, junto con la deduplicación de avisos por artefacto en el validador.
+
+### Migración
+
+Ningún cambio invalida entregables emitidos. Proyectos abiertos migran al reabrirse: el *Alcance sugerido* de un diagnóstico ya emitido entra por `/revos:cambio` como **Concepto**; los ficheros maquetados ya entregados con el Resumen para el consultor incluido no se corrigen retroactivamente — se anota en el Backlog. Ninguna nota de autoevaluación cambia de redacción, así que ningún entregable vigente queda desalineado con su skill.
+
 ---
 
 ## [4.3.1] — 24/08/2026

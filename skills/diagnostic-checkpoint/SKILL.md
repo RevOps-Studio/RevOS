@@ -86,7 +86,7 @@ Produce el output siguiendo exactamente esta estructura.
 
 ## 2. Contexto y alcance
 **Qué incluyó esta fase:** [Resumen del alcance — skills ejecutados, outputs producidos]
-**Qué materiales del cliente hemos utilizado:** [Inputs consumidos]
+**De qué se ha alimentado esta fase:** [Una línea por entregable o material de entrada, con su procedencia declarada: *producido en esta fase* — nombrando la herramienta o fuente que lo midió — / *aportado por el cliente* / *dado por provisto sin producir*, con el motivo. Es lo que separa un diagnóstico construido con material externo de uno construido sobre lo que el cliente ya sabía.]
 **Cuándo empezamos y dónde estamos:** [Fechas, hitos cumplidos]
 
 ---
@@ -161,8 +161,8 @@ Produce el output siguiendo exactamente esta estructura.
 ### 8.1 Qué pasa si validamos hoy
 [Qué es lo primero que haremos tras la validación y en qué plazo]
 
-### 8.2 Alcance recomendado
-[Confirmación o ajuste del alcance (Essentials / Complete / Activaciones opcionales) dado lo aprendido]
+### 8.2 Activaciones que el diagnóstico deja sin objeto
+[Si alguna activación opcional contratada o prevista pierde justificación con lo aprendido, decláralo aquí con el motivo. Es ahorro para el cliente. Esta sección no propone ampliaciones de alcance: el alcance se firmó en pre-venta y el diagnóstico no lo revisa.]
 
 ### 8.3 Hitos de la siguiente fase
 [Los 3-5 hitos de la siguiente fase, con fecha estimada]

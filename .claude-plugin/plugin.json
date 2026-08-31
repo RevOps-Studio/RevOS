@@ -1,7 +1,7 @@
 {
   "name": "revos",
-  "version": "4.3.1",
-  "description": "Sistema RevOS de RevOps Studio: diagnóstico, diseño y activación de sistemas de revenue para empresas B2B. Plugin interno de organización. v4.3: doctrina de avance, lenguaje calibrado y propagación en lote. v4.3.1: parche de higiene — grafo alineado con los Requiere, enums canónicos de QA, alias corregidos y validador pre-empaquetado.",
+  "version": "4.4.0",
+  "description": "Sistema RevOS de RevOps Studio: diagnóstico, diseño y activación de sistemas de revenue para empresas B2B. Plugin interno de organización. v4.4: el método deja de recomendar alcance, el Resumen para el consultor no se renderiza al cliente, un resumen generado por un modelo no es fuente de evidencia, el checkpoint declara procedencia y system-qa revisa intentando demostrar la incoherencia. Histórico completo en CHANGELOG.md.",
   "author": {
     "name": "RevOps Studio"
   },

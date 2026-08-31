@@ -83,6 +83,7 @@ Reglas:
 2. Toda recolección lleva su etiqueta de procedencia y fecha ([DATO MEDIDO], [DATO CRM]) — un inventario sin fecha caduca en silencio.
 3. La skill que consume recolección **comprueba si existe antes de pedirla de nuevo**. Pedir dos veces el mismo dato al cliente es el defecto que este concepto existe para evitar.
 4. El Estado lista la recolección pendiente como categoría propia. Material en `02 Anexos` que nadie referencia es material que se pierde: es el riesgo que asume este concepto y por eso se vigila desde el Estado, no desde la memoria del consultor.
+5. **Clase de fuente no admisible (v4.4).** Un resumen, acta o *digest* generado por un modelo —notetaker automático, minuta de IA, síntesis de reunión— **no es fuente de una evidencia**: es una lectura de una fuente. Fuente lo son la transcripción, la grabación o el documento original. Si sólo existe el resumen, lo que entra es [ASUNCIÓN: valor + criterio falsable: contraste contra la transcripción], nunca un dato. La regla existe porque la lectura de un modelo puede reatribuir un hecho —un producto del consultor atribuido al cliente— sin que nada en el texto señale el error.
 
 ## Régimen de revisiones — dos contadores (F3)
 
@@ -94,6 +95,8 @@ Reglas:
 ## Resúmenes sin recuentos (F1)
 
 Los "Resumen para el consultor" **enumeran, no cuentan**: los [FALTA DATO] bloqueantes listados, las hipótesis que requieren validación listadas, las contradicciones listadas. Prohibido declarar totales ("hay 9 hipótesis") — es una cifra que el documento no permite mantener y que un cliente con criterio comprueba. El recuento es un chequeo mecánico de system-qa sobre el documento terminado.
+
+**El Resumen para el consultor es sección interna (v4.4).** No se traslada al fichero maquetado: `/revos:entrega` lo excluye del render. Contiene la autoevaluación de quien produjo el documento —una nota que no distingue autoría hereda una autoridad que no tiene— y los huecos en curso. Por eso la nota numérica del Resumen es informativa para el consultor y no un veredicto del sistema: el único veredicto del sistema es el de coherencia que emite `system-qa` con sus enums canónicos.
 
 ## Esquema de versionado
 

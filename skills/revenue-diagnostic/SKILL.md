@@ -187,9 +187,6 @@ Produce el output siguiendo exactamente esta estructura.
 ### 7.2 Decisiones que el cliente tendrá que tomar en Design
 [Las 3-5 decisiones estratégicas que emergen del diagnóstico y que Design tendrá que resolver]
 
-### 7.3 Alcance sugerido
-[Recomendación: Essentials es suficiente, o se recomienda Complete por [razón]]
-
 ---
 
 ## 8. Vacíos, hipótesis y dependencias
@@ -221,7 +218,6 @@ Cuando el diagnóstico esté completo:
 2. Añade al final una sección **"Resumen para el consultor"** con:
    - Tesis del diagnóstico en una frase
    - Los cuellos de botella identificados, listados, señalando el crítico — sin recuento total
-   - Recomendación de alcance (Essentials / Complete)
    - Nivel de confianza en el diagnóstico (1-5) y qué haría falta para subirlo
    - Las 2-3 decisiones más importantes que el cliente debe confirmar en el checkpoint
 3. El contenido validado se guarda como `[Cliente] - Revenue Diagnostic v1.md` en `01 Entregables`. El orquestador lo registra en el Registro. Siguiente skill: `system-qa` (cierre de Diagnostic) y, con su veredicto en el Registro, `diagnostic-checkpoint`.

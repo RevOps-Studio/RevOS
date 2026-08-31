@@ -28,6 +28,8 @@ La diferencia con el brief es de profundidad y enriquecimiento: el brief captura
 
 **Jerarquía de fuentes.** (1) Client Master Brief validado, (2) materiales internos del cliente (decks, propuestas, informes), (3) web y contenido público del cliente, (4) notas de entrevistas internas. Cuando haya contradicción entre fuentes, prevalece la más reciente y la más específica. Marca las contradicciones con [CONTRADICCIÓN DETECTADA].
 
+**Resúmenes de modelo.** Un acta o digest generado por un notetaker no es fuente: es una lectura de una fuente. Fuente lo son la transcripción, la grabación o el documento original. Si sólo existe el resumen, lo que entra es [ASUNCIÓN: valor + criterio falsable: contraste contra la transcripción], nunca un dato (`convenciones.md` §Recolección, regla 5).
+
 **Integración, no copia.** No reproduzcas el brief literalmente. La knowledge base lo integra, lo enriquece y lo reorganiza. Toda información debe estar sintetizada con criterio propio — cruza datos de distintas fuentes y articula patrones.
 
 **Detectar lo no dicho.** La parte más valiosa de la knowledge base es lo que el cliente no ha articulado explícitamente: tensiones entre lo que dice y lo que hace, supuestos implícitos sobre su mercado, creencias internas que condicionan decisiones. Identifícalo y márcalo como [OBSERVACIÓN] para diferenciarlo de los datos declarados.

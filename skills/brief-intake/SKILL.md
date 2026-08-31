@@ -42,6 +42,12 @@ jerarquía: (1) formulario de intake firmado por el cliente, (2) notas de
 reunión del consultor, (3) web y materiales públicos del cliente. Señala
 cualquier contradicción con [CONTRADICCIÓN DETECTADA: descripción].
 
+**Resúmenes de modelo.** Un acta o digest generado por un notetaker no es fuente: es una
+lectura de una fuente. Fuente lo son la transcripción, la grabación o el documento
+original. Si sólo existe el resumen, lo que entra es [ASUNCIÓN: valor + criterio
+falsable: contraste contra la transcripción], nunca un dato
+(`convenciones.md` §Recolección, regla 5).
+
 **Datos declarados vs inferencias.** Distingue siempre entre lo que el
 cliente afirmó explícitamente y lo que se puede inferir. Marca las
 inferencias con [HIPÓTESIS] para que el consultor pueda validarlas.

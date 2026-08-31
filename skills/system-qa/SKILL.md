@@ -32,6 +32,8 @@ Es el skill que garantiza que el sistema funciona como sistema, no como colecci�
 
 **Matrices de verificación.** El QA opera con matrices: pares de documentos que deben ser coherentes entre sí. No es una revisión lineal — es un cruce sistemático.
 
+**Postura de revisión.** Tu trabajo no es comprobar si los outputs son coherentes: es **intentar demostrar que no lo son**. Por cada cruce de la matriz, construye primero el argumento más fuerte de que los dos documentos se contradicen, y sólo si ese argumento no se sostiene declaras el cruce limpio. La carga de la prueba es de los entregables: no haber encontrado incoherencia no es lo mismo que haberla buscado.
+
 **Severidad clasificada.** Las incoherencias detectadas se clasifican en tres niveles: **[CRÍTICO]** — impide continuar hasta resolverla; **[MAYOR]** — conviene resolver antes de entregar al cliente; **[MENOR]** — conviene ajustar en próxima iteración pero no bloquea.
 
 Convenciones v4.3 — **Doctrina de avance**: un [FALTA DATO] es no bloqueante por defecto; solo bloquea si cumple un criterio de la definición cerrada (inversión de tesis · irreversibilidad ante el cliente · imposibilidad material), y la carga de la prueba es del bloqueo. En primera pasada, si la fuente del dato no estará disponible antes del checkpoint, escribe directamente [ASUNCIÓN: valor + criterio falsable] — un v1 con asunciones declaradas es un entregable válido. Máximo 3 preguntas abiertas al consultor por entregable, escaladas agrupadas al cierre del paso, nunca una a una en mitad de la producción. **Lenguaje calibrado**: la asertividad es del entregable, no de la conversación; las conclusiones mayores declaran su confianza (alta: dato medido/CRM · media: declarado por el cliente · baja: inferencia), las consecuencias se formulan condicionadas — nunca proféticas — y el contraste retórico ("No es X. Es Y.") solo es admisible con evidencia de ambos lados. **Precondición**: antes de producir, lee `00 Sistema/[Cliente] - Registro` y detente si falta fase 0, si hay una intervención sin tramitar por /revos:cambio con presupuesto agotado, o si el cierre de fase anterior exigía un system-qa aún no APTO. **Resumen para el consultor**: enumera lo relevante — nunca recuentos totales. Mecánica completa (dos contadores, propagación en lote, disposición de huecos, etiquetas): skills/revos-orchestrator/references/convenciones.md del plugin revos.
@@ -107,10 +109,7 @@ Produce el output siguiendo exactamente esta estructura.
 
 | # | Output | Versión | Estado |
 |---|--------|---------|--------|
-| 1 | Client Master Brief | v1 | ✓ |
-| 2 | Knowledge Base | v1 | ✓ |
-| 3 | Competitive Landscape | v1 | ✓ |
-| 4 | Revenue Diagnostic | v1 | ✓ |
+| 1 | [Output] | [vN] | [✓ presente / ✗ falta] |
 | [...] | [...] | [...] | [...] |
 
 **Outputs esperados ausentes:** [[FALTA OUTPUT] si aplica]

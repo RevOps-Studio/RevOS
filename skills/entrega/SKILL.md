@@ -30,6 +30,8 @@ Antes de lanzar la maquetación, verifica la especificación del artefacto con e
 Si algo falla, la especificación vuelve a su skill vía `/revos:cambio` — no se maqueta una especificación incoherente.
 
 ### 4. Maquetar
+Antes de maquetar, retira del contenido de origen la sección **"Resumen para el consultor"**. No se edita el Markdown validado: se excluye del render. Es sección interna — contiene la autoevaluación de quien produjo el documento y los huecos en curso.
+
 Lanza el agente deliverable-designer con: ruta del Markdown validado, formato objetivo, especificación de estructura, y el sistema visual. Reglas que el agente debe respetar:
 - Fidelidad total al contenido validado: la maquetación no reescribe, no resume, no "mejora" textos.
 - Las etiquetas vivas ([ASUNCIÓN], [HIPÓTESIS], [FALTA DATO] bloqueantes) se renderizan visibles con su estilo propio — nunca se ocultan en el fichero del cliente sin decisión explícita del consultor.
@@ -42,6 +44,7 @@ Revisa el fichero producido contra la especificación (secciones/hojas completas
 Si el contenido cambia después de maquetar, el cambio entra por `/revos:cambio` sobre el Markdown; la re-maquetación se repite desde aquí. Nunca se edita el fichero final directamente.
 
 ## Lo que NO hacer
+- No trasladar el *Resumen para el consultor* al fichero maquetado. El render al cliente empieza y termina en el contenido del entregable.
 - No maquetar contenido sin validar o sin registrar.
 - No alterar el contenido durante la maquetación.
 - No mezclar formatos en un mismo proyecto sin decisión explícita (la preferencia de fase 0 es la norma).

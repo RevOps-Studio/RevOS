@@ -7,7 +7,7 @@ Exit code 0 = limpio · 1 = hallazgos. Integrar en empaquetar.sh:
 
 AJUSTAR: las constantes RUTAS según la estructura real del repo.
 """
-import re, sys, os
+import json, re, sys, os
 from pathlib import Path
 
 # ---------------------------------------------------------------- configuración
@@ -171,6 +171,41 @@ for name, txt_skill in skills.items():
         continue
     if REGISTRO_ARTEFACTOS[name] not in txt_skill:
         err(f"[F6] {name}: el fichero de guardado no usa el nombre canónico '{REGISTRO_ARTEFACTOS[name]}N.md'")
+
+# ---------------------------------------------------------------- 7. manifiesto dentro de límites (v4.4)
+LIMITE_DESCRIPCION = 500
+MANIFIESTO = REPO / ".claude-plugin" / "plugin.json"
+if not MANIFIESTO.exists():
+    err(f"[F7] no encuentro el manifiesto en {MANIFIESTO}")
+else:
+    try:
+        man = json.loads(MANIFIESTO.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as e:
+        man = None
+        err(f"[F7] manifiesto no es JSON válido: {e}")
+    if man is not None:
+        desc = man.get("description", "")
+        if len(desc) > LIMITE_DESCRIPCION:
+            err(f"[F7] plugin.json: description tiene {len(desc)} caracteres — el límite es {LIMITE_DESCRIPCION}. "
+                f"La descripción lleva solo la versión vigente; el histórico vive en CHANGELOG.md")
+        elif len(desc) > LIMITE_DESCRIPCION - 60:
+            warn(f"[F7] plugin.json: description en {len(desc)}/{LIMITE_DESCRIPCION} caracteres — "
+                 f"queda poco margen para la nota de la próxima versión")
+        if not man.get("version"):
+            err("[F7] plugin.json: falta el campo version")
+
+# ---------------------------------------------------------------- 8. el método no recomienda alcance (v4.4, MC-003)
+PROHIBIDO_ALCANCE = (
+    "Recomendación de alcance",
+    "Alcance recomendado",
+    "Alcance sugerido",
+    "se recomienda Complete",
+    "Essentials es suficiente",
+)
+for name, txt in skills.items():
+    for tok in PROHIBIDO_ALCANCE:
+        if tok in txt:
+            err(f"[F8] {name}: el método recomienda alcance ('{tok}') — el alcance se firma en pre-venta (MC-003)")
 
 # ---------------------------------------------------------------- salida
 print(f"Skills analizadas: {len(skills)}")
